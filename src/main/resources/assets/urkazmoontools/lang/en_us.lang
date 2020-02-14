@@ -1,0 +1,16 @@
+item.urkazmoontools.moonclock.name=Lunar Clock
+
+tile.urkazmoontools.moonsensor.name=Lunar Sensor
+
+urkazmoontools.config.sensoronlynight=The 'Lunar Sensor' works only at night.
+
+urkazmoontools.moonclock.phaseTooltip=Moon Phase: 
+
+urkazmoontools.moonclock.phase0=Full Moon
+urkazmoontools.moonclock.phase1=Waning Gibbous
+urkazmoontools.moonclock.phase2=Third Quarter
+urkazmoontools.moonclock.phase3=Waning Crescent
+urkazmoontools.moonclock.phase4=New Moon
+urkazmoontools.moonclock.phase5=Waxing Crescent
+urkazmoontools.moonclock.phase6=First Quarter
+urkazmoontools.moonclock.phase7=Waxing Gibbous

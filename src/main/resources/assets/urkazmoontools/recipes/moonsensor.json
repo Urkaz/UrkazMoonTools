@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" l ",
+		"lrl",
+		" l "
+	],
+	"key": {
+		"l": {
+			"item": "minecraft:dye",
+			"data": 4
+		},
+		"r": {
+			"item": "minecraft:daylight_detector"
+		}
+	},
+	"result": {
+		"item": "urkazmoontools:moonsensor"
+	}
+}

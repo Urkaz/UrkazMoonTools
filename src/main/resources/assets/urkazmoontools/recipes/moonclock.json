@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" x ",
+		"xyx",
+		" x "
+	],
+	"key": {
+		"x": {
+			"item": "minecraft:dye",
+			"data": 4
+		},
+		"y": {
+			"item": "minecraft:clock"
+		}
+	},
+	"result": {
+		"item": "urkazmoontools:moonclock"
+	}
+}

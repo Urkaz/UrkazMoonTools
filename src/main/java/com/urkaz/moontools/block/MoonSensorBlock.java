@@ -39,14 +39,22 @@ public class MoonSensorBlock extends BlockDaylightDetector {
 
 	protected int signal(World worldIn, BlockPos pos) {
 		long wt = worldIn.provider.getWorldTime();
-
 		boolean isNight = true;
-
 		if (ModSettings.SensorOnlyNight) {
 			isNight = wt % 24000L >= 12000L;
 		}
+		
+		if (ModSettings.SensorPhasesShifted) {
+			int moonPhase = worldIn.provider.getMoonPhase(wt - 24000);
+			if (wt - 24000 < 0) {
+				moonPhase = 7;
+			}
+			return worldIn.canBlockSeeSky(pos) && isNight ? 1 + moonPhase : 0;
+		} else {
 
-		return worldIn.canBlockSeeSky(pos) && isNight ? 1 + worldIn.provider.getMoonPhase(wt) : 0;
+			return worldIn.canBlockSeeSky(pos) && isNight ? 1 + worldIn.provider.getMoonPhase(wt) : 0;
+		}
+
 	}
 
 	@Override

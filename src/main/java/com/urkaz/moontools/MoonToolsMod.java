@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class MoonToolsMod {
 	public static final String MODID = "urkazmoontools";
 	public static final String NAME = "Urkaz Moon Tools";
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "1.2";
 	public static final String MC_VERSION = "[1.12.2]";
 
 	public static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);

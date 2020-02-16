@@ -53,9 +53,10 @@ public class MoonClockItem extends Item {
 		});
 	}
 
+	@SideOnly(Side.CLIENT)
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-		if(!worldIn.isRemote && handIn == EnumHand.MAIN_HAND) {
+		if(worldIn.isRemote && handIn == EnumHand.MAIN_HAND) {
 			playerIn.sendMessage(new TextComponentString(getTooltipText(worldIn)));
 			playerIn.swingArm(handIn);
 	        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
@@ -72,6 +73,7 @@ public class MoonClockItem extends Item {
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	public String getTooltipText (World worldIn) {
 		return I18n.format("urkazmoontools.moonclock.phaseTooltip")
 				+ I18n.format("urkazmoontools.moonclock.phase" + worldIn.provider.getMoonPhase(worldIn.getWorldTime()));

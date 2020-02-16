@@ -2,7 +2,8 @@ item.urkazmoontools.moonclock.name=Lunar Clock
 
 tile.urkazmoontools.moonsensor.name=Lunar Sensor
 
-urkazmoontools.config.sensoronlynight=The 'Lunar Sensor' works only at night.
+urkazmoontools.config.sensoronlynight=The 'Lunar Sensor' emits Redstone signal only at night.
+urkazmoontools.config.sensorshiftphases=Full Moon in 'Lunar Sensor' has strenght 8 instead of 1.
 
 urkazmoontools.moonclock.phaseTooltip=Moon Phase: 
 

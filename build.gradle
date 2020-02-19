@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.12.2-1.2"
+version = "1.12.2-1.3"
 group = "com.urkaz.moontools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "UrkazMoonTools"
 
@@ -37,7 +37,7 @@ minecraft {
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
     //Makes those replacement changes to the main mod class.
     //My mod class is set in my project's gradle.properties file.
-    replaceIn "${mod_class}.java"
+    replaceIn "MoonToolsMod.java"
 }
 
 dependencies {
@@ -61,7 +61,6 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
 }
 
 processResources {

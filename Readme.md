@@ -18,17 +18,21 @@ Recipe:
 
 This block emits a redstone signal depending on the current Moon phase. The Lunar sensor only works during the night, but in the mod settings you can make it work all day.
 
-Redstone strength in blocks:
+Redstone strength in blocks (default settings):
 
-* ![Phase 0](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_00.png "Full Moon"): 1
-* ![Phase 1](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_01.png "Waning Gibbous"): 2
-* ![Phase 2](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_02.png "Third Quarter"): 3
-* ![Phase 3](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_03.png "Waning Crescent"): 4
-* ![Phase 4](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_04.png "New Moon"): 5
-* ![Phase 5](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_05.png "Waxing Crescent"): 6
-* ![Phase 6](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_06.png "First Quarter"): 7
-* ![Phase 7](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_07.png "Waxing Gibbous"): 8
+* ![Phase 1](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_01.png "Waning Gibbous"): 1
+* ![Phase 2](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_02.png "Third Quarter"): 2
+* ![Phase 3](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_03.png "Waning Crescent"): 3
+* ![Phase 4](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_04.png "New Moon"): 4
+* ![Phase 5](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_05.png "Waxing Crescent"): 5
+* ![Phase 6](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_06.png "First Quarter"): 6
+* ![Phase 7](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_07.png "Waxing Gibbous"): 7
+* ![Phase 0](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_00.png "Full Moon"): 8
  
 Recipe:
 
 ![Lunar Clock](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/recipe_sensor.png "Lunar Sensor recipe")
+
+### Bloodmoon support
+
+The mod now has support for the Bloodmoon mod. The moon icon in the clock will become red during a Bloodmoon event.

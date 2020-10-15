@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import lumien.bloodmoon.server.BloodmoonHandler;
+import lumien.bloodmoon.client.ClientBloodmoonHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -40,7 +40,7 @@ public class MoonClockItem extends Item {
 				int extras = 0;
 
 				if (Loader.isModLoaded("bloodmoon")) {
-					if (BloodmoonHandler.INSTANCE != null && BloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+					if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
 						extras += 10;
 					}
 				}

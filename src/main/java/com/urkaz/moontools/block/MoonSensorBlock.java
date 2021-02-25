@@ -4,6 +4,10 @@ import java.util.Random;
 
 import com.urkaz.moontools.ModSettings;
 
+import de.ellpeck.nyx.capabilities.NyxWorld;
+import de.ellpeck.nyx.lunarevents.BloodMoon;
+import de.ellpeck.nyx.lunarevents.HarvestMoon;
+import lumien.bloodmoon.client.ClientBloodmoonHandler;
 import net.minecraft.block.BlockDaylightDetector;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Loader;
 
 public class MoonSensorBlock extends BlockDaylightDetector {
 
@@ -40,19 +45,69 @@ public class MoonSensorBlock extends BlockDaylightDetector {
 	protected int signal(World worldIn, BlockPos pos) {
 		long wt = worldIn.provider.getWorldTime();
 		boolean isNight = true;
+		boolean isBloodMoon = false;
+		boolean isHarvestMoon = false;
 		if (ModSettings.SensorOnlyNight) {
 			isNight = wt % 24000L >= 12000L;
 		}
+
+		if(ModSettings.EmmitExtraRedstoneOnLunarEvent) {
+			if (Loader.isModLoaded("bloodmoon")) {
+				if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+					isBloodMoon = true;
+				}
+			}
+			if (Loader.isModLoaded("nyx")) {
+				NyxWorld nyx = NyxWorld.get(worldIn);
+				if (nyx != null && nyx.currentEvent instanceof HarvestMoon) {
+					isHarvestMoon = true;
+				}
+				if (nyx != null && nyx.currentEvent instanceof BloodMoon) {
+					isBloodMoon = true;
+				}
+			}
+		}
 		
-		if (ModSettings.SensorPhasesShifted) {
+		if (ModSettings.SensorPhasesShifted)
+		{
 			int moonPhase = worldIn.provider.getMoonPhase(wt - 24000);
-			if (wt - 24000 < 0) {
+			if (wt - 24000 < 0)
+			{
 				moonPhase = 7;
 			}
-			return worldIn.canBlockSeeSky(pos) && isNight ? 1 + moonPhase : 0;
-		} else {
-
-			return worldIn.canBlockSeeSky(pos) && isNight ? 1 + worldIn.provider.getMoonPhase(wt) : 0;
+			if(worldIn.canBlockSeeSky(pos) && isNight)
+			{
+				if(isBloodMoon)
+				{
+					return 9;
+				}
+				else if(isHarvestMoon)
+				{
+					return 10;
+				}
+				else
+					return 1 + moonPhase;
+			}
+			else
+				return 0;
+		}
+		else
+		{
+			if(worldIn.canBlockSeeSky(pos) && isNight)
+			{
+				if(isBloodMoon)
+				{
+					return 9;
+				}
+				else if(isHarvestMoon)
+				{
+					return 10;
+				}
+				else
+					return 1 + worldIn.provider.getMoonPhase(wt);
+			}
+			else
+				return 0;
 		}
 
 	}

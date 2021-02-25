@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import de.ellpeck.nyx.capabilities.NyxWorld;
+import de.ellpeck.nyx.lunarevents.BloodMoon;
+import de.ellpeck.nyx.lunarevents.HarvestMoon;
 import lumien.bloodmoon.client.ClientBloodmoonHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -39,8 +42,19 @@ public class MoonClockItem extends Item {
 
 				int extras = 0;
 
+				boolean bloodmoonEnabled = false;
 				if (Loader.isModLoaded("bloodmoon")) {
 					if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+						extras += 10;
+						bloodmoonEnabled = true;
+					}
+				}
+				if (Loader.isModLoaded("nyx")) {
+					NyxWorld nyx = NyxWorld.get(worldIn);
+					if (nyx != null && nyx.currentEvent instanceof HarvestMoon) {
+						extras += 100;
+					}
+					if (!bloodmoonEnabled && nyx != null && nyx.currentEvent instanceof BloodMoon) {
 						extras += 10;
 					}
 				}

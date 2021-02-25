@@ -22,4 +22,10 @@ public class ModSettings {
 		"   Full Moon 8 | Waxing Gibbous 7 | First Quarter 6 | Waxing Crescent 5 | New Moon 4 | Waning Crescent 3 | Third Quarter 2 | Waning Gibbous 1 | Sensor",
 		})
 	public static boolean SensorPhasesShifted = true;
+
+	@LangKey("urkazmoontools.config.emmitextraonmoonevent")
+	@Comment({
+			"false (default): The 'Lunar Sensor' emmits the regular amount of redstone on BloodMoon.",
+			"true: The 'Lunar Sensor' emmits 9 units of Redstone during Bloodmoon, and 10 during Harvestmoon." })
+	public static boolean EmmitExtraRedstoneOnLunarEvent = false;
 }

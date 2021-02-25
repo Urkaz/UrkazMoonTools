@@ -4,6 +4,7 @@ tile.urkazmoontools.moonsensor.name=Lunar Sensor
 
 urkazmoontools.config.sensoronlynight=The 'Lunar Sensor' emits Redstone signal only at night.
 urkazmoontools.config.sensorshiftphases=Full Moon in 'Lunar Sensor' has strenght 8 instead of 1.
+urkazmoontools.config.emmitextraonmoonevent=The 'Lunar Sensor' always emmits 9/10 of Redstone on BloodMoon/HarvestMoon.
 
 urkazmoontools.moonclock.phaseTooltip=Moon Phase: 
 

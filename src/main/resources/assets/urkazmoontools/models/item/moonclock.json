@@ -19,6 +19,22 @@
 		{ "predicate": { "moonphase": 14 }, "model": "urkazmoontools:item/moonclock_14" },
 		{ "predicate": { "moonphase": 15 }, "model": "urkazmoontools:item/moonclock_15" },
 		{ "predicate": { "moonphase": 16 }, "model": "urkazmoontools:item/moonclock_16" },
-		{ "predicate": { "moonphase": 17 }, "model": "urkazmoontools:item/moonclock_17" }
+		{ "predicate": { "moonphase": 17 }, "model": "urkazmoontools:item/moonclock_17" },
+		{ "predicate": { "moonphase": 100 }, "model": "urkazmoontools:item/moonclock_100" },
+		{ "predicate": { "moonphase": 101 }, "model": "urkazmoontools:item/moonclock_101" },
+		{ "predicate": { "moonphase": 102 }, "model": "urkazmoontools:item/moonclock_102" },
+		{ "predicate": { "moonphase": 103 }, "model": "urkazmoontools:item/moonclock_103" },
+		{ "predicate": { "moonphase": 104 }, "model": "urkazmoontools:item/moonclock_104" },
+		{ "predicate": { "moonphase": 105 }, "model": "urkazmoontools:item/moonclock_105" },
+		{ "predicate": { "moonphase": 106 }, "model": "urkazmoontools:item/moonclock_106" },
+		{ "predicate": { "moonphase": 107 }, "model": "urkazmoontools:item/moonclock_107" },
+		{ "predicate": { "moonphase": 110 }, "model": "urkazmoontools:item/moonclock_110" },
+		{ "predicate": { "moonphase": 111 }, "model": "urkazmoontools:item/moonclock_111" },
+		{ "predicate": { "moonphase": 112 }, "model": "urkazmoontools:item/moonclock_112" },
+		{ "predicate": { "moonphase": 113 }, "model": "urkazmoontools:item/moonclock_113" },
+		{ "predicate": { "moonphase": 114 }, "model": "urkazmoontools:item/moonclock_114" },
+		{ "predicate": { "moonphase": 115 }, "model": "urkazmoontools:item/moonclock_115" },
+		{ "predicate": { "moonphase": 116 }, "model": "urkazmoontools:item/moonclock_116" },
+		{ "predicate": { "moonphase": 117 }, "model": "urkazmoontools:item/moonclock_117" }
     ]
 }

@@ -8,6 +8,7 @@ import de.ellpeck.nyx.capabilities.NyxWorld;
 import de.ellpeck.nyx.lunarevents.BloodMoon;
 import de.ellpeck.nyx.lunarevents.HarvestMoon;
 import lumien.bloodmoon.client.ClientBloodmoonHandler;
+import lumien.bloodmoon.server.BloodmoonHandler;
 import net.minecraft.block.BlockDaylightDetector;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -53,8 +54,17 @@ public class MoonSensorBlock extends BlockDaylightDetector {
 
 		if(ModSettings.EmmitExtraRedstoneOnLunarEvent) {
 			if (Loader.isModLoaded("bloodmoon")) {
-				if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
-					isBloodMoon = true;
+				if(worldIn.isRemote)
+				{
+					if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+						isBloodMoon = true;
+					}
+				}
+				else
+				{
+					if (BloodmoonHandler.INSTANCE != null && BloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+						isBloodMoon = true;
+					}
 				}
 			}
 			if (Loader.isModLoaded("nyx")) {

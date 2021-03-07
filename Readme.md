@@ -37,6 +37,7 @@ Recipe:
 
 ### Bloodmoon and Nyx support
 
-The mod is compatible with **Bloodmoon (1.5.3-1.5.5)** and **Nyx (1.4.2)** mods. The moon icon in the clock will become red during a Bloodmoon event or Blue during the Harvestmoon.
+The mod is compatible with **Bloodmoon (1.5.3-1.5.5)** and **Nyx (1.4.2)** mods. The moon icon in the clock will become red during a Bloodmoon event or blue during the Harvestmoon.
+
 ![Bloody harvest](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png "Bloody harvest") If both events appear to happen at the same time, the clock will display both at the same time (this may happen when playing with Both mods at the same time).
 

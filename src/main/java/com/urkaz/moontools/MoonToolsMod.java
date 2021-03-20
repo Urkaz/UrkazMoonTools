@@ -13,13 +13,18 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = MoonToolsMod.MODID, name = MoonToolsMod.NAME, version = MoonToolsMod.VERSION, certificateFingerprint = MoonToolsMod.MOD_FINGERPRINT, acceptedMinecraftVersions = MoonToolsMod.MC_VERSION)
+@Mod(	modid = MoonToolsMod.MODID,
+		name = MoonToolsMod.NAME,
+		version = MoonToolsMod.VERSION,
+		certificateFingerprint = MoonToolsMod.MOD_FINGERPRINT,
+		acceptedMinecraftVersions = MoonToolsMod.MC_VERSION,
+		dependencies = "required-after:forge@[14.23.5.2847,)")
 public class MoonToolsMod {
 	public static final String MODID = "urkazmoontools";
 	public static final String NAME = "Urkaz Moon Tools";
 	public static final String VERSION = "@VERSION@";
 	public static final String MC_VERSION = "[1.12.2]";
-	public static final String MOD_FINGERPRINT = "@FINGERPRINT@";
+	public static final String MOD_FINGERPRINT = "c022a7e2fbde680251f45e379b3c2f9e64a8d3dc";
 
 	public static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);
 

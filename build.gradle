@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.12.2-1.6"
+version = "1.12.2-1.7"
 group = "com.urkaz.moontools" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "UrkazMoonTools"
 
@@ -34,7 +34,7 @@ minecraft {
     
     replace '@VERSION@', project.version
     //Replaces all text that matches the left side with the right.
-    replace '@FINGERPRINT@', project.findProperty('signSHA1')
+    //replace '@FINGERPRINT@', project.findProperty('signSHA1')
     //Makes those replacement changes to the main mod class.
     //My mod class is set in my project's gradle.properties file.
     replaceIn "MoonToolsMod.java"
@@ -92,10 +92,10 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
     // findProperty allows us to reference the property without it existing. 
     // Using project.propName would cause the script to fail validation if 
     // the property did not exist. 
-    keyStore = project.findProperty('keyStore')
-    alias = project.findProperty('keyStoreAlias')
-    storePass = project.findProperty('keyStorePass')
-    keyPass = project.findProperty('keyStoreKeyPass')
+    keyStore = project.keyStore
+    alias = project.keyStoreAlias
+    storePass = project.keyStorePass
+    keyPass = project.keyStoreKeyPass
     inputFile = jar.archivePath
     outputFile = jar.archivePath
 }

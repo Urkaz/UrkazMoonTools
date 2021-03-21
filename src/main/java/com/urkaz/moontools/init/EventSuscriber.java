@@ -1,49 +1,42 @@
 package com.urkaz.moontools.init;
 
 import com.urkaz.moontools.MoonToolsMod;
-import com.urkaz.moontools.block.MoonSensorBlock;
-import com.urkaz.moontools.item.MoonClockItem;
-
+import com.urkaz.moontools.tileentity.MoonSensorTileEntity;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
-@ObjectHolder(MoonToolsMod.MODID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EventSuscriber {
 
-	// ITEMS
-	public static final Item MOONCLOCK = null;
+    @SubscribeEvent
+    public static void registerTileEntities(RegistryEvent.Register<TileEntityType<?>> event)
+    {
+        TileEntityType type = TileEntityType.Builder.create(MoonSensorTileEntity::new, ModBlocks.MOONSENSOR).build(null);
+        type.setRegistryName(MoonToolsMod.MODID, "moonsensor");
+        ForgeRegistries.TILE_ENTITIES.register(type);
 
-	// BLOCKS
-	public static final Block MOONSENSOR = null;
+        ModBlocks.MOONSENSOR_TILEENTITY = type;
+    }
 
-	@EventBusSubscriber(modid = MoonToolsMod.MODID)
-	public static class RegistrationHandler {
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        BlockItem BlockMOONSENSOR = new BlockItem(ModBlocks.MOONSENSOR, new Item.Properties().group(ItemGroup.REDSTONE));
+        BlockMOONSENSOR.setRegistryName(MoonToolsMod.MODID, "moonsensor");
 
-		@SubscribeEvent
-		public static void registerBlocks(Register<Block> event) {
-			final Block[] blocks = { new MoonSensorBlock(false).setRegistryName(MoonToolsMod.MODID, "moonsensor")
-					.setTranslationKey(MoonToolsMod.MODID + "." + "moonsensor") };
+        ForgeRegistries.BLOCKS.register(ModBlocks.MOONSENSOR);
+        ForgeRegistries.ITEMS.register(BlockMOONSENSOR);
+    }
 
-			event.getRegistry().registerAll(blocks);
-		}
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        ForgeRegistries.ITEMS.register(ModItems.MOONCLOCK);
+    }
 
-		@SubscribeEvent
-		public static void registerItems(Register<Item> event) {
-			final Item[] items = { new MoonClockItem().setRegistryName(MoonToolsMod.MODID, "moonclock")
-					.setTranslationKey(MoonToolsMod.MODID + "." + "moonclock").setCreativeTab(CreativeTabs.TOOLS) };
-
-			final Item[] itemBlocks = {
-					new ItemBlock(ModBlocks.MOONSENSOR).setRegistryName(ModBlocks.MOONSENSOR.getRegistryName()), };
-
-			event.getRegistry().registerAll(items);
-			event.getRegistry().registerAll(itemBlocks);
-		}
-
-	}
 }

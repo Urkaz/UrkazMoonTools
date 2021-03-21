@@ -1,21 +1,20 @@
 {
   "variants": {
-    "normal": {"model": "urkazmoontools:moonsensor"},
-    "power=0": {"model": "urkazmoontools:moonsensor"},
-    "power=1": {"model": "urkazmoontools:moonsensor"},
-    "power=2": {"model": "urkazmoontools:moonsensor"},
-    "power=3": {"model": "urkazmoontools:moonsensor"},
-    "power=4": {"model": "urkazmoontools:moonsensor"},
-    "power=5": {"model": "urkazmoontools:moonsensor"},
-    "power=6": {"model": "urkazmoontools:moonsensor"},
-    "power=7": {"model": "urkazmoontools:moonsensor"},
-    "power=8": {"model": "urkazmoontools:moonsensor"},
-    "power=9": {"model": "urkazmoontools:moonsensor"},
-    "power=10": {"model": "urkazmoontools:moonsensor"},
-    "power=11": {"model": "urkazmoontools:moonsensor"},
-    "power=12": {"model": "urkazmoontools:moonsensor"},
-    "power=13": {"model": "urkazmoontools:moonsensor"},
-    "power=14": {"model": "urkazmoontools:moonsensor"},
-    "power=15": {"model": "urkazmoontools:moonsensor"}
+    "power=0": {"model": "urkazmoontools:block/moonsensor"},
+    "power=1": {"model": "urkazmoontools:block/moonsensor"},
+    "power=2": {"model": "urkazmoontools:block/moonsensor"},
+    "power=3": {"model": "urkazmoontools:block/moonsensor"},
+    "power=4": {"model": "urkazmoontools:block/moonsensor"},
+    "power=5": {"model": "urkazmoontools:block/moonsensor"},
+    "power=6": {"model": "urkazmoontools:block/moonsensor"},
+    "power=7": {"model": "urkazmoontools:block/moonsensor"},
+    "power=8": {"model": "urkazmoontools:block/moonsensor"},
+    "power=9": {"model": "urkazmoontools:block/moonsensor"},
+    "power=10": {"model": "urkazmoontools:block/moonsensor"},
+    "power=11": {"model": "urkazmoontools:block/moonsensor"},
+    "power=12": {"model": "urkazmoontools:block/moonsensor"},
+    "power=13": {"model": "urkazmoontools:block/moonsensor"},
+    "power=14": {"model": "urkazmoontools:block/moonsensor"},
+    "power=15": {"model": "urkazmoontools:block/moonsensor"}
   }
 }

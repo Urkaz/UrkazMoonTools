@@ -7,14 +7,13 @@
 	],
 	"key": {
 		"l": {
-			"item": "minecraft:dye",
-			"data": 4
+			"item": "minecraft:lapis_lazuli"
 		},
 		"r": {
-			"item": "minecraft:daylight_detector"
+			"item": "minecraft:clock"
 		}
 	},
 	"result": {
-		"item": "urkazmoontools:moonsensor"
+		"item": "minecraft:daylight_detector"
 	}
 }

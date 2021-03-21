@@ -1,51 +1,79 @@
 package com.urkaz.moontools;
 
+import com.urkaz.moontools.block.MoonSensorBlock;
+import com.urkaz.moontools.init.ModBlocks;
+import com.urkaz.moontools.init.ModItems;
+import com.urkaz.moontools.item.MoonClockItem;
+import com.urkaz.moontools.resources.MoonPhaseResource;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.urkaz.moontools.handlers.ConfigurationHandler;
+// The value here should match an entry in the META-INF/mods.toml file
+@Mod(MoonToolsMod.MODID)
+public class MoonToolsMod
+{
+    public static final String MODID = "urkazmoontools";
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+    private static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);
 
-@Mod(	modid = MoonToolsMod.MODID,
-		name = MoonToolsMod.NAME,
-		version = MoonToolsMod.VERSION,
-		certificateFingerprint = MoonToolsMod.MOD_FINGERPRINT,
-		acceptedMinecraftVersions = MoonToolsMod.MC_VERSION,
-		dependencies = "required-after:forge@[14.23.5.2847,)")
-public class MoonToolsMod {
-	public static final String MODID = "urkazmoontools";
-	public static final String NAME = "Urkaz Moon Tools";
-	public static final String VERSION = "@VERSION@";
-	public static final String MC_VERSION = "[1.12.2]";
-	public static final String MOD_FINGERPRINT = "c022a7e2fbde680251f45e379b3c2f9e64a8d3dc";
+    public MoonToolsMod() {
+        // Register the setup method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        // Register the enqueueIMC method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        // Register the processIMC method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        // Register the doClientStuff method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
-	public static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(new ConfigurationHandler());
-	}
+        //MinecraftForge.EVENT_BUS.register(new ConfigurationHandler());
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
 
-	}
+        //create blocks and item instances
+        ModBlocks.MOONSENSOR = new MoonSensorBlock(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(0.2F).sound(SoundType.WOOD)).setRegistryName(MoonToolsMod.MODID, "moonsensor");
+        ModItems.MOONCLOCK = new MoonClockItem(new Item.Properties().group(ItemGroup.TOOLS)).setRegistryName(MoonToolsMod.MODID, "moonclock");
+    }
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+    private void setup(final FMLCommonSetupEvent event)
+    {
+    }
 
-	}
-	
-	@EventHandler
-    public void onFingerprintViolation(FMLFingerprintViolationEvent event) {
-        
-		LOGGER.warn("Invalid fingerprint detected! The file " + event.getSource().getName() + " may have been tampered with. This version will NOT be supported by the author!");
+    private void clientSetup(final FMLClientSetupEvent event)
+    {
+        ItemModelsProperties.registerProperty(ModItems.MOONCLOCK, new ResourceLocation(MODID, "moonphase"), new MoonPhaseResource());
+
+        // do something that can only be done on the client
+        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+    }
+
+    private void enqueueIMC(final InterModEnqueueEvent event)
+    {
+    }
+
+    private void processIMC(final InterModProcessEvent event)
+    {
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(FMLServerStartingEvent event) {
     }
 }

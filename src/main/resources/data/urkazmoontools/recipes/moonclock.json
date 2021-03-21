@@ -7,8 +7,7 @@
 	],
 	"key": {
 		"x": {
-			"item": "minecraft:dye",
-			"data": 4
+			"item": "minecraft:lapis_lazuli"
 		},
 		"y": {
 			"item": "minecraft:clock"

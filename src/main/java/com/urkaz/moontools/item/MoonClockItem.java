@@ -108,8 +108,15 @@ public class MoonClockItem extends Item {
 
 	@SideOnly(Side.CLIENT)
 	public String getTooltipText(World worldIn) {
-		return I18n.format("urkazmoontools.moonclock.phaseTooltip")
-				+ I18n.format("urkazmoontools.moonclock.phase" + worldIn.provider.getMoonPhase(worldIn.getWorldTime()));
+		if (worldIn.provider.isSurfaceWorld()) {
+			return I18n.format("urkazmoontools.moonclock.phaseTooltip")
+					+ I18n.format("urkazmoontools.moonclock.phase" + worldIn.provider.getMoonPhase(worldIn.getWorldTime()));
+		}
+		else
+		{
+			return I18n.format("urkazmoontools.moonclock.phaseTooltip")
+					+ I18n.format("urkazmoontools.moonclock.nodata");
+		}
 	}
 
 }

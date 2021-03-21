@@ -44,6 +44,10 @@ public class MoonSensorBlock extends BlockDaylightDetector {
 	}
 
 	protected int signal(World worldIn, BlockPos pos) {
+		if (worldIn.provider.isSurfaceWorld()) {
+			return 0;
+		}
+
 		long wt = worldIn.provider.getWorldTime();
 		boolean isNight = true;
 		boolean isBloodMoon = false;

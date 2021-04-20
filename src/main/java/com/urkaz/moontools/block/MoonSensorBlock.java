@@ -44,86 +44,78 @@ public class MoonSensorBlock extends BlockDaylightDetector {
 	}
 
 	protected int signal(World worldIn, BlockPos pos) {
-		if (worldIn.provider.isSurfaceWorld()) {
+		if (worldIn == null || !worldIn.provider.isSurfaceWorld()) {
 			return 0;
-		}
-
-		long wt = worldIn.provider.getWorldTime();
-		boolean isNight = true;
-		boolean isBloodMoon = false;
-		boolean isHarvestMoon = false;
-		if (ModSettings.SensorOnlyNight) {
-			isNight = wt % 24000L >= 12000L;
-		}
-
-		if(ModSettings.EmmitExtraRedstoneOnLunarEvent) {
-			if (Loader.isModLoaded("bloodmoon")) {
-				if(worldIn.isRemote)
-				{
-					if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+		} else {
+			//Check events and mod compatibility
+			boolean isBloodMoon = false;
+			boolean isHarvestMoon = false;
+			if (ModSettings.EmmitExtraRedstoneOnLunarEvent) {
+				if (Loader.isModLoaded("bloodmoon")) {
+					if (worldIn.isRemote) {
+						if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+							isBloodMoon = true;
+						}
+					} else {
+						if (BloodmoonHandler.INSTANCE != null && BloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+							isBloodMoon = true;
+						}
+					}
+				}
+				if (Loader.isModLoaded("nyx")) {
+					NyxWorld nyx = NyxWorld.get(worldIn);
+					if (nyx != null && nyx.currentEvent instanceof HarvestMoon) {
+						isHarvestMoon = true;
+					}
+					if (nyx != null && nyx.currentEvent instanceof BloodMoon) {
 						isBloodMoon = true;
 					}
 				}
-				else
-				{
-					if (BloodmoonHandler.INSTANCE != null && BloodmoonHandler.INSTANCE.isBloodmoonActive()) {
-						isBloodMoon = true;
-					}
-				}
 			}
-			if (Loader.isModLoaded("nyx")) {
-				NyxWorld nyx = NyxWorld.get(worldIn);
-				if (nyx != null && nyx.currentEvent instanceof HarvestMoon) {
-					isHarvestMoon = true;
-				}
-				if (nyx != null && nyx.currentEvent instanceof BloodMoon) {
-					isBloodMoon = true;
-				}
-			}
-		}
-		
-		if (ModSettings.SensorPhasesShifted)
-		{
-			int moonPhase = worldIn.provider.getMoonPhase(wt - 24000);
-			if (wt - 24000 < 0)
-			{
-				moonPhase = 7;
-			}
-			if(worldIn.canBlockSeeSky(pos) && isNight)
-			{
-				if(isBloodMoon)
-				{
-					return 9;
-				}
-				else if(isHarvestMoon)
-				{
-					return 10;
-				}
-				else
-					return 1 + moonPhase;
-			}
-			else
-				return 0;
-		}
-		else
-		{
-			if(worldIn.canBlockSeeSky(pos) && isNight)
-			{
-				if(isBloodMoon)
-				{
-					return 9;
-				}
-				else if(isHarvestMoon)
-				{
-					return 10;
-				}
-				else
-					return 1 + worldIn.provider.getMoonPhase(wt);
-			}
-			else
-				return 0;
-		}
 
+			//Check if is night
+			long wt = worldIn.provider.getWorldTime();
+			boolean isNight = true;
+			if (ModSettings.SensorOnlyNight) {
+				isNight = wt % 24000L >= 12000L;
+			}
+
+			//Get Redstone value
+			if (ModSettings.SensorPhasesShifted)
+			{
+				int moonPhase = worldIn.provider.getMoonPhase(wt - 24000);
+				if (wt - 24000 < 0) {
+					moonPhase = 7;
+				}
+				if(worldIn.canBlockSeeSky(pos) && isNight) {
+					if(isBloodMoon) {
+						return 9;
+					}
+					else if(isHarvestMoon) {
+						return 10;
+					}
+					else
+						return 1 + moonPhase;
+				}
+				else
+					return 0;
+			}
+			else
+			{
+				if(worldIn.canBlockSeeSky(pos) && isNight) {
+					if(isBloodMoon) {
+						return 9;
+					}
+					else if(isHarvestMoon) {
+						return 10;
+					}
+					else
+						return 1 + worldIn.provider.getMoonPhase(wt);
+				}
+				else
+					return 0;
+			}
+		}
 	}
 
 	@Override

@@ -41,40 +41,37 @@ public class MoonClockItem extends Item {
 					worldIn = entity.world;
 				}
 
-				int extras = 0;
-
-				boolean bloodmoonEnabled = false;
-				if (Loader.isModLoaded("bloodmoon")) {
-					if(worldIn.isRemote)
-					{
-						if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
-							extras += 10;
-							bloodmoonEnabled = true;
-						}
-					}
-					else
-					{
-						if (BloodmoonHandler.INSTANCE != null && BloodmoonHandler.INSTANCE.isBloodmoonActive()) {
-							extras += 10;
-							bloodmoonEnabled = true;
-						}
-					}
-				}
-				if (Loader.isModLoaded("nyx")) {
-					NyxWorld nyx = NyxWorld.get(worldIn);
-					if (nyx != null && nyx.currentEvent instanceof HarvestMoon) {
-						extras += 100;
-					}
-					if (!bloodmoonEnabled && nyx != null && nyx.currentEvent instanceof BloodMoon) {
-						extras += 10;
-					}
-				}
-
 				if (worldIn == null) {
 					return 0;
 				} else {
 					int moonFactor;
 					if (worldIn.provider.isSurfaceWorld()) {
+						int extras = 0;
+						boolean bloodmoonEnabled = false;
+						if (Loader.isModLoaded("bloodmoon")) {
+							if(worldIn.isRemote) {
+								if (ClientBloodmoonHandler.INSTANCE != null && ClientBloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+									extras += 10;
+									bloodmoonEnabled = true;
+								}
+							}
+							else {
+								if (BloodmoonHandler.INSTANCE != null && BloodmoonHandler.INSTANCE.isBloodmoonActive()) {
+									extras += 10;
+									bloodmoonEnabled = true;
+								}
+							}
+						}
+						if (Loader.isModLoaded("nyx")) {
+							NyxWorld nyx = NyxWorld.get(worldIn);
+							if (nyx != null && nyx.currentEvent instanceof HarvestMoon) {
+								extras += 100;
+							}
+							if (!bloodmoonEnabled && nyx != null && nyx.currentEvent instanceof BloodMoon) {
+								extras += 10;
+							}
+						}
+
 						moonFactor = worldIn.provider.getMoonPhase(worldIn.getWorldTime()) + extras;
 					} else {
 						double randomDouble = Math.random();

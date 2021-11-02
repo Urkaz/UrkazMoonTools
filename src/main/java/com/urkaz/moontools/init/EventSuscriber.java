@@ -18,7 +18,7 @@ public class EventSuscriber {
     @SubscribeEvent
     public static void registerTileEntities(RegistryEvent.Register<TileEntityType<?>> event)
     {
-        TileEntityType type = TileEntityType.Builder.create(MoonSensorTileEntity::new, ModBlocks.MOONSENSOR).build(null);
+        TileEntityType type = TileEntityType.Builder.of(MoonSensorTileEntity::new, ModBlocks.MOONSENSOR).build(null);
         type.setRegistryName(MoonToolsMod.MODID, "moonsensor");
         ForgeRegistries.TILE_ENTITIES.register(type);
 
@@ -27,7 +27,7 @@ public class EventSuscriber {
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        BlockItem BlockMOONSENSOR = new BlockItem(ModBlocks.MOONSENSOR, new Item.Properties().group(ItemGroup.REDSTONE));
+        BlockItem BlockMOONSENSOR = new BlockItem(ModBlocks.MOONSENSOR, new Item.Properties().tab(ItemGroup.TAB_REDSTONE));
         BlockMOONSENSOR.setRegistryName(MoonToolsMod.MODID, "moonsensor");
 
         ForgeRegistries.BLOCKS.register(ModBlocks.MOONSENSOR);

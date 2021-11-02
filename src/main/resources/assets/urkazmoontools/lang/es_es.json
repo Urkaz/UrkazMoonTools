@@ -5,7 +5,13 @@
 
     "urkazmoontools.config.sensoronlynight": "El 'Sensor Lunar' solo emite señal de Redstone por la noche.",
     "urkazmoontools.config.sensorshiftphases": "Luna Llena en el 'Sensor Lunar' tiene fuerza 8 en vez de 1.",
-    "urkazmoontools.config.emmitextraonmoonevent": "El 'Sensor Lunar' siempre emite 9/10 de Redstone cuando hay BloodMoon/HarvestMoon.",
+    "urkazmoontools.config.emmitextraonmoonevent": "El 'Sensor Lunar' siempre emite 9/10 de Redstone durante un evento lunar.",
+
+    "urkazmoontools.configUI.title": "Urkaz Moon Tools Config",
+    "urkazmoontools.configUI.sensoronlynight": "Solo se emite señal de Redstone por la noche",
+    "urkazmoontools.configUI.sensorshiftphases": "Luna Llena emite 8 Redstone en vez de 1.",
+    "urkazmoontools.configUI.emmitextraonmoonevent": "Se emiten 9/10 de Redstone durante un evento lunar",
+    "urkazmoontools.configUI.done": "Done",
 
     "urkazmoontools.moonclock.phaseTooltip": "Fase Lunar:",
 

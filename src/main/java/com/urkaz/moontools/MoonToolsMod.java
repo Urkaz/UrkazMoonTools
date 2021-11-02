@@ -12,8 +12,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -31,44 +34,25 @@ public class MoonToolsMod
     public static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);
 
     public MoonToolsMod() {
-        // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        final IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
+        modBus.addListener(this::clientSetup);
+
+        forgeBus.register(this);
 
         //create blocks and item instances
-        ModBlocks.MOONSENSOR = new MoonSensorBlock(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(0.2F).sound(SoundType.WOOD)).setRegistryName(MoonToolsMod.MODID, "moonsensor");
-        ModItems.MOONCLOCK = new MoonClockItem(new Item.Properties().group(ItemGroup.TOOLS)).setRegistryName(MoonToolsMod.MODID, "moonclock");
+        ModBlocks.MOONSENSOR = new MoonSensorBlock(AbstractBlock.Properties.of(Material.WOOD).strength(0.2F).sound(SoundType.WOOD)).setRegistryName(MoonToolsMod.MODID, "moonsensor");
+        ModItems.MOONCLOCK = new MoonClockItem(new Item.Properties().tab(ItemGroup.TAB_TOOLS).setNoRepair().stacksTo(1)).setRegistryName(MoonToolsMod.MODID, "moonclock");
 
         //Load settings
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, com.urkaz.moontools.ModSettings.spec);
-    }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> MoonToolsModClient::new);
     }
 
     private void clientSetup(final FMLClientSetupEvent event)
     {
-        ItemModelsProperties.registerProperty(ModItems.MOONCLOCK, new ResourceLocation(MODID, "moonphase"), new MoonPhaseResource());
-    }
-
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-    }
-
-    private void processIMC(final InterModProcessEvent event)
-    {
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
+        ItemModelsProperties.register(ModItems.MOONCLOCK, new ResourceLocation(MODID, "moonphase"), new MoonPhaseResource());
     }
 }

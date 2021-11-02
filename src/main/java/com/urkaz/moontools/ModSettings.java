@@ -7,7 +7,7 @@ import net.minecraftforge.fml.loading.FMLPaths;
 
 public class ModSettings {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    public static final SensorSettings MOD_SETTINGS = new SensorSettings(BUILDER);
+    public static final SensorSettings SETTINGS = new SensorSettings(BUILDER);
     public static final ForgeConfigSpec spec = BUILDER.build();
 
     public static class SensorSettings

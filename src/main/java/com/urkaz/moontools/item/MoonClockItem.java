@@ -24,16 +24,16 @@ public class MoonClockItem extends Item {
         super(properties);
     }
 
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        if (worldIn.isRemote && handIn == Hand.MAIN_HAND) {
-            playerIn.sendMessage(new StringTextComponent(getTooltipText(worldIn)), playerIn.getUniqueID());
-            playerIn.swingArm(handIn);
+    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        if (worldIn.isClientSide && handIn == Hand.MAIN_HAND) {
+            playerIn.sendMessage(new StringTextComponent(getTooltipText(worldIn)), playerIn.getUUID());
+            playerIn.swing(handIn);
         }
-        return new ActionResult<ItemStack>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));
+        return new ActionResult<ItemStack>(ActionResultType.SUCCESS, playerIn.getItemInHand(handIn));
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (worldIn != null) {
             tooltip.add(new StringTextComponent(getTooltipText(worldIn)));
         }
@@ -41,18 +41,22 @@ public class MoonClockItem extends Item {
 
     @OnlyIn(Dist.CLIENT)
     public String getTooltipText(World worldIn) {
-        ResourceLocation worldResourceLocation = worldIn.getDimensionKey().getLocation();
-        ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD.getLocation();
+        ResourceLocation worldResourceLocation = worldIn.dimension().location();
+        ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();
 
         //check if the dimension is the OVERWORLD
         if (worldResourceLocation.equals(overworldResourceLocation)) {
-            return I18n.format("urkazmoontools.moonclock.phaseTooltip") + " "
-                    + I18n.format("urkazmoontools.moonclock.phase" + worldIn.getDimensionType().getMoonPhase(worldIn.getWorldInfo().getDayTime()));
+            return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
+                    + I18n.get("urkazmoontools.moonclock.phase" + worldIn.dimensionType().moonPhase(worldIn.getLevelData().getDayTime()));
         }
         else
         {
-            return I18n.format("urkazmoontools.moonclock.phaseTooltip") + " "
-                    + I18n.format("urkazmoontools.moonclock.nodata");
+            return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
+                    + I18n.get("urkazmoontools.moonclock.nodata");
         }
+    }
+
+    public boolean isEnchantable(ItemStack p_77616_1_) {
+        return false;
     }
 }

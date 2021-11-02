@@ -19,13 +19,13 @@ import net.minecraft.world.World;
 
 public class MoonSensorBlock extends ContainerBlock {
 
-    public static final IntegerProperty POWER = BlockStateProperties.POWER_0_15;
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
-    protected MoonPhaseResource moonResource = null;
+    public static final IntegerProperty POWER = BlockStateProperties.POWER;
+    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
+    protected MoonPhaseResource moonResource;
 
     public MoonSensorBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(POWER, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0));
         this.moonResource = new MoonPhaseResource();
     }
 
@@ -33,28 +33,29 @@ public class MoonSensorBlock extends ContainerBlock {
         return SHAPE;
     }
 
-    public boolean isTransparent(BlockState state) {
+    public boolean useShapeForLightOcclusion(BlockState state) {
         return true;
     }
 
-    public int getWeakPower(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side) {
-        return blockState.get(POWER);
+    public int getSignal(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side) {
+        return blockState.getValue(POWER);
     }
 
-    public void updatePower(BlockState state, World world, BlockPos pos)
+    public void updateSignalStrength(BlockState state, World world, BlockPos pos)
     {
-        int current = state.get(POWER);
+        int current = state.getValue(POWER);
         int signal = signal(world, pos);
 
         if(current != signal) {
-            world.setBlockState(pos, state.with(POWER, Integer.valueOf(signal)), 3);
+            this.registerDefaultState(this.stateDefinition.any().setValue(POWER, Integer.valueOf(0)));
+            world.setBlock(pos, state.setValue(POWER, Integer.valueOf(signal)), 3);
         }
     }
 
     protected int signal(World worldIn, BlockPos pos)
     {
-        ResourceLocation worldResourceLocation = worldIn.getDimensionKey().getLocation();
-        ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD.getLocation();
+        ResourceLocation worldResourceLocation = worldIn.dimension().location();
+        ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();
 
         //null or not OVERWORLD
         if(worldIn == null || !worldResourceLocation.equals(overworldResourceLocation))
@@ -63,24 +64,24 @@ public class MoonSensorBlock extends ContainerBlock {
         //TODO: Check events and mod compatibility
         boolean isBloodMoon = false;
         boolean isHarvestMoon = false;
-        if (ModSettings.MOD_SETTINGS.EmmitExtraRedstoneOnLunarEvent.get()) {
+        if (ModSettings.SETTINGS.EmmitExtraRedstoneOnLunarEvent.get()) {
         }
 
         //Check if is night
-        long worldTime = worldIn.getWorldInfo().getDayTime();
+        long worldTime = worldIn.getLevelData().getDayTime();
         boolean isNight = true;
-        if (ModSettings.MOD_SETTINGS.SensorOnlyNight.get()) {
+        if (ModSettings.SETTINGS.SensorOnlyNight.get()) {
             isNight = worldTime % 24000L >= 12000L;
         }
 
         //Get Redstone value
-        if (ModSettings.MOD_SETTINGS.SensorPhasesShifted.get()) {
+        if (ModSettings.SETTINGS.SensorPhasesShifted.get()) {
             int moonPhase = (int)moonResource.worldCall(worldIn);
             if (worldTime - 24000 < 0)
             {
                 moonPhase = 7;
             }
-            if(worldIn.canBlockSeeSky(pos) && isNight){
+            if(worldIn.canSeeSky(pos) && isNight){
                 if(isBloodMoon) {
                     return 9;
                 }
@@ -95,7 +96,7 @@ public class MoonSensorBlock extends ContainerBlock {
             }
         }
         else {
-            if(worldIn.canBlockSeeSky(pos) && isNight){
+            if(worldIn.canSeeSky(pos) && isNight){
                 if(isBloodMoon) {
                     return 9;
                 }
@@ -111,20 +112,20 @@ public class MoonSensorBlock extends ContainerBlock {
         }
     }
 
-    public BlockRenderType getRenderType(BlockState state) {
+    public BlockRenderType getRenderShape(BlockState state) {
         return BlockRenderType.MODEL;
     }
 
-    public boolean canProvidePower(BlockState state) {
+    public boolean isSignalSource(BlockState state) {
         return true;
     }
 
-    public TileEntity createNewTileEntity(IBlockReader reader)
+    public TileEntity newBlockEntity(IBlockReader reader)
     {
         return new MoonSensorTileEntity();
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(POWER);
     }

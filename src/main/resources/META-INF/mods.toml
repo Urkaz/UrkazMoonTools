@@ -13,9 +13,7 @@ logoFile="logo.png"
 credits="Urkaz"
 authors="Urkaz"
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-Tools for detecting the Moon phase.
-'''
+description='''Tools for detecting the Moon phase.'''
 
 [[dependencies.urkazmoontools]] #optional
     modId="forge"

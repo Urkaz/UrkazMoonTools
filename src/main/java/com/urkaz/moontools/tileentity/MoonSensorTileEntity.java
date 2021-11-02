@@ -19,7 +19,7 @@ public class MoonSensorTileEntity extends TileEntity implements ITickableTileEnt
         Block block = blockstate.getBlock();
         if (block instanceof MoonSensorBlock)
         {
-            ((MoonSensorBlock)block).updatePower(this.world, this.pos);
+            ((MoonSensorBlock)block).updatePower(blockstate, this.world, this.pos);
         }
     }
 }

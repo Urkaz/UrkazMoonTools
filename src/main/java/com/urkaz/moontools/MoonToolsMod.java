@@ -14,23 +14,21 @@ import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(MoonToolsMod.MODID)
 public class MoonToolsMod
 {
     public static final String MODID = "urkazmoontools";
 
-    private static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);
+    public static final Logger LOGGER = LogManager.getLogger(MoonToolsMod.MODID);
 
     public MoonToolsMod() {
         // Register the setup method for modloading
@@ -45,12 +43,12 @@ public class MoonToolsMod
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        //MinecraftForge.EVENT_BUS.register(new ConfigurationHandler());
-
-
         //create blocks and item instances
         ModBlocks.MOONSENSOR = new MoonSensorBlock(AbstractBlock.Properties.create(Material.WOOD).hardnessAndResistance(0.2F).sound(SoundType.WOOD)).setRegistryName(MoonToolsMod.MODID, "moonsensor");
         ModItems.MOONCLOCK = new MoonClockItem(new Item.Properties().group(ItemGroup.TOOLS)).setRegistryName(MoonToolsMod.MODID, "moonclock");
+
+        //Load settings
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, com.urkaz.moontools.ModSettings.spec);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -60,9 +58,6 @@ public class MoonToolsMod
     private void clientSetup(final FMLClientSetupEvent event)
     {
         ItemModelsProperties.registerProperty(ModItems.MOONCLOCK, new ResourceLocation(MODID, "moonphase"), new MoonPhaseResource());
-
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

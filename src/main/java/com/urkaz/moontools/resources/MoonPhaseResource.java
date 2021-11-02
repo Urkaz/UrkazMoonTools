@@ -7,6 +7,7 @@ import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
@@ -18,9 +19,12 @@ public class MoonPhaseResource implements IItemPropertyGetter {
         Entity entity = (Entity) (flag ? entityIn : stack.getItemFrame());
 
         if (worldIn == null && entity != null) {
-            worldIn = (ClientWorld)entity.world;
+            return worldCall(entity.world);
         }
+        return worldCall(worldIn);
+    }
 
+    public float worldCall(@Nullable World worldIn) {
         if (worldIn == null) {
             return 0;
         } else {

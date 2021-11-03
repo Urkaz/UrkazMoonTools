@@ -37,8 +37,6 @@ public class MoonToolsMod
         final IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         final IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
-        modBus.addListener(this::clientSetup);
-
         forgeBus.register(this);
 
         //create blocks and item instances
@@ -49,10 +47,5 @@ public class MoonToolsMod
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, com.urkaz.moontools.ModSettings.spec);
 
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> MoonToolsModClient::new);
-    }
-
-    private void clientSetup(final FMLClientSetupEvent event)
-    {
-        ItemModelsProperties.register(ModItems.MOONCLOCK, new ResourceLocation(MODID, "moonphase"), new MoonPhaseResource());
     }
 }

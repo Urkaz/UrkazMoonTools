@@ -56,7 +56,7 @@ public class MoonClockItem extends Item {
         }
     }
 
-    public boolean isEnchantable(ItemStack p_77616_1_) {
+    public boolean isEnchantable(ItemStack stack) {
         return false;
     }
 }

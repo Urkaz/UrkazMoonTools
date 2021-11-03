@@ -17,16 +17,16 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class MoonSensorBlock extends ContainerBlock {
 
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
-    protected MoonPhaseResource moonResource;
 
     public MoonSensorBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0));
-        this.moonResource = new MoonPhaseResource();
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -76,7 +76,7 @@ public class MoonSensorBlock extends ContainerBlock {
 
         //Get Redstone value
         if (ModSettings.SETTINGS.SensorPhasesShifted.get()) {
-            int moonPhase = (int)moonResource.worldCall(worldIn);
+            int moonPhase = getMoonFactor(worldIn);
             if (worldTime - 24000 < 0)
             {
                 moonPhase = 7;
@@ -104,11 +104,34 @@ public class MoonSensorBlock extends ContainerBlock {
                     return 10;
                 }
                 else
-                    return 1 + (int)moonResource.worldCall(worldIn);
+                    return 1 + getMoonFactor(worldIn);
             }
             else {
                 return 0;
             }
+        }
+    }
+
+    protected int getMoonFactor(@Nullable World worldIn)
+    {
+        if (worldIn == null) {
+            return 0;
+        } else {
+            int moonFactor;
+            ResourceLocation worldResourceLocation = worldIn.dimension().location();
+            ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();
+
+            //check if the dimension is the OVERWORLD
+            if (worldResourceLocation.equals(overworldResourceLocation)) {
+                moonFactor = worldIn.dimensionType().moonPhase(worldIn.getLevelData().getDayTime());
+            }
+            else
+            {
+                double randomDouble = Math.random();
+                randomDouble = randomDouble * 8;
+                moonFactor = (int) randomDouble;
+            }
+            return moonFactor;
         }
     }
 

@@ -10,10 +10,10 @@
 			"item": "minecraft:lapis_lazuli"
 		},
 		"r": {
-			"item": "minecraft:clock"
+			"item": "minecraft:daylight_detector"
 		}
 	},
 	"result": {
-		"item": "minecraft:daylight_detector"
+		"item": "urkazmoontools:moonsensor"
 	}
 }

@@ -1,6 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "urkazmoontools:item/moonclock_01"
+        "layer0": "urkazmoontools:item/moonclock_border",
+        "layer1": "urkazmoontools:item/moonclock_01"
     }
 }

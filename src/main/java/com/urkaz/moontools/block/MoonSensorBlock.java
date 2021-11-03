@@ -61,12 +61,6 @@ public class MoonSensorBlock extends ContainerBlock {
         if(worldIn == null || !worldResourceLocation.equals(overworldResourceLocation))
             return 0;
 
-        //TODO: Check events and mod compatibility
-        boolean isBloodMoon = false;
-        boolean isHarvestMoon = false;
-        if (ModSettings.SETTINGS.EmmitExtraRedstoneOnLunarEvent.get()) {
-        }
-
         //Check if is night
         long worldTime = worldIn.getLevelData().getDayTime();
         boolean isNight = true;
@@ -75,21 +69,14 @@ public class MoonSensorBlock extends ContainerBlock {
         }
 
         //Get Redstone value
+        int moonPhase = getMoonFactor(worldIn);
         if (ModSettings.SETTINGS.SensorPhasesShifted.get()) {
-            int moonPhase = getMoonFactor(worldIn);
             if (worldTime - 24000 < 0)
             {
                 moonPhase = 7;
             }
             if(worldIn.canSeeSky(pos) && isNight){
-                if(isBloodMoon) {
-                    return 9;
-                }
-                else if(isHarvestMoon) {
-                    return 10;
-                }
-                else
-                    return 1 + moonPhase;
+                return 1 + moonPhase;
             }
             else {
                 return 0;
@@ -97,14 +84,7 @@ public class MoonSensorBlock extends ContainerBlock {
         }
         else {
             if(worldIn.canSeeSky(pos) && isNight){
-                if(isBloodMoon) {
-                    return 9;
-                }
-                else if(isHarvestMoon) {
-                    return 10;
-                }
-                else
-                    return 1 + getMoonFactor(worldIn);
+                return 1 + moonPhase;
             }
             else {
                 return 0;

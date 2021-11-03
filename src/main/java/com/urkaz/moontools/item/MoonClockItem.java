@@ -20,6 +20,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class MoonClockItem extends Item {
+
+    private int color;
+
     public MoonClockItem(Properties properties) {
         super(properties);
     }
@@ -58,5 +61,15 @@ public class MoonClockItem extends Item {
 
     public boolean isEnchantable(ItemStack stack) {
         return false;
+    }
+
+    public void setColor(int color)
+    {
+        this.color = color;
+    }
+
+    public int getColor()
+    {
+        return color;
     }
 }

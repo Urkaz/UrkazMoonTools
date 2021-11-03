@@ -3,7 +3,7 @@ def modFileName = 'UrkazMoonTools'
 def vendor = 'urkaz'
 def groupId = 'com.urkaz.moontools'
 def minecraftVersion = '1.16.5'
-def modVersion = '1.8'
+def modVersion = '1.8.1'
 def forgeVersion = '36.2.0'
 
 buildscript {

@@ -1,7 +1,7 @@
 package com.urkaz.moontools.common.block;
 
 import com.urkaz.moontools.Constants;
-import com.urkaz.moontools.common.ModRegistry;
+import com.urkaz.moontools.common.MoonToolsRegistry;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
 import com.urkaz.moontools.common.thirdparty.EnhancedCelestialsSupport;
 import net.minecraft.core.BlockPos;
@@ -131,6 +131,6 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, ModRegistry.BLOCKENTITY_MOONSENSOR, MoonSensorBlockEntity::serverTick);
+        return level.isClientSide() ? null : createTickerHelper(type, MoonToolsRegistry.BLOCKENTITY_MOONSENSOR, MoonSensorBlockEntity::serverTick);
     }
 }

@@ -1,7 +1,7 @@
 package com.urkaz.moontools;
 
 import com.urkaz.moontools.client.UrkazMoonToolsForgeClient;
-import com.urkaz.moontools.common.ModRegistry;
+import com.urkaz.moontools.common.MoonToolsRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
@@ -29,9 +29,9 @@ public class UrkazMoonToolsForge {
     }
 
     private void registryInit() {
-        bind(ForgeRegistries.BLOCKS, ModRegistry::registerBlocks);
-        bind(ForgeRegistries.ITEMS, ModRegistry::registerItems);
-        bind(ForgeRegistries.BLOCK_ENTITIES, ModRegistry::registerTiles);
+        bind(ForgeRegistries.BLOCKS, MoonToolsRegistry::registerBlocks);
+        bind(ForgeRegistries.ITEMS, MoonToolsRegistry::registerItems);
+        bind(ForgeRegistries.BLOCK_ENTITIES, MoonToolsRegistry::registerTiles);
     }
 
     private void clientInit() {

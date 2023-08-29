@@ -22,7 +22,7 @@ import java.util.function.BiFunction;
 
 import static com.urkaz.moontools.common.lib.ResourceLocationHelper.prefix;
 
-public class ModRegistry {
+public class MoonToolsRegistry {
 
     public static final Block BLOCK_MOONSENSOR = new MoonSensorBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F).sound(SoundType.WOOD));
     public static final BlockItem ITEM_BLOCK_MOONSENSOR = new BlockItem(BLOCK_MOONSENSOR, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE));

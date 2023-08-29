@@ -19,7 +19,7 @@ Tools for detecting the Moon phase.
 [[dependencies.urkazmoontools]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[40.1,)"
     ordering="NONE"
     side="BOTH"
 
@@ -33,6 +33,13 @@ Tools for detecting the Moon phase.
 [[dependencies.urkazmoontools]]
     modId="enhancedcelestials"
     mandatory=false
-    versionRange="[2.0.7]"
+    versionRange="[2.0.7,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.urkazmoontools]]
+    modId="cloth_config"
+    mandatory=true
+    versionRange="[6.5.102,)"
     ordering="NONE"
     side="BOTH"

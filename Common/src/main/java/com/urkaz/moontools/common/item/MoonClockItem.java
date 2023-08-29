@@ -25,6 +25,7 @@ public class MoonClockItem extends Item {
         super(properties);
     }
 
+    @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         if (worldIn.isClientSide && handIn == InteractionHand.MAIN_HAND) {
             playerIn.sendMessage(new TextComponent(getTooltipText(worldIn)), playerIn.getUUID());
@@ -33,6 +34,7 @@ public class MoonClockItem extends Item {
         return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
     }
 
+    @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if (worldIn != null) {
             tooltip.add(new TextComponent(getTooltipText(worldIn)));
@@ -53,6 +55,7 @@ public class MoonClockItem extends Item {
         }
     }
 
+    @Override
     public boolean isEnchantable(ItemStack stack) {
         return false;
     }

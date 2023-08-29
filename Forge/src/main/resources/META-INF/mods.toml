@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="GNU LGPLv3"
+issueTrackerURL="https://github.com/Urkaz/UrkazMoonTools/issues"
+
+[[mods]]
+modId="urkazmoontools"
+version="${file.jarVersion}"
+displayName="Urkaz Moon Tools"
+#updateJSONURL="https://change.me.example.invalid/updates.json"
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+logoFile="logo.png"
+#credits=""
+authors="Urkaz"
+description='''
+Tools for detecting the Moon phase.
+'''
+
+[[dependencies.urkazmoontools]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.urkazmoontools]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.urkazmoontools]]
+    modId="enhancedcelestials"
+    mandatory=false
+    versionRange="[2.0.7]"
+    ordering="NONE"
+    side="BOTH"

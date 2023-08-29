@@ -33,15 +33,10 @@ Recipe:
 
 ![Lunar Clock](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/recipe_sensor.png "Lunar Detector recipe")
 
-## 1.16.4 Version
+## Enhanced Celestials support (1.16.4, 1.18.2)
+The mod is compatible with **Enhanced Celestials (1.16.4-2.0.8 // 1.18.2-2.0.7)**. The moon icon in the Lunar Clock will be tinted of the same color as the Moon.
 
-
-### Enhanced Celestials support
-The mod is compatible with **Enhanced Celestials (2.0.8)**. The moon icon in the Lunar Clock will be tinted of the same color as the Moon.
-
-## 1.12.2 Version
-
-### Bloodmoon and Nyx support
+## Bloodmoon and Nyx support (1.12.2)
 The mod is compatible with **Bloodmoon (1.5.3-1.5.5)** and **Nyx (1.4.2)** mods. The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
 
 * ![Bloody harvest](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png "Bloody harvest") If both events appear to happen at the same time, the clock will display both at the same time (this may happen when playing with Both mods at the same time).

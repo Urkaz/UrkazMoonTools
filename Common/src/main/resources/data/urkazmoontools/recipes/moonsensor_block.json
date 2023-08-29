@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" l ",
+		"lrl",
+		" l "
+	],
+	"key": {
+		"l": {
+			"item": "minecraft:lapis_lazuli"
+		},
+		"r": {
+			"item": "minecraft:daylight_detector"
+		}
+	},
+	"result": {
+		"item": "urkazmoontools:moonsensor_blockitem"
+	}
+}

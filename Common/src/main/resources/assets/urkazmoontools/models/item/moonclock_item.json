@@ -5,12 +5,12 @@
         "layer1": "urkazmoontools:item/moonclock_00"
     },
     "overrides": [
-        { "predicate": { "urkazmoontools:moonphase": 1  }, "model": "urkazmoontools:item/moonclock_01" },
-        { "predicate": { "urkazmoontools:moonphase": 2  }, "model": "urkazmoontools:item/moonclock_02" },
-        { "predicate": { "urkazmoontools:moonphase": 3  }, "model": "urkazmoontools:item/moonclock_03" },
-        { "predicate": { "urkazmoontools:moonphase": 4  }, "model": "urkazmoontools:item/moonclock_04" },
-        { "predicate": { "urkazmoontools:moonphase": 5  }, "model": "urkazmoontools:item/moonclock_05" },
-        { "predicate": { "urkazmoontools:moonphase": 6  }, "model": "urkazmoontools:item/moonclock_06" },
-        { "predicate": { "urkazmoontools:moonphase": 7  }, "model": "urkazmoontools:item/moonclock_07" }
+        { "predicate": { "urkazmoontools:moonphase": 0.1  }, "model": "urkazmoontools:item/moonclock_01" },
+        { "predicate": { "urkazmoontools:moonphase": 0.2  }, "model": "urkazmoontools:item/moonclock_02" },
+        { "predicate": { "urkazmoontools:moonphase": 0.3  }, "model": "urkazmoontools:item/moonclock_03" },
+        { "predicate": { "urkazmoontools:moonphase": 0.4  }, "model": "urkazmoontools:item/moonclock_04" },
+        { "predicate": { "urkazmoontools:moonphase": 0.5  }, "model": "urkazmoontools:item/moonclock_05" },
+        { "predicate": { "urkazmoontools:moonphase": 0.6  }, "model": "urkazmoontools:item/moonclock_06" },
+        { "predicate": { "urkazmoontools:moonphase": 0.7  }, "model": "urkazmoontools:item/moonclock_07" }
     ]
 }

@@ -33,14 +33,12 @@ public class MoonClockItem extends Item {
         return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
     }
 
-    //@OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if (worldIn != null) {
             tooltip.add(new TextComponent(getTooltipText(worldIn)));
         }
     }
 
-    //@OnlyIn(Dist.CLIENT)
     public String getTooltipText(Level worldIn) {
         ResourceLocation worldResourceLocation = worldIn.dimension().location();
         ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();

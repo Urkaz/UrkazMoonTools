@@ -20,6 +20,9 @@
       "main": [
         "com.urkaz.moontools.UrkazMoonToolsFabric"
       ],
+      "client": [
+        "com.urkaz.moontools.client.UrkazMoonToolsFabricClient"
+      ],
       "modmenu": [
         "com.urkaz.moontools.client.UrkazMoonToolsModMenu"
       ]

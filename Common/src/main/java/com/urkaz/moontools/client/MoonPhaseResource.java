@@ -27,12 +27,7 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
             world = entity.level;
         }
         int moonFactor = (int) worldCall(world);
-        int color = 0xffffffff;
-
-        if (world != null && Services.PLATFORM.isModLoaded(Constants.MOD_ENHANCED_CELESTIALS_ID))
-        {
-            color = EnhancedCelestialsSupport.getLunarEventColor(world);
-        }
+        int color = EnhancedCelestialsSupport.getLunarEventColor(world);
 
         ((MoonClockItem) stack.getItem()).setColor(color);
         return moonFactor;

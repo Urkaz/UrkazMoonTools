@@ -75,7 +75,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
         //If the EmitExtraRedstoneOnLunarEvent setting is enabled, return 9 directly
         if (Constants.CONFIG.emitExtraRedstoneOnLunarEvent) {
-            if (worldIn.canSeeSky(pos) && isNight && EnhancedCelestialsSupport.isLunarEventActive(worldIn)) {
+            if (isNight && worldIn.canSeeSky(pos) && EnhancedCelestialsSupport.isLunarEventActive(worldIn)) {
                 return 9;
             }
         }

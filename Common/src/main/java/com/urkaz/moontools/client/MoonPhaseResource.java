@@ -1,7 +1,7 @@
 package com.urkaz.moontools.client;
 
 import com.urkaz.moontools.common.item.MoonClockItem;
-import com.urkaz.moontools.common.thirdparty.EnhancedCelestialsSupport;
+import com.urkaz.moontools.common.lib.EnhancedCelestialsSupport;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
@@ -9,9 +9,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 
 public class MoonPhaseResource implements ClampedItemPropertyFunction {
 
@@ -37,7 +37,7 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
         } else {
             int moonFactor;
             ResourceLocation worldResourceLocation = worldIn.dimension().location();
-            ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();
+            ResourceLocation overworldResourceLocation = BuiltinDimensionTypes.OVERWORLD.location();
 
             //check if the dimension is the OVERWORLD
             if (worldResourceLocation.equals(overworldResourceLocation)) {

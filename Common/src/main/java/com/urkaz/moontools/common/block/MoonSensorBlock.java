@@ -1,9 +1,9 @@
 package com.urkaz.moontools.common.block;
 
-import com.urkaz.moontools.Constants;
-import com.urkaz.moontools.common.MoonToolsRegistry;
+import com.urkaz.moontools.UMTConstants;
+import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
-import com.urkaz.moontools.common.thirdparty.EnhancedCelestialsSupport;
+import com.urkaz.moontools.common.lib.EnhancedCelestialsSupport;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -20,11 +20,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class MoonSensorBlock extends BaseEntityBlock {
 
@@ -60,7 +59,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
     protected int signal(Level worldIn, BlockPos pos) {
         ResourceLocation worldResourceLocation = worldIn.dimension().location();
-        ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();
+        ResourceLocation overworldResourceLocation = BuiltinDimensionTypes.OVERWORLD.location();
 
         //null or not in OVERWORLD
         if (worldIn == null || !worldResourceLocation.equals(overworldResourceLocation))
@@ -69,12 +68,12 @@ public class MoonSensorBlock extends BaseEntityBlock {
         //Check if is night
         long worldTime = worldIn.getLevelData().getDayTime();
         boolean isNight = true;
-        if (Constants.CONFIG.sensorOnlyNight) {
+        if (UMTConstants.CONFIG.sensorOnlyNight) {
             isNight = worldTime % 24000L >= 12000L;
         }
 
         //If the EmitExtraRedstoneOnLunarEvent setting is enabled, return 9 directly
-        if (Constants.CONFIG.emitExtraRedstoneOnLunarEvent) {
+        if (UMTConstants.CONFIG.emitExtraRedstoneOnLunarEvent) {
             if (isNight && worldIn.canSeeSky(pos) && EnhancedCelestialsSupport.isLunarEventActive(worldIn)) {
                 return 9;
             }
@@ -82,7 +81,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
         //Get Redstone value
         int moonPhase = getMoonFactor(worldIn);
-        if (Constants.CONFIG.sensorPhasesShifted) {
+        if (UMTConstants.CONFIG.sensorPhasesShifted) {
             if (worldTime - 24000 < 0) {
                 moonPhase = 7;
             }
@@ -100,7 +99,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
         } else {
             int moonFactor;
             ResourceLocation worldResourceLocation = worldIn.dimension().location();
-            ResourceLocation overworldResourceLocation = DimensionType.OVERWORLD_LOCATION.location();
+            ResourceLocation overworldResourceLocation = BuiltinDimensionTypes.OVERWORLD.location();
 
             //check if the dimension is the OVERWORLD
             if (worldResourceLocation.equals(overworldResourceLocation)) {
@@ -131,6 +130,6 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, MoonToolsRegistry.BLOCKENTITY_MOONSENSOR, MoonSensorBlockEntity::serverTick);
+        return level.isClientSide() ? null : createTickerHelper(type, UMTRegistry.BLOCKENTITY_MOONSENSOR, MoonSensorBlockEntity::serverTick);
     }
 }

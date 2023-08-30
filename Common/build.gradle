@@ -1,70 +1,33 @@
-plugins {
-    id 'java'
-    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
-    id 'maven-publish'
-}
-
-archivesBaseName = "${mod_name}-common-${minecraft_version}"
-
-minecraft {
-    version(minecraft_version)
-    runs {   
-        if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {
-        
-            server(project.hasProperty('common_server_run_name') ? project.findProperty('common_server_run_name') : 'vanilla_server') {
-                workingDirectory(this.file("run"))
-            }
-            client(project.hasProperty('common_client_run_name') ? project.findProperty('common_client_run_name') : 'vanilla_client') {
-                workingDirectory(this.file("run"))
-            }
-        }
-    }
-}
-
-repositories {
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    maven { url "https://maven.shedaniel.me/" }
+architectury {
+    common(rootProject.enabled_platforms.split(","))
 }
 
 dependencies {
-    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
+    // Do NOT use other classes from fabric loader
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    // Remove the next line if you don't want to depend on the API
+    modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 
-    //Enhanced_Celestials. We use the forge version, but do NOT use classes from forge loader
-    implementation "curse.maven:enhanced-celestials-forge-${project.ec_forge_projectid}:${project.ec_forge_fileids}"
-
-    //Cloth Config
-    implementation "me.shedaniel.cloth:cloth-config:${project.cloth_config_version}"
-}
-
-processResources {
-
-    def buildProps = project.properties.clone()
-
-    filesMatching(['pack.mcmeta']) {
-
-        expand buildProps
+    // Cloth Config
+    modImplementation ("me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
     }
+
+    // Enhanced Celestials. We use the forge version, but do NOT use classes from forge loader
+    modImplementation "curse.maven:enhanced-celestials-forge-${project.ec_forge_projectid}:${project.ec_forge_fileids}"
 }
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
+        mavenCommon(MavenPublication) {
+            artifactId = rootProject.archives_base_name
             from components.java
         }
     }
-
+>
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
+        // Add repositories to publish to here.
     }
 }

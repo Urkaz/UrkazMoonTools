@@ -1,11 +1,11 @@
-modLoader="javafml"
-loaderVersion="[40,)"
+modLoader = "javafml"
+loaderVersion = "[41,)"
 license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Urkaz/UrkazMoonTools/issues"
 
 [[mods]]
 modId="urkazmoontools"
-version="${file.jarVersion}"
+version="${version}"
 displayName="Urkaz Moon Tools"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
@@ -17,29 +17,36 @@ Tools for detecting the Moon phase.
 '''
 
 [[dependencies.urkazmoontools]]
-    modId="forge"
-    mandatory=true
-    versionRange="[40.1,)"
-    ordering="NONE"
-    side="BOTH"
+    modId = "forge"
+    mandatory = true
+    versionRange = "[41,)"
+    ordering = "NONE"
+    side = "BOTH"
 
 [[dependencies.urkazmoontools]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.18,)"
-    ordering="NONE"
-    side="BOTH"
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.19,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.urkazmoontools]]
+    modId = "architectury"
+    mandatory = true
+    versionRange = "[5.14.76,)"
+    ordering = "AFTER"
+    side = "BOTH"
 
 [[dependencies.urkazmoontools]]
     modId="enhancedcelestials"
     mandatory=false
-    versionRange="[2.0.7,)"
+    versionRange="[2.1.0.1,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.urkazmoontools]]
     modId="cloth_config"
-    mandatory=true
-    versionRange="[6.5.102,)"
+    mandatory=false
+    versionRange="[8.3.103,)"
     ordering="NONE"
     side="BOTH"

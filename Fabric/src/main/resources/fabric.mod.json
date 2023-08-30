@@ -1,39 +1,37 @@
 {
-    "schemaVersion": 1,
-    "id": "urkazmoontools",
-    "version": "${version}",
-  
-    "name": "Urkaz Moon Tools",
-    "description": "Tools for detecting the Moon phase.",
-    "authors": [
-      "Urkaz"
+  "schemaVersion": 1,
+  "id": "urkazmoontools",
+  "version": "${version}",
+
+  "name": "Urkaz Moon Tools",
+  "description": "Tools for detecting the Moon phase.",
+  "authors": [
+    "Urkaz"
+  ],
+  "contact": {
+    "sources": "https://github.com/Urkaz/UrkazMoonTools"
+  },
+
+  "license": "GNU LGPLv3",
+  "icon": "logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.urkaz.moontools.fabric.UrkazMoonToolsFabric"
     ],
-    "contact": {
-      "sources": "https://github.com/Urkaz/UrkazMoonTools"
-    },
-  
-    "license": "GNU LGPLv3",
-    "icon": "logo.png",
-  
-    "environment": "*",
-    "entrypoints": {
-      "main": [
-        "com.urkaz.moontools.UrkazMoonToolsFabric"
-      ],
-      "client": [
-        "com.urkaz.moontools.client.UrkazMoonToolsFabricClient"
-      ],
-      "modmenu": [
-        "com.urkaz.moontools.client.UrkazMoonToolsModMenu"
-      ]
-    },
-  
-    "depends": {
-      "fabricloader": ">=0.13.0",
-      "fabric": "*",
-      "minecraft": "1.18.2",
-      "java": ">=17",
-      "cloth-config": [">=6.5.102", "<7.0.0"]
-    }
+    "client": [
+      "com.urkaz.moontools.fabric.client.UrkazMoonToolsFabricClient"
+    ],
+    "modmenu": [
+      "com.urkaz.moontools.fabric.client.UrkazMoonToolsModMenu"
+    ]
+  },
+
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19",
+    "architectury": ">=5.14.76",
+    "cloth-config": ">=8.3.103"
   }
-  
+}

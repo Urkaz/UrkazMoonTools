@@ -1,6 +1,6 @@
 package com.urkaz.moontools.common.block.entity;
 
-import com.urkaz.moontools.common.MoonToolsRegistry;
+import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.block.MoonSensorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class MoonSensorBlockEntity extends BlockEntity {
 
     public MoonSensorBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(MoonToolsRegistry.BLOCKENTITY_MOONSENSOR, blockPos, blockState);
+        super(UMTRegistry.BLOCKENTITY_MOONSENSOR, blockPos, blockState);
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, MoonSensorBlockEntity thisEntity) {

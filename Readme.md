@@ -1,48 +1,93 @@
-# Urkaz Moon Tools
+<h1>Urkaz Moon Tools</h1>
 
 This mod adds one item and one block that helps to see and detect the current Moon Phase.
 
+<h2>New items and blocks</h2>
 
-### Lunar Clock
-![Lunar Clock](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/inv_clock.png "Lunar Clock")
+<table width="100%">
+    <tr>
+        <td width="20%" align="center">
+            <h3>Lunar Clock</h3><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/inv_clock.png">
+        </td>
+        <td width="50%">
+            This clock shows the current Moon phase. Right-clicking with it in the hand will display the name of the phase in the chat.
+        </td>
+        <td width="30%" align="center">
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/recipe_clock.png"><br><i>Lunar Clock recipe</i>
+        </td>
+    </tr>
+    <tr>
+        <td width="20%" align="center" rowspan="2">
+            <h3>Lunar Detector</h3><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/inv_sensor.png">
+        </td>
+        <td width="50%" rowspan="2">
+            This block emits a Redstone signal depending on the current Moon phase. The Lunar detector only works during the night, but you can make it work all day in the mod settings.
+        </td>
+        <td width="30%" align="center">
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/recipe_sensor.png"><br><i>Lunar Detector recipe</i>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/help_redstone.png" width="257" height="135"><br><i>Redstone signal</i>
+        </td>
+    </tr>
+</table>
 
-This clock shows the current Moon phase. Right-clicking with it in the hand will display the name of the phase in the chat.
+<h2>Mod compatibility</h2>
 
-Recipe:
+<table width="100%">
+    <tr>
+        <td width="20%" align="center">
+            <b>Enhanced Celestials</b><br>(1.16.4 - 1.20.1)
+        </td>
+        <td width="50%">
+            The moon icon in the Lunar Clock will be tinted of the same color as the Moon.<br>In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any Enhanced Celestials event.
+        </td>
+    <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/enhanced-celestials.png" width="220" height="135"></td>
+    </tr>
+    <tr>
+        <td width="20%" align="center">
+            <b>Bloodmoon</b> and <b>Nyx</b><br>(1.12.2)
+        </td>
+        <td width="50%">The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
+            <ul>
+                <li>
+                    <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"> If both events appear simultaneously, the clock will display both at the same time (this may happen when playing with Both mods at the same time).
+                </li>
+            </ul>
+            In the mod settings, the strength of the Lunar Detector can be set to emit extra Redstone during Harvestmoon and Bloodmoon:
+            <ul>
+                <li>
+                    <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"> Bloodmoon: 9
+                </li>
+                <li>
+                    <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_100.png"> Harvestmoon: 10
+                </li>
+            </ul>
+        </td>
+        <td align="center">
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/bloodmoon.png" width="100" height="100"> <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/nyx.png" width="100" height="100">
+        </td>
+    </tr>
+</table>
 
-![Lunar Clock](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/recipe_clock.png "Lunar Clock recipe")
+<h2>Dependencies</h2>
 
+"Urkaz Moon Tools" requires the following mods to work:
 
-### Lunar Detector
-![Lunar Detector](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/inv_sensor.png "Lunar Detector")
-
-This block emits a redstone signal depending on the current Moon phase. The Lunar detector only works during the night, but in the mod settings you can make it work all day.
-
-Redstone strength in blocks (default settings):
-
-* ![Phase 1](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_01.png "Waning Gibbous"): 1
-* ![Phase 2](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_02.png "Third Quarter"): 2
-* ![Phase 3](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_03.png "Waning Crescent"): 3
-* ![Phase 4](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_04.png "New Moon"): 4
-* ![Phase 5](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_05.png "Waxing Crescent"): 5
-* ![Phase 6](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_06.png "First Quarter"): 6
-* ![Phase 7](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_07.png "Waxing Gibbous"): 7
-* ![Phase 0](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_00.png "Full Moon"): 8
-
-Recipe:
-
-![Lunar Clock](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/recipe_sensor.png "Lunar Detector recipe")
-
-## Enhanced Celestials support (1.16.4, 1.18.2)
-The mod is compatible with **Enhanced Celestials (1.16.4-2.0.8 // 1.18.2-2.0.7)**. The moon icon in the Lunar Clock will be tinted of the same color as the Moon.
-
-## Bloodmoon and Nyx support (1.12.2)
-The mod is compatible with **Bloodmoon (1.5.3-1.5.5)** and **Nyx (1.4.2)** mods. The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
-
-* ![Bloody harvest](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png "Bloody harvest") If both events appear to happen at the same time, the clock will display both at the same time (this may happen when playing with Both mods at the same time).
-
-In the mod settings, the strength of the Lunar Detector can be set to emmit extra Redstone during Harvestmoon and Bloodmoon:
-
-* ![Bloodmoon](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png "Bloodmoon") Bloodmoon: 9 (if enabled in settings, 1.12.2 only)
-* ![Harvestmoon](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_100.png "Harvestmoon") Harvestmoon: 10 (if enabled in settings, 1.12.2 only)
-
+<table width="100%">
+    <tr>
+        <td width="50%" align="center">1.16.4 - 1.20.1</td>
+        <td width="50%" align="center">1.18.3</td>
+    </tr>
+    <tr>
+        <td width="50%" align="center">
+            <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
+            <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
+        </td>
+        <td width="50%" align="center">
+            <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
+        </td>
+    </tr>
+</table>

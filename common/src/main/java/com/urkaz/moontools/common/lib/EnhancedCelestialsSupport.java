@@ -4,7 +4,7 @@ import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UMTExpectPlatform;
 import corgitaco.enhancedcelestials.EnhancedCelestialsWorldData;
 import corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
-import corgitaco.enhancedcelestials.lunarevent.LunarContext;
+import corgitaco.enhancedcelestials.core.EnhancedCelestialsContext;
 import corgitaco.enhancedcelestials.lunarevent.LunarForecast;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.Level;
@@ -15,12 +15,12 @@ public class EnhancedCelestialsSupport {
         if (world != null && UMTExpectPlatform.isModLoaded(UMTConstants.MOD_ENHANCED_CELESTIALS_ID)) {
             EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
             if (ecWorldData != null) {
-                LunarContext lunarContext = ecWorldData.getLunarContext();
+                EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
                 if (lunarContext != null) {
                     LunarForecast forecast = lunarContext.getLunarForecast();
                     if (forecast != null)
                     {
-                        Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent();
+                        Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent(true);
                         return lunarEvent.isBound();
                     }
                 }
@@ -33,12 +33,12 @@ public class EnhancedCelestialsSupport {
         if (world != null && UMTExpectPlatform.isModLoaded(UMTConstants.MOD_ENHANCED_CELESTIALS_ID)) {
             EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
             if (ecWorldData != null) {
-                LunarContext lunarContext = ecWorldData.getLunarContext();
+                EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
                 if (lunarContext != null) {
                     LunarForecast forecast = lunarContext.getLunarForecast();
                     if (forecast != null)
                     {
-                        Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent();
+                        Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent(true);
                         if (lunarEvent.isBound()) {
                             return lunarEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
                         }

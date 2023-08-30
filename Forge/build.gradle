@@ -30,6 +30,7 @@ dependencies {
 
     // Enhanced Celestials
     modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
 }
 
 processResources {

@@ -38,6 +38,7 @@ dependencies {
 
     // Enhanced Celestials
     modImplementation "curse.maven:enhanced-celestials-fabric-${ec_fabric_projectid}:${ec_fabric_fileids}"
+    modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_fabric_fileids}"
 }
 
 processResources {

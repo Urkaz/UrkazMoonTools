@@ -76,10 +76,4 @@ allprojects {
             ])
         }
     }
-
-    sourcesJar {
-        from(rootProject.file("LICENSE")) {
-            rename { "${it}_${mod_name}" }
-        }
-    }
 }

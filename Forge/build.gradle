@@ -7,6 +7,8 @@ architectury {
     forge()
 }
 
+archivesBaseName = "${mod_name}-forge-${minecraft_version}"
+
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.

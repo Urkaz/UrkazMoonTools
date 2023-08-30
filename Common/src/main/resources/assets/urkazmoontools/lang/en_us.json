@@ -30,5 +30,7 @@
     "urkazmoontools.moonclock.phase5": "Waxing Crescent",
     "urkazmoontools.moonclock.phase6": "First Quarter",
     "urkazmoontools.moonclock.phase7": "Waxing Gibbous",
-    "urkazmoontools.moonclock.nodata": "No data"
+    "urkazmoontools.moonclock.nodata": "No data",
+
+    "urkazmoontools.creative_tab": "Urkaz Moon Tools"
 }

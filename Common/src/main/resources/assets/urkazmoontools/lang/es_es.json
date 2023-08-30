@@ -30,5 +30,7 @@
     "urkazmoontools.moonclock.phase5": "Luna creciente",
     "urkazmoontools.moonclock.phase6": "Cuarto creciente",
     "urkazmoontools.moonclock.phase7": "Luna gibosa creciente",
-    "urkazmoontools.moonclock.nodata": "Sin datos"
+    "urkazmoontools.moonclock.nodata": "Sin datos",
+
+    "urkazmoontools.creative_tab": "Urkaz Moon Tools"
 }

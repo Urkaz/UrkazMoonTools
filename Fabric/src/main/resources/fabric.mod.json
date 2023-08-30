@@ -30,8 +30,8 @@
 
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.19.2",
-    "architectury": ">=6.5.85",
-    "cloth-config": ">=8.3.103"
+    "minecraft": ">=1.19.3",
+    "architectury": ">=7.1.86",
+    "cloth-config": ">=9.1.104"
   }
 }

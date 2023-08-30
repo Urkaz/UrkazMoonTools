@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[45,)"
+loaderVersion = "[47,)"
 license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Urkaz/UrkazMoonTools/issues"
 
@@ -19,34 +19,34 @@ Tools for detecting the Moon phase.
 [[dependencies.urkazmoontools]]
     modId = "forge"
     mandatory = true
-    versionRange = "[45.1,)"
+    versionRange = "[47.1,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.urkazmoontools]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.19.4,)"
+    versionRange = "[1.20.1,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.urkazmoontools]]
     modId = "architectury"
     mandatory = true
-    versionRange = "[8.2.89,)"
+    versionRange = "[9.1.12,)"
     ordering = "AFTER"
     side = "BOTH"
 
 [[dependencies.urkazmoontools]]
     modId="enhancedcelestials"
     mandatory=false
-    versionRange="[4.0.0.1,)"
+    versionRange="[5.0.0.2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.urkazmoontools]]
     modId="cloth_config"
     mandatory=false
-    versionRange="[10.1.105,)"
+    versionRange="[11.1.106,)"
     ordering="NONE"
     side="BOTH"

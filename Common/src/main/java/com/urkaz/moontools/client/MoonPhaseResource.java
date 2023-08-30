@@ -22,7 +22,7 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
 
         Level world = worldIn;
         if (worldIn == null && entity != null) {
-            world = entity.level;
+            world = entity.level();
         }
         int moonFactor = (int) worldCall(world);
         int color = EnhancedCelestialsSupport.getLunarEventColor(world);

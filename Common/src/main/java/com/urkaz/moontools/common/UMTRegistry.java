@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.PushReaction;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -28,7 +28,7 @@ import static com.urkaz.moontools.common.lib.ResourceLocationHelper.prefix;
 
 public class UMTRegistry {
 
-    public static final Block BLOCK_MOONSENSOR = new MoonSensorBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F).sound(SoundType.WOOD));
+    public static final Block BLOCK_MOONSENSOR = new MoonSensorBlock(BlockBehaviour.Properties.of().strength(0.2F).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY));
     public static final BlockItem ITEM_BLOCK_MOONSENSOR = new BlockItem(BLOCK_MOONSENSOR, new Item.Properties());
     public static final Item ITEM_MOONCLOCK = new MoonClockItem(new Item.Properties().stacksTo(1));
     public static final BlockEntityType<MoonSensorBlockEntity> BLOCKENTITY_MOONSENSOR = CreateEntity(MoonSensorBlockEntity::new, BLOCK_MOONSENSOR);
@@ -50,15 +50,16 @@ public class UMTRegistry {
         r.accept(BLOCKENTITY_MOONSENSOR, prefix("moonsensor_entity"));
     }
 
-    public static void registerCreativeTabs(BiConsumer<Consumer<CreativeModeTab.Builder>, ResourceLocation> r)
+    public static void registerCreativeTabs(BiConsumer<CreativeModeTab, ResourceLocation>  r)
     {
-        r.accept(builder -> {
-            builder.title(Component.translatable("urkazmoontools.creative_tab"))
+        r.accept(CreativeModeTab.builder(null, -1)
+                    .title(Component.translatable("urkazmoontools.creative_tab"))
                     .icon(() -> new ItemStack(ITEM_MOONCLOCK))
                     .displayItems((enabledFlags, populator) -> {
                         populator.accept(ITEM_MOONCLOCK);
                         populator.accept(BLOCK_MOONSENSOR);
-                    });
-        }, prefix("creative_tab"));
+                    })
+                    .build()
+        , prefix("creative_tab"));
     }
 }

@@ -83,9 +83,8 @@ public class MoonSensorBlock extends BaseEntityBlock {
         //Get Redstone value
         int moonPhase = getMoonFactor(worldIn);
         if (Constants.CONFIG.sensorPhasesShifted) {
-            if (worldTime - 24000 < 0) {
-                moonPhase = 7;
-            }
+            moonPhase = moonPhase + 8 - 1;
+            moonPhase %= 8;
         }
         if (worldIn.canSeeSky(pos) && isNight) {
             return 1 + moonPhase;

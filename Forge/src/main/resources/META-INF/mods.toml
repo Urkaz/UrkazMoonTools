@@ -33,7 +33,7 @@ Tools for detecting the Moon phase.
 [[dependencies.urkazmoontools]]
     modId = "architectury"
     mandatory = true
-    versionRange = "[5.14.76,)"
+    versionRange = "[5.14.84,)"
     ordering = "AFTER"
     side = "BOTH"
 

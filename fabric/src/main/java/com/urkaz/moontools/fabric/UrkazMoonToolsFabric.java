@@ -35,11 +35,6 @@ public class UrkazMoonToolsFabric implements ModInitializer {
         UMTRegistry.registerTiles(bind(BuiltInRegistries.BLOCK_ENTITY_TYPE));
 
         UMTRegistry.registerCreativeTabs(bindCreativeTab());
-
-        FabricItemGroup.builder(new ResourceLocation(UMTConstants.MOD_ID, "creative_tab"))
-            .icon(() -> new ItemStack(Items.DIAMOND_PICKAXE))
-            .title(Component.translatable("urkazmoontools.creative_tab"))
-            .build();
     }
 
     private static <T> BiConsumer<T, ResourceLocation> bind(Registry<? super T> registry) {

@@ -4,15 +4,18 @@
     "block.urkazmoontools.moonsensor": "Detector Lunar",
 
     "text.autoconfig.urkazmoontools.title": "Urkaz Moon Tools Config",
+
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight": "Emitir señal de Redstone solo por la noche",
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight.@Tooltip[0]": "Sí (por defecto): El 'Sensor Lunar' solo emite señal de Redstone por la noche.",
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight.@Tooltip[1]": "No: El 'Sensor Lunar' emite señal de Redstone todo el día.",
+
     "text.autoconfig.urkazmoontools.option.sensorPhasesShifted": "Luna Llena emite 8 Redstone en vez de 1.",
     "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[0]": "The 'Lunar Sensor' emits Redstone in the following way:",
     "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[1]": "Sí (por defecto):",
     "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[2]": "   Luna Llena 8 | Gibosa creciente 7 | Cuarto creciente 6 | Luna creciente 5 | Luna nueva 4 | Luna menguante 3 | Cuarto menguante 2 | Gibosa menguante 1 | SensorBlock",
     "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[3]": "No:",
     "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[4]": "   Gibosa creciente 8 | Cuarto creciente 7 | Luna creciente 6 | Luna nueva 5 | Luna menguante 4 | Cuarto menguante 3 | Gibosa menguante 2 | Luna Llena 1 | SensorBlock",
+
     "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent": "Se emiten 9 de Redstone durante un evento lunar",
     "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[0]": "No (por defecto): El 'Sensor Lunar' emite la señal de Redstone normal durante un evento.",
     "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[1]": "Sí: El 'Sensor Lunar' emite una señal de 9 unidades de Redstone durante un evento.",

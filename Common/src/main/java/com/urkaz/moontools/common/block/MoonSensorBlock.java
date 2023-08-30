@@ -79,20 +79,34 @@ public class MoonSensorBlock extends BaseEntityBlock {
             }
         }
 
-        //Get Redstone value
+        //Get current Phase
         int moonPhase = getMoonFactor(worldIn);
+
+        //Shift one back if the setting is enabled
         if (UMTConstants.CONFIG.sensorPhasesShifted) {
-            if (worldTime - 24000 < 0) {
-                moonPhase = 7;
-            }
+            moonPhase = moonPhase + 8 - 1;
+            moonPhase %= 8;
         }
+
+        //Get final value
         if (worldIn.canSeeSky(pos) && isNight) {
-            return 1 + moonPhase;
+            return moonPhase + 1;
         } else {
             return 0;
         }
     }
 
+    /**
+     * @param worldIn
+     * @return  Waxing Gibbous 7
+     *          First Quarter 6
+     *          Waxing Crescent 5
+     *          New Moon 4
+     *          Waning Crescent 3
+     *          Third Quarter 2
+     *          Waning Gibbous 1
+     *          Full Moon 0
+     */
     protected int getMoonFactor(@Nullable Level worldIn) {
         if (worldIn == null) {
             return 0;

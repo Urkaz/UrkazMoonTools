@@ -7,7 +7,6 @@ import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
 import com.urkaz.moontools.UMTExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -56,7 +55,7 @@ public class UMTRegistry {
         r.accept(builder -> {
             builder.title(Component.translatable("urkazmoontools.creative_tab"))
                     .icon(() -> new ItemStack(ITEM_MOONCLOCK))
-                    .displayItems((enabledFlags, populator, hasPermissions) -> {
+                    .displayItems((enabledFlags, populator) -> {
                         populator.accept(ITEM_MOONCLOCK);
                         populator.accept(BLOCK_MOONSENSOR);
                     });

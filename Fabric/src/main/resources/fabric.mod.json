@@ -29,9 +29,9 @@
   },
 
   "depends": {
-    "fabric": "*",
-    "minecraft": ">=1.19.3",
-    "architectury": ">=7.1.86",
-    "cloth-config": ">=9.1.104"
+    "fabric-api": "*",
+    "minecraft": ">=1.19.4",
+    "architectury": ">=8.2.89",
+    "cloth-config": ">=10.1.105"
   }
 }

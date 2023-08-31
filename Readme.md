@@ -6,7 +6,7 @@
 </p>
 <p align="center">
     <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://img.shields.io/curseforge/dt/362825?style=flat-square&logo=curseforge&label=CurseForge&color=f16436"></a>
-    <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Mondrith&color=5da426
+    <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Modrinth&color=5da426
 "></a>
 <p>
     This mod adds one item and one block that helps to see and detect the current Moon Phase.

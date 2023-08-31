@@ -26,27 +26,27 @@ Tools for detecting the Moon phase.
 [[dependencies.urkazmoontools]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.19,)"
+    versionRange = "[${mc_version},)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.urkazmoontools]]
     modId = "architectury"
     mandatory = true
-    versionRange = "[5.14.84,)"
+    versionRange = "[${architectury_version},)"
     ordering = "AFTER"
     side = "BOTH"
 
 [[dependencies.urkazmoontools]]
     modId="enhancedcelestials"
     mandatory=false
-    versionRange="[2.1.0.1,)"
+    versionRange="[${enhanced_celestials_version},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.urkazmoontools]]
     modId="cloth_config"
     mandatory=false
-    versionRange="[8.3.103,)"
+    versionRange="[${cloth_config_version},)"
     ordering="NONE"
     side="BOTH"

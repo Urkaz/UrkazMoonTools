@@ -1,13 +1,12 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "me.shedaniel.unified-publishing"
 }
 
 architectury {
     platformSetupLoomIde()
     forge()
 }
-
-archivesBaseName = "${mod_name}-forge-${minecraft_version}"
 
 configurations {
     common
@@ -36,7 +35,11 @@ processResources {
     inputs.property "version", project.version
 
     filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+        expand  "version": project.version,
+                "mc_version": project.minecraft_version,
+                "cloth_config_version": project.cloth_config_version,
+                "architectury_version": project.architectury_version,
+                "enhanced_celestials_version": project.enhanced_celestials_version
     }
 }
 
@@ -51,7 +54,8 @@ shadowJar {
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    classifier null
+
+    classifier "${minecraft_version}-forge"
 }
 
 jar {
@@ -70,7 +74,7 @@ components.java {
     }
 }
 
-publishing {
+/*publishing {
     publications {
         mavenForge(MavenPublication) {
             artifactId = rootProject.archives_base_name + "-" + project.name
@@ -82,4 +86,46 @@ publishing {
     repositories {
         // Add repositories to publish to here.
     }
+}*/
+
+unifiedPublishing {
+    project {
+        displayName = "[Forge $rootProject.minecraft_version] $project.mod_name v$project.version"
+        version = "$project.version"
+        releaseType = "release"
+        gameVersions = ["1.19", "1.19.1"]
+        gameLoaders = ["forge"]
+
+        relations {
+            depends {
+                curseforge = "cloth-config"
+                curseforge = "architectury-api"
+                modrinth = "cloth-config"
+                modrinth = "architectury-api"
+            }
+            optional {
+                curseforge = "enhanced-celestials"
+                modrinth = "enhanced-celestials"
+            }
+        }
+
+        mainPublication remapJar
+
+        if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {
+            curseforge {
+                token = project.hasProperty("cuseforge_api_key") ? project.property("cuseforge_api_key") : System.getenv("cuseforge_api_key")
+                id = project.curseforge_id
+                gameVersions.addAll "Java 17"
+            }
+        }
+
+        if (project.hasProperty("modrinth_api_key") || System.getenv("modrinth_api_key") != null) {
+            modrinth {
+                token = project.hasProperty("modrinth_api_key") ? project.property("modrinth_api_key") : System.getenv("modrinth_api_key")
+                id = project.modrinth_id
+            }
+        }
+    }
 }
+
+rootProject.tasks.getByName("modPublish").dependsOn tasks.getByName("publishUnified")

@@ -21,7 +21,7 @@ jobs:
               uses: actions/setup-java@v1
               with:
                   java-version: 17
-            - name: Publish mod
+            - name: Build & Publish
               run: ./gradlew modPublish --stacktrace
               if: |
                   !contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.pull_request.title, '[ci skip]')

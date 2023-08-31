@@ -30,8 +30,8 @@
 
   "depends": {
     "fabric-api": "*",
-    "minecraft": ">=1.20.1",
-    "architectury": ">=9.1.12",
-    "cloth-config": ">=11.1.106"
+    "minecraft": ">=${mc_version}",
+    "architectury": ">=${architectury_version}",
+    "cloth-config": ">=${cloth_config_version}"
   }
 }

@@ -98,10 +98,8 @@ unifiedPublishing {
 
         relations {
             depends {
-                curseforge = "cloth-config"
-                curseforge = "architectury-api"
-                modrinth = "cloth-config"
-                modrinth = "architectury-api"
+                curseforge = "cloth-config", "architectury-api"
+                modrinth = "cloth-config", "architectury-api"
             }
             optional {
                 curseforge = "enhanced-celestials"

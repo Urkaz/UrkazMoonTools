@@ -111,7 +111,7 @@ unifiedPublishing {
                 modrinth = "architectury-api"
             }
             optional {
-                curseforge = "enhanced-celestials"
+                curseforge = "enhanced-celestials-fabric"
                 curseforge = "modmenu"
                 modrinth = "enhanced-celestials"
                 modrinth = "modmenu"

@@ -12,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.jetbrains.annotations.Nullable;
 
-
 public class MoonPhaseResource implements ClampedItemPropertyFunction {
 
     @Override

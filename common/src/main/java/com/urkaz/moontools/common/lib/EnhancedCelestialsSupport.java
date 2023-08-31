@@ -1,6 +1,5 @@
 package com.urkaz.moontools.common.lib;
 
-import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UMTExpectPlatform;
 import corgitaco.enhancedcelestials.EnhancedCelestialsWorldData;
 import corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
@@ -11,8 +10,10 @@ import net.minecraft.world.level.Level;
 
 public class EnhancedCelestialsSupport {
 
+    public static final String MOD_ENHANCED_CELESTIALS_ID = "enhancedcelestials";
+
     static public boolean isLunarEventActive(Level world) {
-        if (world != null && UMTExpectPlatform.isModLoaded(UMTConstants.MOD_ENHANCED_CELESTIALS_ID)) {
+        if (world != null && UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID)) {
             EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
             if (ecWorldData != null) {
                 LunarContext lunarContext = ecWorldData.getLunarContext();
@@ -30,7 +31,7 @@ public class EnhancedCelestialsSupport {
     }
 
     static public int getLunarEventColor(Level world) {
-        if (world != null && UMTExpectPlatform.isModLoaded(UMTConstants.MOD_ENHANCED_CELESTIALS_ID)) {
+        if (world != null && UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID)) {
             EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
             if (ecWorldData != null) {
                 LunarContext lunarContext = ecWorldData.getLunarContext();

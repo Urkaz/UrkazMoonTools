@@ -1,9 +1,15 @@
 <h1>Urkaz Moon Tools</h1>
-
-This mod adds one item and one block that helps to see and detect the current Moon Phase.
-
+<p align="center">
+    <img src="https://img.shields.io/badge/Minecraft-1.20.1-green">
+    <img src="https://img.shields.io/badge/Fabric-0.14.22-yellow">
+    <img src="https://img.shields.io/badge/Forge-47.1.0-orange">
+</p>
+<p align="center">
+    <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://cf.way2muchnoise.eu/full_362825_downloads.svg"></a>
+<p>
+    This mod adds one item and one block that helps to see and detect the current Moon Phase.
+</p>
 <h2>New items and blocks</h2>
-
 <table width="100%">
     <tr>
         <td width="20%" align="center">
@@ -78,13 +84,13 @@ This mod adds one item and one block that helps to see and detect the current Mo
 
 <table width="100%">
     <tr>
-        <td width="50%" align="center">1.16.4 - 1.20.1</td>
+        <td width="50%" align="center">1.19 - 1.20.1</td>
         <td width="50%" align="center">1.18.3</td>
     </tr>
     <tr>
         <td width="50%" align="center">
-            <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
-            <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
+                <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
+                <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
         </td>
         <td width="50%" align="center">
             <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>

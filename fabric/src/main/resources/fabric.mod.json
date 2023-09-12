@@ -31,7 +31,6 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=${mc_version}",
-    "architectury": ">=${architectury_version}",
     "cloth-config": ">=${cloth_config_version}"
   }
 }

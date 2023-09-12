@@ -19,7 +19,7 @@ configurations {
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
@@ -100,9 +100,7 @@ unifiedPublishing {
         relations {
             depends {
                 curseforge = "cloth-config"
-                curseforge = "architectury-api"
                 modrinth = "cloth-config"
-                modrinth = "architectury-api"
             }
             optional {
                 curseforge = "enhanced-celestials"
@@ -115,7 +113,7 @@ unifiedPublishing {
         if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {
             curseforge {
                 token = project.hasProperty("cuseforge_api_key") ? project.property("cuseforge_api_key") : System.getenv("cuseforge_api_key")
-                id = project.curseforge_id
+                id = "${project.curseforge_id}"
                 gameVersions.addAll "Java 17"
             }
         }
@@ -123,7 +121,7 @@ unifiedPublishing {
         if (project.hasProperty("modrinth_api_key") || System.getenv("modrinth_api_key") != null) {
             modrinth {
                 token = project.hasProperty("modrinth_api_key") ? project.property("modrinth_api_key") : System.getenv("modrinth_api_key")
-                id = project.modrinth_id
+                id = "${project.modrinth_id}"
             }
         }
     }

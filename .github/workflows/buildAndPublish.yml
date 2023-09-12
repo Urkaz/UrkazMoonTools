@@ -2,17 +2,6 @@ name: Build & Publish
 
 on:
     workflow_dispatch:
-    push:
-        paths:
-            - '**.gradle'
-            - '**.properties'
-            - '**/src/**'
-        branches:
-            - 1.19.X
-            - 1.19.2
-            - 1.19.3
-            - 1.19.4
-            - 1.20.1
 
 jobs:
     build:
@@ -29,8 +18,6 @@ jobs:
                   ref: '1.19.X'
             - name: Build & Publish '1.19.X'
               run: ./gradlew modPublish --stacktrace
-              if: |
-                  contains(github.event.head_commit.message, '[publish]') || contains(github.event.pull_request.title, '[publish]')
               env:
                   cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
                   modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
@@ -40,8 +27,6 @@ jobs:
                 ref: '1.19.2'
             - name: Build & Publish '1.19.2'
               run: ./gradlew modPublish --stacktrace
-              if: |
-                contains(github.event.head_commit.message, '[publish]') || contains(github.event.pull_request.title, '[publish]')
               env:
                 cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
                 modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
@@ -51,8 +36,6 @@ jobs:
                 ref: '1.19.3'
             - name: Build & Publish '1.19.3'
               run: ./gradlew modPublish --stacktrace
-              if: |
-                contains(github.event.head_commit.message, '[publish]') || contains(github.event.pull_request.title, '[publish]')
               env:
                 cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
                 modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
@@ -62,8 +45,6 @@ jobs:
                 ref: '1.19.4'
             - name: Build & Publish '1.19.4'
               run: ./gradlew modPublish --stacktrace
-              if: |
-                contains(github.event.head_commit.message, '[publish]') || contains(github.event.pull_request.title, '[publish]')
               env:
                 cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
                 modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
@@ -73,8 +54,6 @@ jobs:
                 ref: '1.20.1'
             - name: Build & Publish '1.20.1'
               run: ./gradlew modPublish --stacktrace
-              if: |
-                contains(github.event.head_commit.message, '[publish]') || contains(github.event.pull_request.title, '[publish]')
               env:
                 cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
                 modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}

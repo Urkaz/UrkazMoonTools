@@ -1,5 +1,5 @@
 /*
- * This file is part of "Urkaz Mod Tools"".
+ * This file is part of "Urkaz Mod Tools".
  * Copyright (C) 2023 Urkaz
  *
  * This program is free software; you can redistribute it and/or

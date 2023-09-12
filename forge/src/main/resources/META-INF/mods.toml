@@ -31,13 +31,6 @@ Tools for detecting the Moon phase.
     side = "BOTH"
 
 [[dependencies.urkazmoontools]]
-    modId = "architectury"
-    mandatory = true
-    versionRange = "[${architectury_version},)"
-    ordering = "AFTER"
-    side = "BOTH"
-
-[[dependencies.urkazmoontools]]
     modId="enhancedcelestials"
     mandatory=false
     versionRange="[${enhanced_celestials_version},)"

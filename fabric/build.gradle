@@ -8,9 +8,9 @@ architectury {
     fabric()
 }
 
-/*loom {
+loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
-}*/
+}
 
 configurations {
     common

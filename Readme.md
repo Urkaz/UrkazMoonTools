@@ -85,16 +85,11 @@
 
 <table width="100%">
     <tr>
-        <td width="50%" align="center">1.19 - 1.20.1</td>
-        <td width="50%" align="center">1.18.3</td>
+        <td width="50%" align="center">1.18.3 - 1.20.1</td>
     </tr>
     <tr>
-        <td width="50%" align="center">
+        <td width="50%" align="center">Cloth Config API<br>
                 <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
-                <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
-        </td>
-        <td width="50%" align="center">
-            <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
         </td>
     </tr>
 </table>

@@ -70,11 +70,9 @@ public class UrkazMoonToolsForge {
         });
     }
 
-    private static <T> void bindCreativeTab(Consumer<BiConsumer<Consumer<CreativeModeTab.Builder>, ResourceLocation>> source) {
+    private static void bindCreativeTab(Consumer<BiConsumer<Consumer<CreativeModeTab.Builder>, ResourceLocation>> source) {
         FMLJavaModLoadingContext.get().getModEventBus().addListener((CreativeModeTabEvent.Register event) -> {
-            if (CreativeModeTabEvent.Register.class.equals(event.getClass())) {
-                source.accept((t, rl) -> event.registerCreativeModeTab(rl, t));
-            }
+            source.accept((t, rl) -> event.registerCreativeModeTab(rl, t));
         });
     }
 }

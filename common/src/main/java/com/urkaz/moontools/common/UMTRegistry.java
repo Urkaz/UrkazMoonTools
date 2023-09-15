@@ -19,10 +19,10 @@
 
 package com.urkaz.moontools.common;
 
-import com.urkaz.moontools.common.block.MoonSensorBlock;
-import com.urkaz.moontools.common.item.MoonClockItem;
-import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
 import com.urkaz.moontools.UMTExpectPlatform;
+import com.urkaz.moontools.common.block.MoonSensorBlock;
+import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
+import com.urkaz.moontools.common.item.MoonClockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

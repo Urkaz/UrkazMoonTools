@@ -10,7 +10,7 @@ displayName="Urkaz Moon Tools"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
 logoFile="logo.png"
-#credits=""
+credits="junshengxie - Simplified Chinese localization"
 authors="Urkaz"
 description='''
 Tools for detecting the Moon phase.

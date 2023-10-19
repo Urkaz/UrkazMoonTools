@@ -12,21 +12,16 @@ jobs:
               with:
                 distribution: 'oracle'
                 java-version: 17
-            - name: Checkout '1.19.X'
+            - name: Checkout '1.19.2'
               uses: actions/checkout@v4
               with:
-                  ref: '1.19.X'
-            - name: Build & Publish '1.19.X'
+                  ref: '1.19.2'
+            - name: Maven Publish
+              run: ./gradlew publish --stacktrace
+              env:
+                urkaz_maven_pass: ${{ secrets.URKAZ_MAVEN_PASS }}
+            - name: Curseforge & Modrinth Publish
               run: ./gradlew modPublish --stacktrace
               env:
                   cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
                   modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}
-            - name: Checkout '1.19.2'
-              uses: actions/checkout@v4
-              with:
-                ref: '1.19.2'
-            - name: Build & Publish '1.19.2'
-              run: ./gradlew modPublish --stacktrace
-              env:
-                cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}
-                modrinth_api_key: ${{ secrets.MODRINTH_API_KEY }}

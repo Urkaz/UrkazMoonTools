@@ -19,19 +19,33 @@ dependencies {
     }
 
     // Enhanced Celestials. We use the forge version, but do NOT use classes from forge loader
-    modImplementation "curse.maven:enhanced-celestials-forge-${project.ec_forge_projectid}:${project.ec_forge_fileids}"
+    if (test_enable_enhanced_celestials.toBoolean()) {
+        modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    }
+    else {
+        modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    }
 }
 
 publishing {
     publications {
         mavenCommon(MavenPublication) {
-            artifactId = rootProject.archives_base_name
+            artifactId = rootProject.archives_base_name + "-" + project.name
             from components.java
         }
     }
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-        // Add repositories to publish to here.
+        if (System.getenv("urkaz_maven_pass") != null) {
+            maven {
+                name "${archives_base_name}"
+                url "https://maven.franserver.mywire.org/releases"
+                credentials {
+                    username = "autodeploy"
+                    password = System.getenv("urkaz_maven_pass")
+                }
+            }
+        }
     }
 }

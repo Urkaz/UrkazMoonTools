@@ -22,7 +22,7 @@ package com.urkaz.moontools.common.block;
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
-import com.urkaz.moontools.common.lib.EnhancedCelestialsSupport;
+import com.urkaz.moontools.common.lib.ModCompatHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -93,7 +93,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
         //If the EmitExtraRedstoneOnLunarEvent setting is enabled, return 9 directly
         if (UMTConstants.CONFIG.emitExtraRedstoneOnLunarEvent) {
-            if (isNight && worldIn.canSeeSky(pos) && EnhancedCelestialsSupport.isLunarEventActive(worldIn)) {
+            if (isNight && worldIn.canSeeSky(pos) && ModCompatHandler.isLunarEventActive(worldIn)) {
                 return 9;
             }
         }

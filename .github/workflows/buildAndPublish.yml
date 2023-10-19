@@ -16,7 +16,11 @@ jobs:
               uses: actions/checkout@v4
               with:
                   ref: '1.19.X'
-            - name: Build & Publish '1.19.X'
+            - name: Maven Publish
+              run: ./gradlew publish --stacktrace
+              env:
+                urkaz_maven_pass: ${{ secrets.URKAZ_MAVEN_PASS }}
+            - name: Curseforge & Modrinth Publish
               run: ./gradlew modPublish --stacktrace
               env:
                   cuseforge_api_key: ${{ secrets.CURSEFORGE_API_KEY }}

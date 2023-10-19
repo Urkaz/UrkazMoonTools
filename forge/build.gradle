@@ -28,7 +28,12 @@ dependencies {
     modImplementation "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
 
     // Enhanced Celestials
-    modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    if (test_enable_enhanced_celestials.toBoolean()) {
+        modImplementation "curse.maven:enhanced-celestials-forge-${c_forge_projectid}:${ec_forge_fileids}"
+    }
+    else {
+        modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    }
 }
 
 processResources {

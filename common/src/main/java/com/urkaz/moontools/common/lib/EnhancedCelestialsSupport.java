@@ -32,17 +32,17 @@ public class EnhancedCelestialsSupport {
     public static final String MOD_ENHANCED_CELESTIALS_ID = "enhancedcelestials";
 
     static public boolean isLunarEventActive(Level world) {
-        if (world != null && UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID)) {
-            EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
-            if (ecWorldData != null) {
-                LunarContext lunarContext = ecWorldData.getLunarContext();
-                if (lunarContext != null) {
-                    LunarForecast forecast = lunarContext.getLunarForecast();
-                    if (forecast != null)
-                    {
-                        Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent();
-                        return lunarEvent.isBound();
-                    }
+        if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
+            return false;
+
+        EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
+        if (ecWorldData != null) {
+            LunarContext lunarContext = ecWorldData.getLunarContext();
+            if (lunarContext != null) {
+                LunarForecast forecast = lunarContext.getLunarForecast();
+                if (forecast != null) {
+                    Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent();
+                    return lunarEvent.isBound();
                 }
             }
         }
@@ -50,18 +50,18 @@ public class EnhancedCelestialsSupport {
     }
 
     static public int getLunarEventColor(Level world) {
-        if (world != null && UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID)) {
-            EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
-            if (ecWorldData != null) {
-                LunarContext lunarContext = ecWorldData.getLunarContext();
-                if (lunarContext != null) {
-                    LunarForecast forecast = lunarContext.getLunarForecast();
-                    if (forecast != null)
-                    {
-                        Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent();
-                        if (lunarEvent.isBound()) {
-                            return lunarEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
-                        }
+        if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
+            return 0xffffffff;
+
+        EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
+        if (ecWorldData != null) {
+            LunarContext lunarContext = ecWorldData.getLunarContext();
+            if (lunarContext != null) {
+                LunarForecast forecast = lunarContext.getLunarForecast();
+                if (forecast != null) {
+                    Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent();
+                    if (lunarEvent.isBound()) {
+                        return lunarEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
                     }
                 }
             }

@@ -36,8 +36,29 @@ dependencies {
     modImplementation "com.terraformersmc:modmenu:${modmenu_version}"
 
     // Enhanced Celestials
-    modImplementation "curse.maven:enhanced-celestials-fabric-${ec_fabric_projectid}:${ec_fabric_fileids}"
+    if (test_enable_enhanced_celestials.toBoolean()) {
+        modImplementation "curse.maven:enhanced-celestials-fabric-${ec_fabric_projectid}:${ec_fabric_fileids}"
+    }
+    else {
+        modCompileOnly "curse.maven:enhanced-celestials-fabric-${ec_fabric_projectid}:${ec_fabric_fileids}"
+    }
     modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_fabric_fileids}"
+
+//    // Crimson Moon
+//    if (test_enable_crimson_moon.toBoolean()) {
+//        modImplementation "curse.maven:crimson-moon-${cm_fabric_projectid}:${cm_fabric_fileids}"
+//        modImplementation "dev.draylar:world-data:${cm_world_data_ver}"
+//        include "dev.draylar:world-data:${cm_world_data_ver}"
+//        modImplementation "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
+//        include "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
+//    }
+//    else {
+//        modCompileOnly "curse.maven:crimson-moon-${cm_fabric_projectid}:${cm_fabric_fileids}"
+//        modCompileOnly "dev.draylar:world-data:${cm_world_data_ver}"
+//        include "dev.draylar:world-data:${cm_world_data_ver}"
+//        modCompileOnly "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
+//        include "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
+//    }
 }
 
 processResources {
@@ -82,7 +103,7 @@ components.java {
     }
 }
 
-/*publishing {
+publishing {
     publications {
         mavenFabric(MavenPublication) {
             artifactId = rootProject.archives_base_name + "-" + project.name
@@ -92,9 +113,18 @@ components.java {
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-        // Add repositories to publish to here.
+        if (System.getenv("urkaz_maven_pass") != null) {
+            maven {
+                name "${archives_base_name}"
+                url "https://maven.franserver.mywire.org/releases"
+                credentials {
+                    username = "autodeploy"
+                    password = System.getenv("urkaz_maven_pass")
+                }
+            }
+        }
     }
-}*/
+}
 
 unifiedPublishing {
     project {
@@ -116,6 +146,9 @@ unifiedPublishing {
             optional {
                 modrinth = "modmenu"
             }
+//            optional {
+//                curseforge = "crimson-moon"
+//            }
         }
 
         mainPublication remapJar

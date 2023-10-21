@@ -30,7 +30,10 @@
       "com.urkaz.moontools.fabric.client.UrkazMoonToolsModMenu"
     ]
   },
-
+  "mixins": [
+    "urkazmoontools.mixins.json",
+    "urkazmoontools-common.mixins.json"
+  ],
   "depends": {
     "fabric": "*",
     "minecraft": ">=${mc_version}",

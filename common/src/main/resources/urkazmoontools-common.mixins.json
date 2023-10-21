@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.urkaz.moontools.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "Lunar_MoonHandler_Accessor"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

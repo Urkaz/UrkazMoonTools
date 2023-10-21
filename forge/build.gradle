@@ -140,6 +140,10 @@ unifiedPublishing {
                 curseforge = "enhanced-celestials"
                 modrinth = "enhanced-celestials"
             }
+            optional {
+                curseforge = "lunar"
+                modrinth = "lunar"
+            }
         }
 
         mainPublication remapJar

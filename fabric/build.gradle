@@ -157,6 +157,10 @@ unifiedPublishing {
 //            optional {
 //                curseforge = "crimson-moon"
 //            }
+            optional {
+                curseforge = "lunar"
+                modrinth = "lunar"
+            }
         }
 
         mainPublication remapJar

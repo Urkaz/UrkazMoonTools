@@ -19,28 +19,24 @@
 
 package com.urkaz.moontools.common.lib;
 
-import com.urkaz.moontools.PlatformCompatibilitySupport;
+import com.mrbysco.lunar.client.MoonHandler;
+import com.urkaz.moontools.mixin.Lunar_MoonHandler_Accessor;
 import net.minecraft.world.level.Level;
 
-public class ModCompatHandler {
+public class LunarSupport {
+
     static public boolean isLunarEventActive(Level world) {
-        boolean eventActive = false;
-
-        eventActive |= EnhancedCelestialsSupport.isLunarEventActive(world);
-        eventActive |= LunarSupport.isLunarEventActive(world);
-        eventActive |= PlatformCompatibilitySupport.isLunarEventActive(world);
-
-        return eventActive;
+        return MoonHandler.isEventActive();
     }
 
     static public int getLunarEventColor(Level world) {
-        int color;
-
-        // Enhanced Celestials
-        color = PlatformCompatibilitySupport.getLunarEventColor(world);
-        if (color == 0xffffffff) color = LunarSupport.getLunarEventColor(world);
-        if (color == 0xffffffff) color = PlatformCompatibilitySupport.getLunarEventColor(world);
-
-        return color;
+        float[] color = Lunar_MoonHandler_Accessor.getMoonColor();
+        if (color != null) {
+            int r = (int) (color[0] * 255);
+            int g = (int) (color[1] * 255);
+            int b = (int) (color[2] * 255);
+            return 0xff000000 | r << 16 | g << 8 | b;
+        }
+        return 0xffffffff;
     }
 }

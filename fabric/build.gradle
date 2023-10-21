@@ -60,13 +60,13 @@ dependencies {
 //        include "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
 //    }
 
-    // Lunar
-    if (test_enable_lunar.toBoolean()) {
-        modImplementation "maven.modrinth:lunar:${lunar_fabric_projectid}"
-    }
-    else {
-        modCompileOnly "maven.modrinth:lunar:${lunar_fabric_projectid}"
-    }
+//    // Lunar
+//    if (test_enable_lunar.toBoolean()) {
+//        modImplementation "maven.modrinth:lunar:${lunar_fabric_projectid}"
+//    }
+//    else {
+//        modCompileOnly "maven.modrinth:lunar:${lunar_fabric_projectid}"
+//    }
 }
 
 processResources {

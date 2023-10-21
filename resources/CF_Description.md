@@ -37,7 +37,7 @@ Redstone strength in blocks (default settings):
 
 The moon icon in the Lunar Clock will be tinted of the same color as the Moon.
 
-In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any Enhanced Celestials event.
+In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any event.
 
 
 ## Legacy Mod compatibility

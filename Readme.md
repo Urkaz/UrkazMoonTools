@@ -50,7 +50,7 @@
             <b>Enhanced Celestials</b><br>(1.16.4 - 1.20.1)
         </td>
         <td width="50%" rowspan="3">
-            The moon icon in the Lunar Clock will be tinted of the same color as the Moon.<br>In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any Enhanced Celestials event.
+            The moon icon in the Lunar Clock will be tinted of the same color as the Moon.<br><br>In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any event.
         </td>
     </tr>
     <tr>

@@ -104,6 +104,7 @@ publishing {
     publications {
         mavenForge(MavenPublication) {
             artifactId = rootProject.archives_base_name + "-" + project.name
+            version = rootProject.version + "-mc" + minecraft_version
             from components.java
         }
     }
@@ -140,6 +141,10 @@ unifiedPublishing {
                 curseforge = "enhanced-celestials"
                 modrinth = "enhanced-celestials"
             }
+//            optional {
+//                curseforge = "lunar"
+//                modrinth = "lunar"
+//            }
         }
 
         mainPublication remapJar

@@ -20,16 +20,25 @@
 package com.urkaz.moontools.common.lib;
 
 import com.mrbysco.lunar.client.MoonHandler;
+import com.urkaz.moontools.UMTExpectPlatform;
 import com.urkaz.moontools.mixin.Lunar_MoonHandler_Accessor;
 import net.minecraft.world.level.Level;
 
 public class LunarSupport {
 
+    public static final String MOD_LUNAR_ID = "lunar";
+
     static public boolean isLunarEventActive(Level world) {
+        if (world == null || !UMTExpectPlatform.isModLoaded(MOD_LUNAR_ID))
+            return false;
+
         return MoonHandler.isEventActive();
     }
 
     static public int getLunarEventColor(Level world) {
+        if (world == null || !UMTExpectPlatform.isModLoaded(MOD_LUNAR_ID))
+            return 0xffffffff;
+
         float[] color = Lunar_MoonHandler_Accessor.getMoonColor();
         if (color != null) {
             int r = (int) (color[0] * 255);

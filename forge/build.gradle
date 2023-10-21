@@ -48,13 +48,13 @@ dependencies {
         modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
     }
 
-//    // Lunar
-//    if (test_enable_lunar.toBoolean()) {
-//        modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
-//    }
-//    else {
-//        modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
-//    }
+    // Lunar
+    if (test_enable_lunar.toBoolean()) {
+        modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
+    }
+    else {
+        modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
+    }
 }
 
 processResources {

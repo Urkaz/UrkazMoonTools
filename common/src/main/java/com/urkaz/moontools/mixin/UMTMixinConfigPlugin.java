@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import java.util.List;
 import java.util.Set;
 
-//import static com.urkaz.moontools.common.lib.LunarSupport.MOD_LUNAR_ID;
+import static com.urkaz.moontools.common.lib.LunarSupport.MOD_LUNAR_ID;
 
 public class UMTMixinConfigPlugin implements IMixinConfigPlugin {
 
@@ -46,11 +46,11 @@ public class UMTMixinConfigPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-//        if (mixinClassName.equals(prefix + ".Lunar_MoonHandler_Accessor")) {
-//            boolean enabled = UMTExpectPlatform.isModLoaded(MOD_LUNAR_ID);
-//            UMTConstants.LOGGER.info("Enable Lunar compat: " + enabled);
-//            return enabled;
-//        }
+        if (mixinClassName.equals(prefix + ".Lunar_MoonHandler_Accessor")) {
+            boolean enabled = UMTExpectPlatform.isModLoaded(MOD_LUNAR_ID);
+            UMTConstants.LOGGER.info("Enable Lunar compat: " + enabled);
+            return enabled;
+        }
         return false;
     }
 

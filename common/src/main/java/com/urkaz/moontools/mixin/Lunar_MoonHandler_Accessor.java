@@ -19,15 +19,15 @@
 
 package com.urkaz.moontools.mixin;
 
-//import com.mrbysco.lunar.client.MoonHandler;
-//import org.spongepowered.asm.mixin.Mixin;
-//import org.spongepowered.asm.mixin.gen.Accessor;
-//
-//@Mixin(MoonHandler.class)
-//public interface Lunar_MoonHandler_Accessor {
-//
-//    @Accessor("moonColor")
-//    static float[] getMoonColor() {
-//        throw new AssertionError();
-//    }
-//}
+import com.mrbysco.lunar.client.MoonHandler;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+
+@Mixin(MoonHandler.class)
+public interface Lunar_MoonHandler_Accessor {
+
+    @Accessor("moonColor")
+    static float[] getMoonColor() {
+        throw new AssertionError();
+    }
+}

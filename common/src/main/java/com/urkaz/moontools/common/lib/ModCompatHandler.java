@@ -27,7 +27,7 @@ public class ModCompatHandler {
         boolean eventActive = false;
 
         eventActive |= EnhancedCelestialsSupport.isLunarEventActive(world);
-       //eventActive |= LunarSupport.isLunarEventActive(world);
+        eventActive |= LunarSupport.isLunarEventActive(world);
         eventActive |= PlatformCompatibilitySupport.isLunarEventActive(world);
 
         return eventActive;
@@ -38,7 +38,7 @@ public class ModCompatHandler {
 
         // Enhanced Celestials
         color = PlatformCompatibilitySupport.getLunarEventColor(world);
-        //if (color == 0xffffffff) color = LunarSupport.getLunarEventColor(world);
+        if (color == 0xffffffff) color = LunarSupport.getLunarEventColor(world);
         if (color == 0xffffffff) color = PlatformCompatibilitySupport.getLunarEventColor(world);
 
         return color;

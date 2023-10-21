@@ -26,27 +26,24 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+
 import java.util.function.BiFunction;
 
 public class UMTExpectPlatformImpl {
 
-    public static String getPlatformName()
-    {
+    public static String getPlatformName() {
         return "Fabric";
     }
 
-    public static boolean isModLoaded(String modId)
-    {
+    public static boolean isModLoaded(String modId) {
         return FabricLoader.getInstance().isModLoaded(modId);
     }
 
-    public static boolean isDevelopmentEnvironment()
-    {
+    public static boolean isDevelopmentEnvironment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 
-    static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks)
-    {
+    static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
         return FabricBlockEntityTypeBuilder.create(func::apply, blocks).build();
     }
 }

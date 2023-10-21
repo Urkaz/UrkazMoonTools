@@ -27,12 +27,28 @@ Redstone strength in blocks (default settings):
 
 ## Mod compatibility
 
-### Enhanced Celestials support (1.16.4 - 1.20.1)
+### Compatible mods
+
+* Enhanced Celestials (1.16.5, 1.18.2, 1.19 - 1.19.4, 1.20.1)
+* Lunar (1.19.2, 1.20.1)
+* Crimson Moon (1.19 - 1.19.1)
+
+### Functionality
+
 The moon icon in the Lunar Clock will be tinted of the same color as the Moon.
 
 In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any Enhanced Celestials event.
 
-### Bloodmoon and Nyx support (1.12.2)
+
+## Legacy Mod compatibility
+
+### Compatible mods
+
+* Bloodmoon (1.12.2)
+* Nyx (1.12.2)
+
+### Functionality
+
 The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
 
 * ![Bloody harvest](https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png "Bloody harvest") If both events appear to happen at the same time, the clock will display both at the same time (this may happen when playing with Both mods at the same time).

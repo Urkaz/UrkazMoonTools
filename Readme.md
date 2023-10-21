@@ -45,19 +45,32 @@
 
 <table width="100%">
     <tr>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/enhanced-celestials.png" width="100" height="100"></td>
         <td width="20%" align="center">
             <b>Enhanced Celestials</b><br>(1.16.4 - 1.20.1)
         </td>
-        <td width="50%">
+        <td width="50%" rowspan="3">
             The moon icon in the Lunar Clock will be tinted of the same color as the Moon.<br>In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any Enhanced Celestials event.
         </td>
-    <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/enhanced-celestials.png" width="220" height="135"></td>
     </tr>
     <tr>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/lunar.png" width="100" height="100"></td>
         <td width="20%" align="center">
-            <b>Bloodmoon</b> and <b>Nyx</b><br>(1.12.2)
+            <b>Lunar</b><br>(1.19.2 & 1.20.1)
         </td>
-        <td width="50%">The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
+    </tr>
+    <tr>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/crimson_moon.png" width="100" height="100"></td>
+        <td width="20%" align="center">
+            <b>Crimson Moon</b><br>(1.19 - 1.19.1)
+        </td>
+    </tr>
+    <tr>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/bloodmoon.png" width="100" height="100"></td>
+        <td width="20%" align="center">
+            <b>Bloodmoon</b><br>(1.12.2)
+        </td>
+        <td width="50%" rowspan="2">The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
             <ul>
                 <li>
                     <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"> If both events appear simultaneously, the clock will display both at the same time (this may happen when playing with Both mods at the same time).
@@ -73,8 +86,13 @@
                 </li>
             </ul>
         </td>
+    </tr>
+    <tr>
         <td align="center">
-            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/bloodmoon.png" width="100" height="100"> <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/nyx.png" width="100" height="100">
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/nyx.png" width="100" height="100">
+        </td>
+        <td width="20%" align="center">
+            <b>Nyx</b><br>(1.12.2)
         </td>
     </tr>
 </table>

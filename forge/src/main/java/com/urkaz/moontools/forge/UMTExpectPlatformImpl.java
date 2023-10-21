@@ -31,8 +31,7 @@ import java.util.function.BiFunction;
 
 public class UMTExpectPlatformImpl {
 
-    public static String getPlatformName()
-    {
+    public static String getPlatformName() {
         return "Forge";
     }
 
@@ -42,13 +41,11 @@ public class UMTExpectPlatformImpl {
         return FMLLoader.getLoadingModList().getModFileById(modId) != null;
     }
 
-    public static boolean isDevelopmentEnvironment()
-    {
+    public static boolean isDevelopmentEnvironment() {
         return !FMLLoader.isProduction();
     }
 
-    static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks)
-    {
+    static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
         return BlockEntityType.Builder.of(func::apply, blocks).build(null);
     }
 }

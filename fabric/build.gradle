@@ -106,6 +106,7 @@ publishing {
     publications {
         mavenFabric(MavenPublication) {
             artifactId = rootProject.archives_base_name + "-" + project.name
+            version = rootProject.version + "-mc" + minecraft_version
             from components.java
         }
     }

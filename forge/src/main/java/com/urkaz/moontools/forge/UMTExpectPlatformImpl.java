@@ -36,9 +36,10 @@ public class UMTExpectPlatformImpl {
         return "Forge";
     }
 
-    public static boolean isModLoaded(String modId)
-    {
-        return ModList.get().isLoaded(modId);
+    public static boolean isModLoaded(String modId) {
+        if (ModList.get() != null)
+            return ModList.get().isLoaded(modId);
+        return FMLLoader.getLoadingModList().getModFileById(modId) != null;
     }
 
     public static boolean isDevelopmentEnvironment()

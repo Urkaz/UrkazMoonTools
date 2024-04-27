@@ -36,8 +36,7 @@ public class ModCompatHandler {
     static public int getLunarEventColor(Level world) {
         int color;
 
-        // Enhanced Celestials
-        color = PlatformCompatibilitySupport.getLunarEventColor(world);
+        color = EnhancedCelestialsSupport.getLunarEventColor(world);
         if (color == 0xffffffff) color = LunarSupport.getLunarEventColor(world);
         if (color == 0xffffffff) color = PlatformCompatibilitySupport.getLunarEventColor(world);
 

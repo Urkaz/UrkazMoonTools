@@ -1,6 +1,5 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id "me.shedaniel.unified-publishing"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 architectury {
@@ -9,23 +8,32 @@ architectury {
 }
 
 loom {
-    accessWidenerPath = project(":common").loom.accessWidenerPath
+    //accessWidenerPath = project(":common").loom.accessWidenerPath
 
     forge {
-        convertAccessWideners = true
-        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+        //convertAccessWideners = true
+        //extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig "urkazmoontools-common.mixins.json"
-        mixinConfig "urkazmoontools.mixins.json"
+        //mixinConfig "urkazmoontools-common.mixins.json"
+        //mixinConfig "urkazmoontools.mixins.json"
     }
 }
 
 configurations {
-    common
-    shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentFabric.extendsFrom common
+
+    // Files in this configuration will be bundled into your mod using the Shadow plugin.
+    // Don't use the `shadow` configuration from the plugin itself as it's meant for excluding files.
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
 }
 
 dependencies {
@@ -34,26 +42,28 @@ dependencies {
     //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    shadowBundle(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
     // Cloth Config
     modImplementation "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
 
     // Enhanced Celestials
-    if (test_enable_enhanced_celestials.toBoolean()) {
-        modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
-        modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
-    }
-    else {
-        modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    if (ec_mod_compat_enabled.toBoolean()) {
+        if (test_enable_enhanced_celestials.toBoolean()) {
+            modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+            modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
+        } else {
+            modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+        }
     }
 
     // Lunar
-    if (test_enable_lunar.toBoolean()) {
-        modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
-    }
-    else {
-        modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
+    if (lunar_mod_compat_enabled.toBoolean()) {
+        if (test_enable_lunar.toBoolean()) {
+            modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
+        } else {
+            modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
+        }
     }
 }
 
@@ -61,7 +71,7 @@ processResources {
     inputs.property "version", project.version
 
     filesMatching("META-INF/mods.toml") {
-        expand  "version": project.version,
+        expand "version": project.version,
                 "mc_version": project.minecraft_version,
                 "cloth_config_version": project.cloth_config_version,
                 "architectury_version": project.architectury_version,
@@ -73,31 +83,12 @@ shadowJar {
     exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
-    configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
 }
 
 remapJar {
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-
-    classifier "${minecraft_version}-forge"
-}
-
-jar {
-    classifier "dev"
-}
-
-sourcesJar {
-    def commonSources = project(":common").sourcesJar
-    dependsOn commonSources
-    from commonSources.archiveFile.map { zipTree(it) }
-}
-
-components.java {
-    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
-        skip()
-    }
+    inputFile.set(shadowJar.archiveFile)
 }
 
 publishing {
@@ -108,59 +99,19 @@ publishing {
             from components.java
         }
     }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        if (System.getenv("urkaz_maven_pass") != null) {
-            maven {
-                name "${archives_base_name}"
-                url "https://maven.franserver.mywire.org/releases"
-                credentials {
-                    username = "autodeploy"
-                    password = System.getenv("urkaz_maven_pass")
-                }
-            }
-        }
-    }
 }
 
 unifiedPublishing {
     project {
         displayName = "[Forge $rootProject.minecraft_version] $project.mod_name v$project.version"
-        version = "$project.version"
-        releaseType = "release"
-        gameVersions = ["1.20.1"]
         gameLoaders = ["forge"]
 
         relations {
-            depends {
-                curseforge = "cloth-config"
-                modrinth = "cloth-config"
-            }
-            optional {
-                curseforge = "enhanced-celestials"
-                modrinth = "enhanced-celestials"
-            }
-            optional {
-                curseforge = "lunar"
-                modrinth = "lunar"
-            }
-        }
-
-        mainPublication remapJar
-
-        if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {
-            curseforge {
-                token = project.hasProperty("cuseforge_api_key") ? project.property("cuseforge_api_key") : System.getenv("cuseforge_api_key")
-                id = "${project.curseforge_id}"
-                gameVersions.addAll "Java 17"
-            }
-        }
-
-        if (project.hasProperty("modrinth_api_key") || System.getenv("modrinth_api_key") != null) {
-            modrinth {
-                token = project.hasProperty("modrinth_api_key") ? project.property("modrinth_api_key") : System.getenv("modrinth_api_key")
-                id = "${project.modrinth_id}"
+            if (ec_mod_compat_enabled.toBoolean()) {
+                optional {
+                    curseforge = "enhanced-celestials"
+                    modrinth = "enhanced-celestials"
+                }
             }
         }
     }

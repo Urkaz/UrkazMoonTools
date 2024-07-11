@@ -3,7 +3,7 @@ architectury {
 }
 
 loom {
-    accessWidenerPath = file ("src/main/resources/urkazmoontools.accesswidener")
+    //accessWidenerPath = file("src/main/resources/urkazmoontools.accesswidener")
 }
 
 dependencies {
@@ -14,24 +14,26 @@ dependencies {
     //modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 
     // Cloth Config
-    modImplementation ("me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}") {
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
 
     // Enhanced Celestials. We use the forge version, but do NOT use classes from forge loader
-    if (test_enable_enhanced_celestials.toBoolean()) {
-        modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
-    }
-    else {
-        modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+    if (ec_mod_compat_enabled.toBoolean()) {
+        if (test_enable_enhanced_celestials.toBoolean()) {
+            modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+        } else {
+            modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+        }
     }
 
     // Lunar
-    if (test_enable_lunar.toBoolean()) {
-        modImplementation "maven.modrinth:lunar:${lunar_fabric_projectid}"
-    }
-    else {
-        modCompileOnly "maven.modrinth:lunar:${lunar_fabric_projectid}"
+    if (lunar_mod_compat_enabled.toBoolean()) {
+        if (test_enable_lunar.toBoolean()) {
+            modImplementation "maven.modrinth:lunar:${lunar_fabric_projectid}"
+        } else {
+            modCompileOnly "maven.modrinth:lunar:${lunar_fabric_projectid}"
+        }
     }
 }
 
@@ -41,20 +43,6 @@ publishing {
             artifactId = rootProject.archives_base_name + "-" + project.name
             version = rootProject.version + "-mc" + minecraft_version
             from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        if (System.getenv("urkaz_maven_pass") != null) {
-            maven {
-                name "${archives_base_name}"
-                url "https://maven.franserver.mywire.org/releases"
-                credentials {
-                    username = "autodeploy"
-                    password = System.getenv("urkaz_maven_pass")
-                }
-            }
         }
     }
 }

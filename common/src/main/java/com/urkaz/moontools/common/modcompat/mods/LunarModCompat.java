@@ -17,25 +17,28 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package com.urkaz.moontools.common.lib;
+package com.urkaz.moontools.common.modcompat.mods;
 
 import com.mrbysco.lunar.client.MoonHandler;
 import com.urkaz.moontools.UMTExpectPlatform;
+import com.urkaz.moontools.common.modcompat.handler.IMoonToolsModCompat;
 import com.urkaz.moontools.mixin.Lunar_MoonHandler_Accessor;
 import net.minecraft.world.level.Level;
 
-public class LunarSupport {
+public class LunarModCompat implements IMoonToolsModCompat {
 
     public static final String MOD_LUNAR_ID = "lunar";
 
-    static public boolean isLunarEventActive(Level world) {
+    @Override
+    public boolean isLunarEventActive(Level world) {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_LUNAR_ID))
             return false;
 
         return MoonHandler.isEventActive();
     }
 
-    static public int getLunarEventColor(Level world) {
+    @Override
+    public int getLunarEventColor(Level world) {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_LUNAR_ID))
             return 0xffffffff;
 

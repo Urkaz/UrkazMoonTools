@@ -21,6 +21,8 @@ package com.urkaz.moontools.fabric;
 
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
+import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
+import com.urkaz.moontools.fabric.modcompat.mod.CrimsonMoonModCompat;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -38,6 +40,8 @@ public class UrkazMoonToolsFabric implements ModInitializer {
 
     private void coreInit() {
         UrkazMoonTools.init();
+
+        ModCompatHandler.getInstance().registerModCompat(new CrimsonMoonModCompat());
     }
 
     private void registryInit() {

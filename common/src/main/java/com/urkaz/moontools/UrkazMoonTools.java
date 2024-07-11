@@ -19,7 +19,11 @@
 
 package com.urkaz.moontools;
 
+import com.mrbysco.lunar.Lunar;
 import com.urkaz.moontools.common.UMTConfig;
+import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
+import com.urkaz.moontools.common.modcompat.mods.EnhancedCelestialsModCompat;
+import com.urkaz.moontools.common.modcompat.mods.LunarModCompat;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 
@@ -28,5 +32,8 @@ public class UrkazMoonTools {
     public static void init() {
         AutoConfig.register(UMTConfig.class, GsonConfigSerializer::new);
         UMTConstants.CONFIG = AutoConfig.getConfigHolder(UMTConfig.class).getConfig();
+
+        ModCompatHandler.getInstance().registerModCompat(new EnhancedCelestialsModCompat());
+        ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
     }
 }

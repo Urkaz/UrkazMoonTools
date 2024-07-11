@@ -20,7 +20,7 @@
 package com.urkaz.moontools.client;
 
 import com.urkaz.moontools.common.item.MoonClockItem;
-import com.urkaz.moontools.common.lib.ModCompatHandler;
+import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
@@ -43,7 +43,7 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
             world = entity.level();
         }
         int moonFactor = (int) worldCall(world);
-        int color = ModCompatHandler.getLunarEventColor(world);
+        int color = ModCompatHandler.getInstance().getLunarEventColor(world);
 
         ((MoonClockItem) stack.getItem()).setColor(color);
         return moonFactor/10.f;

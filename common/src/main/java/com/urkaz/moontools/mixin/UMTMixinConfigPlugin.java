@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import java.util.List;
 import java.util.Set;
 
-import static com.urkaz.moontools.common.lib.LunarSupport.MOD_LUNAR_ID;
+import static com.urkaz.moontools.common.modcompat.mods.LunarModCompat.MOD_LUNAR_ID;
 
 public class UMTMixinConfigPlugin implements IMixinConfigPlugin {
 

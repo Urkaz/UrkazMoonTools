@@ -42,8 +42,4 @@ public class UMTExpectPlatformImpl {
     public static boolean isDevelopmentEnvironment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
-
-    static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
-        return FabricBlockEntityTypeBuilder.create(func::apply, blocks).build();
-    }
 }

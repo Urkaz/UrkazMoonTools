@@ -45,10 +45,7 @@ public class UrkazMoonToolsFabric implements ModInitializer {
     }
 
     private void registryInit() {
-        UMTRegistry.registerBlocks(bind(BuiltInRegistries.BLOCK));
-        UMTRegistry.registerItems(bind(BuiltInRegistries.ITEM));
-        UMTRegistry.registerTiles(bind(BuiltInRegistries.BLOCK_ENTITY_TYPE));
-        UMTRegistry.registerCreativeTabs(bind(BuiltInRegistries.CREATIVE_MODE_TAB));
+        UrkazMoonTools.registryInit();
     }
 
     private static <T> BiConsumer<T, ResourceLocation> bind(Registry<? super T> registry) {

@@ -19,8 +19,8 @@
 
 package com.urkaz.moontools;
 
-import com.mrbysco.lunar.Lunar;
-import com.urkaz.moontools.common.UMTConfig;
+import com.urkaz.moontools.common.UMTConfigWrapper;
+import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import com.urkaz.moontools.common.modcompat.mods.EnhancedCelestialsModCompat;
 import com.urkaz.moontools.common.modcompat.mods.LunarModCompat;
@@ -30,10 +30,19 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 public class UrkazMoonTools {
 
     public static void init() {
-        AutoConfig.register(UMTConfig.class, GsonConfigSerializer::new);
-        UMTConstants.CONFIG = AutoConfig.getConfigHolder(UMTConfig.class).getConfig();
+        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG)) {
+            AutoConfig.register(UMTConfigWrapper.UMTConfig.class, GsonConfigSerializer::new);
+            UMTConfigWrapper.setConfig(AutoConfig.getConfigHolder(UMTConfigWrapper.UMTConfig.class).getConfig());
+        }
 
         ModCompatHandler.getInstance().registerModCompat(new EnhancedCelestialsModCompat());
         ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
+    }
+
+    public static void registryInit() {
+        UMTRegistry.BLOCKS.register();
+        UMTRegistry.ITEMS.register();
+        UMTRegistry.BLOCK_ENTITIES.register();
+        UMTRegistry.CREATIVE_MODE_TABS.register();
     }
 }

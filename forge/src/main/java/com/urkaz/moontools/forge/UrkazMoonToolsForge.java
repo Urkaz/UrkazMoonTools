@@ -23,11 +23,13 @@ import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.forge.client.UrkazMoonToolsForgeClient;
+import dev.architectury.platform.forge.EventBuses;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -49,10 +51,10 @@ public class UrkazMoonToolsForge {
     }
 
     private void registryInit() {
-        bind(Registries.BLOCK, UMTRegistry::registerBlocks);
-        bind(Registries.ITEM, UMTRegistry::registerItems);
-        bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerTiles);
-        bind(Registries.CREATIVE_MODE_TAB, UMTRegistry::registerCreativeTabs);
+        final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        EventBuses.registerModEventBus(UMTConstants.MOD_ID, eventBus);
+
+        UrkazMoonTools.registryInit();
     }
 
     private void clientInit() {

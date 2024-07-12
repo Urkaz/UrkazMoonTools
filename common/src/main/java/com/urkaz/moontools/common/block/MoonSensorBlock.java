@@ -20,6 +20,7 @@
 package com.urkaz.moontools.common.block;
 
 import com.urkaz.moontools.UMTConstants;
+import com.urkaz.moontools.common.UMTConfigWrapper;
 import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
@@ -42,6 +43,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class MoonSensorBlock extends BaseEntityBlock {
@@ -87,12 +89,14 @@ public class MoonSensorBlock extends BaseEntityBlock {
         //Check if is night
         long worldTime = worldIn.getLevelData().getDayTime();
         boolean isNight = true;
-        if (UMTConstants.CONFIG.sensorOnlyNight) {
+
+        UMTConfigWrapper.UMTConfig config = UMTConfigWrapper.getConfig();
+        if (config == null || (config != null && config.sensorOnlyNight)) {
             isNight = worldTime % 24000L >= 12000L;
         }
 
         //If the EmitExtraRedstoneOnLunarEvent setting is enabled, return 9 directly
-        if (UMTConstants.CONFIG.emitExtraRedstoneOnLunarEvent) {
+        if (config != null && config.emitExtraRedstoneOnLunarEvent) {
             if (isNight && worldIn.canSeeSky(pos) && ModCompatHandler.getInstance().isLunarEventActive(worldIn)) {
                 return 9;
             }
@@ -102,7 +106,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
         int moonPhase = getMoonFactor(worldIn);
 
         //Shift one back if the setting is enabled
-        if (UMTConstants.CONFIG.sensorPhasesShifted) {
+        if (config == null || (config != null && config.sensorPhasesShifted)) {
             moonPhase = moonPhase + 8 - 1;
             moonPhase %= 8;
         }
@@ -145,7 +149,7 @@ public class MoonSensorBlock extends BaseEntityBlock {
         }
     }
 
-    public RenderShape getRenderShape(BlockState state) {
+    public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
@@ -163,6 +167,6 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, UMTRegistry.BLOCKENTITY_MOONSENSOR, MoonSensorBlockEntity::serverTick);
+        return level.isClientSide() ? null : createTickerHelper(type, UMTRegistry.BLOCKENTITY_MOONSENSOR.get(), MoonSensorBlockEntity::serverTick);
     }
 }

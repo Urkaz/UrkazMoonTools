@@ -21,7 +21,8 @@ package com.urkaz.moontools.fabric.client;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import com.urkaz.moontools.common.UMTConfig;
+import com.urkaz.moontools.UMTExpectPlatform;
+import com.urkaz.moontools.common.UMTConfigWrapper;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -30,6 +31,8 @@ import net.fabricmc.api.Environment;
 public class UrkazMoonToolsModMenu implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(UMTConfig.class, parent).get();
+        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG))
+            return parent -> AutoConfig.getConfigScreen(UMTConfigWrapper.UMTConfig.class, parent).get();
+        return null;
     }
 }

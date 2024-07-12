@@ -12,7 +12,8 @@
 	"junshengxie - Simplified Chinese localization"
   ],
   "contact": {
-    "sources": "https://github.com/Urkaz/UrkazMoonTools"
+    "sources": "https://github.com/Urkaz/UrkazMoonTools",
+    "issues": "https://github.com/Urkaz/UrkazMoonTools/issues"
   },
 
   "license": "${mod_license}",
@@ -37,6 +38,6 @@
   "depends": {
     "fabric-api": "*",
     "minecraft": ">=${mc_version}",
-    "cloth-config": ">=${cloth_config_version}"
+    "architectury": ">=${architectury_version}"
   }
 }

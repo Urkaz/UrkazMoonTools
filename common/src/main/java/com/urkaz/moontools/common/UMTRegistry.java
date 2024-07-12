@@ -56,7 +56,7 @@ public class UMTRegistry {
     public static final RegistrySupplier<BlockEntityType<MoonSensorBlockEntity>> BLOCKENTITY_MOONSENSOR = BLOCK_ENTITIES.register("moonsensor_entity", () ->
             BlockEntityType.Builder.of(MoonSensorBlockEntity::new, UMTRegistry.BLOCK_MOONSENSOR.get()).build(null));
 
-    public static final RegistrySupplier<CreativeModeTab> ALPHA_SIN_55_CREATIVE_TAB = registerCreativeTab("creative_tab", UMTRegistry.ITEM_MOONCLOCK, UMTRegistry::createDefaultCreativeTab);
+    public static final RegistrySupplier<CreativeModeTab> ALPHA_SIN_55_CREATIVE_TAB = registerCreativeTab("urkazmoontools.creative_tab", UMTRegistry.ITEM_MOONCLOCK, UMTRegistry::createDefaultCreativeTab);
 
     public static void createDefaultCreativeTab(CreativeModeTab.Output output) {
         output.accept(UMTRegistry.ITEM_MOONCLOCK.get());
@@ -79,7 +79,7 @@ public class UMTRegistry {
 
     private static RegistrySupplier<CreativeModeTab> registerCreativeTab(String name, RegistrySupplier<Item> iconSupplier, Consumer<CreativeModeTab.Output> consumer) {
         return CREATIVE_MODE_TABS.register(name, () -> CreativeModeTab.builder(null, -1)
-                .title(Component.translatable(prefixedModLocation(name).toString()))
+                .title(Component.translatable(name))
                 .icon(() -> new ItemStack(iconSupplier.get()))
                 .displayItems((params, output) -> {
                     consumer.accept(output);

@@ -21,7 +21,10 @@ package com.urkaz.moontools.neoforge.client;
 
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.client.MoonClockColorHandler;
+import com.urkaz.moontools.client.MoonPhaseResource;
 import com.urkaz.moontools.common.UMTRegistry;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -40,6 +43,7 @@ public class UrkazMoonToolsNeoForgeClient {
     public static void clientSetup(final FMLClientSetupEvent event) {
         //NeoForge.EVENT_BUS.addListener(UrkazMoonToolsNeoForgeClient::onHandleColors);
         event.enqueueWork(() -> {
+            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK.get(), new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
         });
     }
 

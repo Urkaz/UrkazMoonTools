@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
+loaderVersion = "[1,)"
 #issueTrackerURL = ""
 license="${mod_license}"
 
@@ -25,14 +25,28 @@ config="${mod_id}-common.mixins.json"
 
 [[dependencies.${mod_id}]]
     modId = "neoforge"
-    type = "required"
+    mandatory=true
     versionRange = "[${neoforge_version_major}.${neoforge_version_minor},)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
     modId = "minecraft"
-    type = "required"
+    mandatory=true
     versionRange = "[${mc_version},)"
     ordering = "NONE"
     side = "BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="architectury"
+    mandatory=true
+    versionRange="[${architectury_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="cloth_config"
+    mandatory=false
+    versionRange="[${cloth_config_version},)"
+    ordering="NONE"
+    side="BOTH"

@@ -20,15 +20,20 @@
 package com.urkaz.moontools.common.item;
 
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.LodestoneTracker;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.jetbrains.annotations.Nullable;
@@ -53,10 +58,25 @@ public class MoonClockItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        if (worldIn != null) {
-            tooltip.add(Component.literal(getTooltipText(worldIn)));
-        }
+    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean bl) {
+//        if (level instanceof ServerLevel serverLevel) {
+//            LodestoneTracker lodestoneTracker = (LodestoneTracker)itemStack.get(DataComponents.LODESTONE_TRACKER);
+//            if (lodestoneTracker != null) {
+//                LodestoneTracker lodestoneTracker2 = lodestoneTracker.tick(serverLevel);
+//                if (lodestoneTracker2 != lodestoneTracker) {
+//                    itemStack.set(DataComponents.LODESTONE_TRACKER, lodestoneTracker2);
+//                }
+//            }
+//        }
+
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, tooltip, tooltipFlag);
+//        if (worldIn != null) {
+//            tooltip.add(Component.literal(getTooltipText(worldIn)));
+//        }
     }
 
     public String getTooltipText(Level worldIn) {

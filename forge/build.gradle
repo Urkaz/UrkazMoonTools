@@ -37,9 +37,9 @@ configurations {
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
+    forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version_major}.${rootProject.forge_version_minor}.${rootProject.forge_version_patch}"
     // Remove the next line if you don't want to depend on the API
-    //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    //modImplementation "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowBundle(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
@@ -68,7 +68,15 @@ processResources {
 
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version,
+                "mod_id": rootProject.mod_id,
+                "mod_name": rootProject.mod_name,
+                "mod_description": rootProject.mod_description,
+                "mod_license": rootProject.mod_license,
+                "mod_icon": rootProject.mod_icon,
+                "mod_author": rootProject.mod_author,
                 "mc_version": project.minecraft_version,
+                "forge_version_major": project.forge_version_major,
+                "forge_version_minor": project.forge_version_minor,
                 "cloth_config_version": project.cloth_config_version,
                 "architectury_version": project.architectury_version,
                 "enhanced_celestials_version": project.enhanced_celestials_version

@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "urkazmoontools",
+  "id": "${mod_id}",
   "version": "${version}",
 
-  "name": "Urkaz Moon Tools",
-  "description": "Tools for detecting the Moon phase.",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
   "authors": [
-    "Urkaz"
+    "${mod_author}"
   ],
   "contributors": [
 	"junshengxie - Simplified Chinese localization"
@@ -15,8 +15,8 @@
     "sources": "https://github.com/Urkaz/UrkazMoonTools"
   },
 
-  "license": "GNU LGPLv3",
-  "icon": "logo.png",
+  "license": "${mod_license}",
+  "icon": "${mod_icon}",
 
   "environment": "*",
   "entrypoints": {

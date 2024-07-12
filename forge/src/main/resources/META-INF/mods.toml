@@ -1,43 +1,41 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
-license="GNU LGPLv3"
-issueTrackerURL="https://github.com/Urkaz/UrkazMoonTools/issues"
+loaderVersion = "[${forge_version_major},)"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/Urkaz/UrkazMoonTools/issues"
 
 [[mods]]
-modId="urkazmoontools"
-version="${version}"
-displayName="Urkaz Moon Tools"
-#updateJSONURL="https://change.me.example.invalid/updates.json"
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
-logoFile="logo.png"
-credits="junshengxie - Simplified Chinese localization"
-authors="Urkaz"
-description='''
-Tools for detecting the Moon phase.
-'''
+modId = "${mod_id}"
+version = "${version}"
+displayName = "${mod_name}"
+#updateJSONURL = "https://change.me.example.invalid/updates.json"
+#displayURL = ""
+logoFile = "${mod_icon}"
+authors = "${mod_author}"
+credits = "junshengxie - Simplified Chinese localization"
+description = '''${mod_description}'''
 
-[[dependencies.urkazmoontools]]
+[[dependencies.${mod_id}]]
     modId = "forge"
     mandatory = true
-    versionRange = "[47.1,)"
+    versionRange = "[${forge_version_major}.${forge_version_minor},)"
     ordering = "NONE"
     side = "BOTH"
 
-[[dependencies.urkazmoontools]]
+[[dependencies.${mod_id}]]
     modId = "minecraft"
     mandatory = true
     versionRange = "[${mc_version},)"
     ordering = "NONE"
     side = "BOTH"
 
-[[dependencies.urkazmoontools]]
+[[dependencies.${mod_id}]]
     modId="enhancedcelestials"
     mandatory=false
     versionRange="[${enhanced_celestials_version},)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.urkazmoontools]]
+[[dependencies.${mod_id}]]
     modId="cloth_config"
     mandatory=false
     versionRange="[${cloth_config_version},)"

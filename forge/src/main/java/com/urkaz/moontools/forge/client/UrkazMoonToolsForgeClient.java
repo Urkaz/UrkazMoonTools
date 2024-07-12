@@ -39,10 +39,10 @@ public class UrkazMoonToolsForgeClient {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         UMTConfigMenu.init();
-        ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK, new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+        ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK.get(), new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
     }
 
     private void onHandleColors(final RegisterColorHandlersEvent.Item event) {
-        event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK);
+        event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK.get());
     }
 }

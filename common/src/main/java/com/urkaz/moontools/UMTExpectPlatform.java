@@ -47,10 +47,4 @@ public class UMTExpectPlatform {
     {
         throw new AssertionError();
     }
-
-    @ExpectPlatform
-    static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks)
-    {
-        throw new AssertionError();
-    }
 }

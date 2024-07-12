@@ -1,6 +1,6 @@
 /*
- * This file is part of "Urkaz Mod Tools".
- * Copyright (C) 2023 Urkaz
+ * This file is part of "UrkazMoonTools".
+ * Copyright (C) 2024 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,13 +21,14 @@ package com.urkaz.moontools.common.modcompat.handler;
 
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModCompatHandler {
 
     private static ModCompatHandler instance;
 
-    List<IMoonToolsModCompat> ModCompatList;
+    List<IMoonToolsModCompat> ModCompatList = new ArrayList<>();
 
     private ModCompatHandler() {
     }

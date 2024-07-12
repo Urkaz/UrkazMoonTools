@@ -1,4 +1,4 @@
-package com.urkaz.moontools.fabric.modcompat.mod;
+package com.urkaz.moontools.fabric.modcompat.mods;
 
 import com.urkaz.moontools.UMTExpectPlatform;
 import com.urkaz.moontools.common.modcompat.handler.IMoonToolsModCompat;

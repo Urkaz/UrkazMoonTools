@@ -22,7 +22,7 @@ package com.urkaz.moontools.fabric;
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
-import com.urkaz.moontools.fabric.modcompat.mod.CrimsonMoonModCompat;
+import com.urkaz.moontools.fabric.modcompat.mods.CrimsonMoonModCompat;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

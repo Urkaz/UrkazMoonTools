@@ -48,22 +48,18 @@ dependencies {
     modImplementation "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
 
     // Enhanced Celestials
-    if (ec_mod_compat_enabled.toBoolean()) {
-        if (test_enable_enhanced_celestials.toBoolean()) {
-            modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
-            modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
-        } else {
-            modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
-        }
+    if (test_enable_enhanced_celestials.toBoolean()) {
+        modImplementation "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
+        modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
+    } else {
+        modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_forge_projectid}:${ec_forge_fileids}"
     }
 
     // Lunar
-    if (lunar_mod_compat_enabled.toBoolean()) {
-        if (test_enable_lunar.toBoolean()) {
-            modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
-        } else {
-            modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
-        }
+    if (test_enable_lunar.toBoolean()) {
+        modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
+    } else {
+        modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
     }
 }
 

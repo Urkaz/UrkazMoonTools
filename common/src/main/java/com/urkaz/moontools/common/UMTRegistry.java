@@ -64,12 +64,12 @@ public class UMTRegistry {
     }
 
     private static RegistrySupplier<Block> registerBlock(String name, Supplier<Block> block) {
-        return registerBlockWithItem(name, block, it -> new BlockItem(it, new Item.Properties()));
+        return registerBlockWithItem(name, block, name + "item", it -> new BlockItem(it, new Item.Properties()));
     }
 
-    private static <B extends Block> RegistrySupplier<Block> registerBlockWithItem(String name, Supplier<B> block, Function<Block, Item> blockItem) {
-        RegistrySupplier<Block> blockSupplier = BLOCKS.register(name, block);
-        ITEMS.register(name, () -> blockItem.apply(blockSupplier.get()));
+    private static <B extends Block> RegistrySupplier<Block> registerBlockWithItem(String blockName, Supplier<B> block, String itemName, Function<Block, Item> blockItem) {
+        RegistrySupplier<Block> blockSupplier = BLOCKS.register(blockName, block);
+        ITEMS.register(itemName, () -> blockItem.apply(blockSupplier.get()));
         return blockSupplier;
     }
 

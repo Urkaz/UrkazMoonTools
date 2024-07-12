@@ -19,7 +19,6 @@
 
 package com.urkaz.moontools.common.block;
 
-import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.common.UMTConfigWrapper;
 import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
@@ -31,6 +30,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -46,7 +46,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class MoonSensorBlock extends BaseEntityBlock {
+public class MoonSensorBlock extends Block implements EntityBlock {
 
     public static final IntegerProperty POWER = BlockStateProperties.POWER;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
@@ -167,6 +167,12 @@ public class MoonSensorBlock extends BaseEntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTickerHelper(type, UMTRegistry.BLOCKENTITY_MOONSENSOR.get(), MoonSensorBlockEntity::serverTick);
+        return level.isClientSide() ? null : createTicker(type, UMTRegistry.BLOCKENTITY_MOONSENSOR.get(), MoonSensorBlockEntity::serverTick);
+    }
+
+    @Nullable
+    @SuppressWarnings("unchecked")
+    public static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTicker(BlockEntityType<A> candidate, BlockEntityType<E> desired, BlockEntityTicker<? super E> ticker) {
+        return desired == candidate ? (BlockEntityTicker<A>) ticker : null;
     }
 }

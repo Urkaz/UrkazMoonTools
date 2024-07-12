@@ -38,11 +38,12 @@ public class UrkazMoonToolsNeoForgeClient {
 
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
-        NeoForge.EVENT_BUS.addListener(UrkazMoonToolsNeoForgeClient::onHandleColors);
+        //NeoForge.EVENT_BUS.addListener(UrkazMoonToolsNeoForgeClient::onHandleColors);
         event.enqueueWork(() -> {
         });
     }
 
+    @SubscribeEvent
     private static void onHandleColors(final RegisterColorHandlersEvent.Item event) {
         event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK.get());
     }

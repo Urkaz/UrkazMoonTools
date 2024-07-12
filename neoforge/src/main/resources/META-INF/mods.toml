@@ -25,28 +25,28 @@ config="${mod_id}-common.mixins.json"
 
 [[dependencies.${mod_id}]]
     modId = "neoforge"
-    mandatory=true
+    type = "required"
     versionRange = "[${neoforge_version_major}.${neoforge_version_minor},)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
     modId = "minecraft"
-    mandatory=true
+    type = "required"
     versionRange = "[${mc_version},)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
     modId="architectury"
-    mandatory=true
+    type = "required"
     versionRange="[${architectury_version},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="cloth_config"
-    mandatory=false
+    type = "optional"
     versionRange="[${cloth_config_version},)"
     ordering="NONE"
     side="BOTH"

@@ -17,7 +17,7 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package com.urkaz.moontols.neoforge;
+package com.urkaz.moontools.neoforge;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
@@ -32,7 +32,7 @@ import java.util.function.BiFunction;
 public class UMTExpectPlatformImpl {
 
     public static String getPlatformName() {
-        return "Forge";
+        return "NeoForge";
     }
 
     public static boolean isModLoaded(String modId) {

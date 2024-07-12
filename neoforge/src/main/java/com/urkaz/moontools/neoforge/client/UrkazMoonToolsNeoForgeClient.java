@@ -17,7 +17,7 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package com.urkaz.moontols.neoforge.client;
+package com.urkaz.moontools.neoforge.client;
 
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.client.MoonClockColorHandler;
@@ -30,20 +30,20 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
-@Mod(value = UMTConstants.MOD_ID)
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD, modid = UMTConstants.MOD_ID)
 public class UrkazMoonToolsNeoForgeClient {
 
     public UrkazMoonToolsNeoForgeClient(IEventBus modBus) {
-        NeoForge.EVENT_BUS.addListener(this::onHandleColors);
     }
 
     @SubscribeEvent
-    public static  void clientSetup(final FMLClientSetupEvent event) {
-        //event.enqueueWork(UrkazMoonToolsClient::clientInit);
+    public static void clientSetup(final FMLClientSetupEvent event) {
+        NeoForge.EVENT_BUS.addListener(UrkazMoonToolsNeoForgeClient::onHandleColors);
+        event.enqueueWork(() -> {
+        });
     }
 
-    private void onHandleColors(final RegisterColorHandlersEvent.Item event) {
-        event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK);
+    private static void onHandleColors(final RegisterColorHandlersEvent.Item event) {
+        event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK.get());
     }
 }

@@ -17,16 +17,15 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package com.urkaz.moontols.neoforge;
+package com.urkaz.moontools.neoforge;
 
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
 @Mod(UMTConstants.MOD_ID)
-public class UrkazMoonToolsNeoForge {
-    public UrkazMoonToolsNeoForge(IEventBus modEventBus) {
+public final class UrkazMoonToolsNeoForge {
+    public UrkazMoonToolsNeoForge() {
         coreInit();
         registryInit();
     }
@@ -36,9 +35,6 @@ public class UrkazMoonToolsNeoForge {
     }
 
     private void registryInit() {
-        //bind(Registries.BLOCK, UMTRegistry::registerBlocks);
-        //bind(Registries.ITEM, UMTRegistry::registerItems);
-        //bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerTiles);
-        //bind(Registries.CREATIVE_MODE_TAB, UMTRegistry::registerCreativeTabs);
+        UrkazMoonTools.registryInit();
     }
 }

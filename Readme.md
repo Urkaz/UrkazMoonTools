@@ -2,7 +2,7 @@
 <p align="center">
     <img src="https://img.shields.io/badge/Minecraft-1.20.1-00AA00?style=flat-square">
     <img src="https://img.shields.io/badge/Fabric-0.14.22-yellow?style=flat-square">
-    <img src="https://img.shields.io/badge/Forge-47.1.0-orange?style=flat-square">
+    <img src="https://img.shields.io/badge/Forge-47.1.0-de9e59?style=flat-square">
 </p>
 <p align="center">
     <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://img.shields.io/curseforge/dt/362825?style=flat-square&logo=curseforge&label=CurseForge&color=f16436"></a>

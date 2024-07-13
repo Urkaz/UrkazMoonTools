@@ -65,7 +65,7 @@ public class MoonClockItem extends Item {
             }
         }
         else {
-            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, false));
+            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, true));
         }
     }
 

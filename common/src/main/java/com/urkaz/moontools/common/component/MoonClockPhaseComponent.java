@@ -30,7 +30,7 @@ public record MoonClockPhaseComponent(int phase, boolean hasData) {
                 return this;
         }
         else {
-            return new MoonClockPhaseComponent(0, false);
+            return new MoonClockPhaseComponent(0, true);
         }
     }
 

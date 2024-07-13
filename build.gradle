@@ -133,12 +133,16 @@ subprojects {
         project {
             version = "$project.version"
             releaseType = "release"
-            gameVersions = ["1.20.1"]
+            gameVersions = ["$project.minecraft_version"]
 
             mainPublication tasks.remapJar
 
             relations {
                 depends {
+                    curseforge = "architectury-api"
+                    modrinth = "architectury-api"
+                }
+                optional {
                     curseforge = "cloth-config"
                     modrinth = "cloth-config"
                 }

@@ -1,12 +1,14 @@
 <h1>Urkaz Moon Tools</h1>
 <p align="center">
-    <img src="https://img.shields.io/badge/Minecraft-1.20.1-00AA00?style=flat-square">
-    <img src="https://img.shields.io/badge/Fabric-0.14.22-yellow?style=flat-square">
-    <img src="https://img.shields.io/badge/Forge-47.1.0-de9e59?style=flat-square">
+    <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://img.shields.io/curseforge/dt/362825?style=flat-square&logo=curseforge&label=CurseForge&color=f16436" alt="CurseForge download count"></a>
+    <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Modrinth&color=5da426" alt="Modrinth download count"></a>
 </p>
 <p align="center">
-    <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://img.shields.io/curseforge/dt/362825?style=flat-square&logo=curseforge&label=CurseForge&color=f16436"></a>
-    <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Modrinth&color=5da426"></a>
+    <img src="https://img.shields.io/badge/Minecraft-1.20.2-00AA00?style=flat-square" alt="Minecraft 1.20.2">
+    <img src="https://img.shields.io/badge/Fabric-0.16.0-yellow?style=flat-square" alt="Fabric 0.16.0">
+    <img src="https://img.shields.io/badge/NeoForge-20.2.88-d7742f?style=flat-square" alt="NeoForge 20.2.88">
+    <img src="https://img.shields.io/badge/Forge-48.1.0-de9e59?style=flat-square" alt="Forge 48.1.0">
+</p>
 <p>
     This mod adds one item and one block that helps to see and detect the current Moon Phase.
 </p>
@@ -47,7 +49,7 @@
     <tr>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/enhanced-celestials.png" width="100" height="100"></td>
         <td width="20%" align="center">
-            <b>Enhanced Celestials</b><br>(1.16.4 - 1.20.1)
+            <b>Enhanced Celestials</b><br>(1.16.5 - 1.20.1)
         </td>
         <td width="50%" rowspan="3">
             The moon icon in the Lunar Clock will be tinted of the same color as the Moon.<br><br>In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any event.
@@ -103,11 +105,165 @@
 
 <table width="100%">
     <tr>
-        <td width="50%" align="center">1.18.3 - 1.20.1</td>
+        <td width="33%" align="center">1.20.1 - 1.20.6<br>Required</td>
+        <td width="33%" align="center">1.20.1 - 1.20.6<br>Required</td>
+        <td width="33%" align="center">1.18.3 - 1.19.4<br>Optional</td>
     </tr>
     <tr>
-        <td width="50%" align="center">Cloth Config API<br>
+        <td width="33%" align="center">Architectury API<br>
+                <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
+        </td>
+        <td width="33%" align="center">Cloth Config API<br>
                 <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
         </td>
+        <td width="33%" align="center">Cloth Config API<br>
+                <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
+        </td>
+    </tr>
+</table>
+
+<h2>Compatibility table</h2>
+
+<ul>
+  <li>❗ = Required to work</li>
+  <li>❔ = Optional</li>
+  <li><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"> = Mod compatibility</li>
+  <li><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"> = Legacy compatibility</li>
+</ul>  
+
+<table width="100%">
+    <tr>
+        <td align="center"></td>
+        <td align="center">1.12.2</td>
+        <td align="center">1.16.5</td>
+        <td align="center">1.18.2</td>
+        <td align="center">1.19</td>
+        <td align="center">1.19.1</td>
+        <td align="center">1.19.2</td>
+        <td align="center">1.19.3</td>
+        <td align="center">1.19.4</td>
+        <td align="center">1.20.1</td>
+        <td align="center">1.20.2</td>
+        <td align="center">1.20.4</td>
+        <td align="center">1.20.6</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="20" height="20"> Cloth Config API
+        </td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❔</td>
+        <td align="center">❔</td>
+        <td align="center">❔</td>
+        <td align="center">❔</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="20" height="20"> Architectury API
+        </td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/enhanced-celestials.png" width="20" height="20"> Enhanced Celestials
+        </td>
+        <td align="center"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+    </tr>
+   <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/lunar.png" width="20" height="20"> Lunar
+        </td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/crimson_moon.png" width="20" height="20"> Crimson Moon
+        </td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/bloodmoon.png" width="20" height="20"> Bloodmoon
+        </td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/nyx.png" width="20" height="20"> Nyx
+        </td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"></td>
     </tr>
 </table>

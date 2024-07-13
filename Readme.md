@@ -4,10 +4,10 @@
     <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Modrinth&color=5da426" alt="Modrinth download count"></a>
 </p>
 <p align="center">
-    <img src="https://img.shields.io/badge/Minecraft-1.20.1-00AA00?style=flat-square" alt="Minecraft 1.20.1">
+    <img src="https://img.shields.io/badge/Minecraft-1.20.2-00AA00?style=flat-square" alt="Minecraft 1.20.2">
     <img src="https://img.shields.io/badge/Fabric-0.16.0-yellow?style=flat-square" alt="Fabric 0.16.0">
-    <img src="https://img.shields.io/badge/Forge-47.3.5-de9e59?style=flat-square" alt="Forge 47.3.5">
-    <!img src="https://img.shields.io/badge/NeoForge-21.0.61-d7742f?style=flat-square" alt="NeoForge 1.20.1">
+    <img src="https://img.shields.io/badge/NeoForge-20.2.88-d7742f?style=flat-square" alt="NeoForge 20.2.88">
+    <img src="https://img.shields.io/badge/Forge-48.1.0-de9e59?style=flat-square" alt="Forge 48.1.0">
 </p>
 <p>
     This mod adds one item and one block that helps to see and detect the current Moon Phase.

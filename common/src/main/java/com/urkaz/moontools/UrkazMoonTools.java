@@ -21,6 +21,7 @@ package com.urkaz.moontools;
 
 import com.urkaz.moontools.common.UMTConfigWrapper;
 import com.urkaz.moontools.common.UMTRegistry;
+import com.urkaz.moontools.common.component.UMTDataComponents;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import com.urkaz.moontools.common.modcompat.mods.EnhancedCelestialsModCompat;
 import com.urkaz.moontools.common.modcompat.mods.LunarModCompat;
@@ -44,5 +45,6 @@ public class UrkazMoonTools {
         UMTRegistry.ITEMS.register();
         UMTRegistry.BLOCK_ENTITIES.register();
         UMTRegistry.CREATIVE_MODE_TABS.register();
+        UMTDataComponents.DATA_COMPONENT_TYPES.register();
     }
 }

@@ -19,54 +19,57 @@
 
 package com.urkaz.moontools.client;
 
+import com.urkaz.moontools.common.component.MoonClockPhaseComponent;
+import com.urkaz.moontools.common.component.UMTDataComponents;
 import com.urkaz.moontools.common.item.MoonClockItem;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class MoonPhaseResource implements ClampedItemPropertyFunction {
 
     @Override
-    public float unclampedCall(ItemStack stack, @Nullable ClientLevel worldIn, @Nullable LivingEntity entityIn, int holderID) {
+    public float unclampedCall(ItemStack itemStack, @Nullable ClientLevel level, @Nullable LivingEntity entityIn, int holderID) {
         boolean flag = entityIn != null;
-        Entity entity = flag ? entityIn : stack.getFrame();
+        Entity entity = flag ? entityIn : itemStack.getFrame();
 
-        Level world = worldIn;
-        if (worldIn == null && entity != null) {
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        if(phaseComponent != null) {
+            phaseComponent = phaseComponent.tick(level);
+        }
+
+        Level world = level;
+        if (level == null && entity != null) {
             world = entity.level();
         }
-        int moonFactor = (int) worldCall(world);
+        int moonFactor = (int) getMoonFactor(phaseComponent);
         int color = ModCompatHandler.getInstance().getLunarEventColor(world);
 
-        ((MoonClockItem) stack.getItem()).setColor(color);
-        return moonFactor/10.f;
+        ((MoonClockItem) itemStack.getItem()).setColor(color);
+        return moonFactor / 10.f;
     }
 
-    public float worldCall(@Nullable Level worldIn) {
-        if (worldIn == null) {
-            return 0;
-        } else {
-            int moonFactor;
-            ResourceLocation worldResourceLocation = worldIn.dimension().location();
-            ResourceLocation overworldResourceLocation = BuiltinDimensionTypes.OVERWORLD.location();
+    public float getMoonFactor(@Nullable MoonClockPhaseComponent phaseComponent) {
+        int moonFactor = 0;
+        boolean hasData = true;
 
-            //check if the dimension is the OVERWORLD
-            if (worldResourceLocation.equals(overworldResourceLocation)) {
-                moonFactor = worldIn.dimensionType().moonPhase(worldIn.getLevelData().getDayTime());
-            } else {
-                double randomDouble = Math.random();
-                randomDouble = randomDouble * 8;
-                moonFactor = (int) randomDouble;
-            }
-            return moonFactor;
+        if (phaseComponent != null) {
+            moonFactor = phaseComponent.phase();
+            hasData = phaseComponent.hasData();
         }
+
+        if (!hasData) {
+            double randomDouble = Math.random();
+            randomDouble = randomDouble * 8;
+            moonFactor = (int) randomDouble;
+        }
+
+        return moonFactor;
     }
 
 

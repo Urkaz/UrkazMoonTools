@@ -19,11 +19,11 @@
 
 package com.urkaz.moontools.common.item;
 
+import com.urkaz.moontools.common.component.MoonClockPhaseComponent;
+import com.urkaz.moontools.common.component.UMTDataComponents;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -31,9 +31,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.LodestoneTracker;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.jetbrains.annotations.Nullable;
@@ -54,39 +52,49 @@ public class MoonClockItem extends Item {
             playerIn.sendSystemMessage(Component.literal(getTooltipText(worldIn)));
             playerIn.swing(handIn);
         }
-        return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
+        return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
     }
 
     @Override
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean bl) {
-//        if (level instanceof ServerLevel serverLevel) {
-//            LodestoneTracker lodestoneTracker = (LodestoneTracker)itemStack.get(DataComponents.LODESTONE_TRACKER);
-//            if (lodestoneTracker != null) {
-//                LodestoneTracker lodestoneTracker2 = lodestoneTracker.tick(serverLevel);
-//                if (lodestoneTracker2 != lodestoneTracker) {
-//                    itemStack.set(DataComponents.LODESTONE_TRACKER, lodestoneTracker2);
-//                }
-//            }
-//        }
-
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        if (phaseComponent != null) {
+            MoonClockPhaseComponent phaseComponent2 = phaseComponent.tick(level);
+            if (phaseComponent2 != phaseComponent) {
+                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), phaseComponent2);
+            }
+        }
+        else {
+            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, false));
+        }
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext
+            tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, tooltipContext, tooltip, tooltipFlag);
-//        if (worldIn != null) {
-//            tooltip.add(Component.literal(getTooltipText(worldIn)));
-//        }
+
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        tooltip.add(Component.literal(getTooltipText(phaseComponent)));
     }
 
-    public String getTooltipText(Level worldIn) {
-        ResourceLocation worldResourceLocation = worldIn.dimension().location();
+    public String getTooltipText(Level level) {
+        ResourceLocation worldResourceLocation = level.dimension().location();
         ResourceLocation overworldResourceLocation = BuiltinDimensionTypes.OVERWORLD.location();
 
-        //check if the dimension is the OVERWORLD
-        if (worldResourceLocation.equals(overworldResourceLocation)) {
+        return getTooltipText(MoonClockPhaseComponent.getMoonPhaseInteger(level), worldResourceLocation.equals(overworldResourceLocation));
+    }
+
+    public String getTooltipText(@Nullable MoonClockPhaseComponent phaseComponent) {
+        return getTooltipText(
+                phaseComponent != null ? phaseComponent.phase() : 0,
+                phaseComponent != null && phaseComponent.hasData());
+    }
+
+    public String getTooltipText(int phase, boolean hasData) {
+        if (hasData) {
             return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
-                    + I18n.get("urkazmoontools.moonclock.phase" + worldIn.dimensionType().moonPhase(worldIn.getLevelData().getDayTime()));
+                    + I18n.get("urkazmoontools.moonclock.phase" + phase);
         } else {
             return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
                     + I18n.get("urkazmoontools.moonclock.nodata");

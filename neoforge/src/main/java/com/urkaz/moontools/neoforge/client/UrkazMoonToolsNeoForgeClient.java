@@ -43,7 +43,6 @@ public class UrkazMoonToolsNeoForgeClient {
 
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
-        //NeoForge.EVENT_BUS.addListener(UrkazMoonToolsNeoForgeClient::onHandleColors);
         event.enqueueWork(() -> {
             ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK.get(), new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
         });

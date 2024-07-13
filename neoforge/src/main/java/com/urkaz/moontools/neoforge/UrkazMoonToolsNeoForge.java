@@ -23,7 +23,7 @@ import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
 import net.neoforged.fml.common.Mod;
 
-@Mod(UMTConstants.MOD_ID)
+@Mod(value = UMTConstants.MOD_ID)
 public final class UrkazMoonToolsNeoForge {
     public UrkazMoonToolsNeoForge() {
         coreInit();

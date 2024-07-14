@@ -122,7 +122,7 @@ unifiedPublishing {
             curseforge {
                 token = project.hasProperty("cuseforge_api_key") ? project.property("cuseforge_api_key") : System.getenv("cuseforge_api_key")
                 id = "${project.curseforge_id}"
-                gameVersions.addAll "Java 17"
+                gameVersions.addAll "Java 21"
             }
         }
 

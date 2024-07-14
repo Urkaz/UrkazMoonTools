@@ -30,7 +30,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 @OnlyIn(Dist.CLIENT)
 public class UMTConfigMenu {
     public static void init() {
-        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG)) {
+        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG_ID)) {
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
                     () -> new ConfigScreenHandler.ConfigScreenFactory((mc, parent) -> AutoConfig.getConfigScreen(UMTConfigWrapper.UMTConfig.class, parent).get())
             );

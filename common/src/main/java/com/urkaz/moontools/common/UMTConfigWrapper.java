@@ -21,23 +21,18 @@ package com.urkaz.moontools.common;
 
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UMTExpectPlatform;
-import com.urkaz.moontools.common.modcompat.handler.IMoonToolsModCompat;
-import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UMTConfigWrapper {
 
     private static UMTConfig instance;
-    public static final String CLOTH_CONFIG = "cloth-config";
+    public static final String CLOTH_CONFIG_ID = "cloth-config";
 
     public static @Nullable UMTConfig getConfig() {
-        if (instance == null && UMTExpectPlatform.isModLoaded(CLOTH_CONFIG)) {
+        if (instance == null && UMTExpectPlatform.isModLoaded(CLOTH_CONFIG_ID)) {
             instance = new UMTConfig();
         }
         return instance;

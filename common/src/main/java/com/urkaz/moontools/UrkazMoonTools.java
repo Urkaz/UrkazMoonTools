@@ -35,8 +35,12 @@ public class UrkazMoonTools {
             UMTConfigWrapper.setConfig(AutoConfig.getConfigHolder(UMTConfigWrapper.UMTConfig.class).getConfig());
         }
 
-        ModCompatHandler.getInstance().registerModCompat(new EnhancedCelestialsModCompat());
-        ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
+        if (UMTExpectPlatform.isModLoaded(EnhancedCelestialsModCompat.MOD_ENHANCED_CELESTIALS_ID)) {
+            ModCompatHandler.getInstance().registerModCompat(new EnhancedCelestialsModCompat());
+        }
+        if (UMTExpectPlatform.isModLoaded(LunarModCompat.MOD_LUNAR_ID)) {
+            ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
+        }
     }
 
     public static void registryInit() {

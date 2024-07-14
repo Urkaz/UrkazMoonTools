@@ -30,13 +30,17 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 public class UrkazMoonTools {
 
     public static void init() {
-        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG)) {
+        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG_ID)) {
             AutoConfig.register(UMTConfigWrapper.UMTConfig.class, GsonConfigSerializer::new);
             UMTConfigWrapper.setConfig(AutoConfig.getConfigHolder(UMTConfigWrapper.UMTConfig.class).getConfig());
         }
 
-        ModCompatHandler.getInstance().registerModCompat(new EnhancedCelestialsModCompat());
-        ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
+        if (UMTExpectPlatform.isModLoaded(EnhancedCelestialsModCompat.MOD_ENHANCED_CELESTIALS_ID)) {
+            ModCompatHandler.getInstance().registerModCompat(new EnhancedCelestialsModCompat());
+        }
+        if (UMTExpectPlatform.isModLoaded(LunarModCompat.MOD_LUNAR_ID)) {
+            ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
+        }
     }
 
     public static void registryInit() {

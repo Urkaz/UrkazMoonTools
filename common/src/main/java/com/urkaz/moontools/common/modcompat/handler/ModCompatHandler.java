@@ -58,7 +58,7 @@ public class ModCompatHandler {
         for (IMoonToolsModCompat iMoonToolsModCompat : ModCompatList) {
             int color = iMoonToolsModCompat.getLunarEventColor(world);
             if (color != 0xffffffff)
-                break;
+                return color;
         }
         return 0xffffffff;
     }

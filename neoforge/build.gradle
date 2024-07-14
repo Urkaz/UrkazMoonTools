@@ -91,6 +91,7 @@ publishing {
     publications {
         mavenNeoForge(MavenPublication) {
             artifactId = base.archivesName.get()
+            version = rootProject.version + "-mc" + minecraft_version
             from components.java
         }
     }

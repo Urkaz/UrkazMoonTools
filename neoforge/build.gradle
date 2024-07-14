@@ -94,25 +94,25 @@ publishing {
 unifiedPublishing {
     project {
         displayName = "[NeoForge $rootProject.minecraft_version] $project.mod_name v$project.version"
+        gameLoaders = ["neoforge"]
         version = "$project.version"
         releaseType = "release"
-        gameVersions = ["1.21"]
-        gameLoaders = ["neoforge"]
+        gameVersions = ["$project.minecraft_version"]
 
         mainPublication tasks.remapJar
 
-        /*relations {
+        relations {
             depends {
+                curseforge = "architectury-api"
+                modrinth = "architectury-api"
+            }
+            optional {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
             }
-            optional {
-                curseforge = "enhanced-celestials"
-                modrinth = "enhanced-celestials"
-            }
-        }*/
+        }
 
-        /*if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {
+        if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {
             curseforge {
                 token = project.hasProperty("cuseforge_api_key") ? project.property("cuseforge_api_key") : System.getenv("cuseforge_api_key")
                 id = "${project.curseforge_id}"
@@ -125,7 +125,7 @@ unifiedPublishing {
                 token = project.hasProperty("modrinth_api_key") ? project.property("modrinth_api_key") : System.getenv("modrinth_api_key")
                 id = "${project.modrinth_id}"
             }
-        }*/
+        }
     }
 }
 

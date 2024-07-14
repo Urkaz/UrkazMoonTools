@@ -32,7 +32,6 @@
     ]
   },
   "mixins": [
-    "urkazmoontools.mixins.json",
     "urkazmoontools-common.mixins.json"
   ],
   "depends": {

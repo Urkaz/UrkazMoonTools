@@ -128,16 +128,55 @@ unifiedPublishing {
     project {
         displayName = "[Fabric $rootProject.minecraft_version] $project.mod_name v$project.version"
         gameLoaders = ["fabric"]
+        version = "$project.version"
+        releaseType = "release"
+        gameVersions = ["$project.minecraft_version"]
+
+        mainPublication tasks.remapJar
 
         relations {
+            depends {
+                curseforge = "architectury-api"
+                modrinth = "architectury-api"
+            }
+            optional {
+                curseforge = "cloth-config"
+                modrinth = "cloth-config"
+            }
             optional {
                 modrinth = "modmenu"
+            }
+            if (cm_mod_compat_enabled.toBoolean()) {
+                optional {
+                    curseforge = "crimson-moon"
+                }
+            }
+            if (lunar_mod_compat_enabled.toBoolean()) {
+                optional {
+                    curseforge = "lunar"
+                    modrinth = "lunar"
+                }
             }
             if (ec_mod_compat_enabled.toBoolean()) {
                 optional {
                     curseforge = "enhanced-celestials-fabric"
                     modrinth = "enhanced-celestials"
                 }
+            }
+        }
+
+        if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {
+            curseforge {
+                token = project.hasProperty("cuseforge_api_key") ? project.property("cuseforge_api_key") : System.getenv("cuseforge_api_key")
+                id = "${project.curseforge_id}"
+                gameVersions.addAll "Java 17"
+            }
+        }
+
+        if (project.hasProperty("modrinth_api_key") || System.getenv("modrinth_api_key") != null) {
+            modrinth {
+                token = project.hasProperty("modrinth_api_key") ? project.property("modrinth_api_key") : System.getenv("modrinth_api_key")
+                id = "${project.modrinth_id}"
             }
         }
     }

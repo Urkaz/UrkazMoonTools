@@ -31,7 +31,7 @@ import net.fabricmc.api.Environment;
 public class UrkazMoonToolsModMenu implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG))
+        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG_ID))
             return parent -> AutoConfig.getConfigScreen(UMTConfigWrapper.UMTConfig.class, parent).get();
         return null;
     }

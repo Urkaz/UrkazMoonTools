@@ -15,7 +15,7 @@ loom {
         //extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
         mixinConfig "urkazmoontools-common.mixins.json"
-        mixinConfig "urkazmoontools.mixins.json"
+        //mixinConfig "urkazmoontools.mixins.json"
     }
 }
 
@@ -88,6 +88,11 @@ processResources {
 }
 
 shadowJar {
+    exclude "fabric.mod.json"
+    exclude "architectury.common.json"
+    exclude "urkazmoontools.accesswidener"
+    exclude "urkazmoontools.mixins.json"
+
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'
 }

@@ -13,7 +13,7 @@ architectury {
 allprojects {
     def runNumber = (System.getenv("GITHUB_RUN_NUMBER") == null ? "9999" : System.getenv("GITHUB_RUN_NUMBER"))
 
-    version = rootProject.mod_version + "-(" + runNumber + ")"
+    version = rootProject.mod_version + "-" + runNumber
     group = rootProject.maven_group
 
     gradle.projectsEvaluated {
@@ -81,7 +81,7 @@ subprojects {
 
     jar {
         from(rootProject.file("LICENSE")) {
-            rename { "${it}_${mod_name}" }
+            rename { "${it}_${mod_id}" }
         }
         manifest {
             attributes([

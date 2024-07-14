@@ -66,15 +66,11 @@ dependencies {
     if (test_enable_crimson_moon.toBoolean()) {
         modImplementation "curse.maven:crimson-moon-${cm_fabric_projectid}:${cm_fabric_fileids}"
         modImplementation "dev.draylar:world-data:${cm_world_data_ver}"
-        include "dev.draylar:world-data:${cm_world_data_ver}"
         modImplementation "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
-        include "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
     } else {
         modCompileOnly "curse.maven:crimson-moon-${cm_fabric_projectid}:${cm_fabric_fileids}"
         modCompileOnly "dev.draylar:world-data:${cm_world_data_ver}"
-        include "dev.draylar:world-data:${cm_world_data_ver}"
         modCompileOnly "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
-        include "draylar.omega-config:omega-config-base:${cm_omega_config_ver}"
     }
 
     // Lunar
@@ -104,6 +100,8 @@ processResources {
 
 shadowJar {
     exclude "architectury.common.json"
+    exclude "urkazmoontools.accesswidener"
+    exclude "urkazmoontools.mixins.json"
 
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'

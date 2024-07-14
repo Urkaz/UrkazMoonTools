@@ -9,6 +9,7 @@ on:
       - 'common/**'
       - 'fabric/**'
       - 'forge/**'
+      - 'neoforge/**'
       - '**.gradle'
       - '**.properties'
 

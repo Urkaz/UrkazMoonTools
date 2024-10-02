@@ -37,7 +37,7 @@ description = '''${mod_description}'''
 
 [[dependencies.${mod_id}]]
     modId="cloth_config"
-    mandatory=false
+    mandatory=true
     versionRange="[${cloth_config_version},)"
     ordering="NONE"
     side="BOTH"

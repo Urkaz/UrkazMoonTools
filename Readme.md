@@ -5,8 +5,8 @@
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/Minecraft-1.20.6-00AA00?style=flat-square" alt="Minecraft 1.20.6">
-    <img src="https://img.shields.io/badge/Fabric-0.16.0-yellow?style=flat-square" alt="Fabric 0.16.0">
-    <img src="https://img.shields.io/badge/NeoForge-20.6.119-d7742f?style=flat-square" alt="NeoForge 20.6.119">
+    <img src="https://img.shields.io/badge/Fabric-0.16.5-yellow?style=flat-square" alt="Fabric 0.16.5">
+    <img src="https://img.shields.io/badge/NeoForge-20.6.121-d7742f?style=flat-square" alt="NeoForge 20.6.121">
     <!img src="https://img.shields.io/badge/Forge-49.1.4-de9e59?style=flat-square" alt="Forge 49.1.4">
 </p>
 <p>
@@ -106,15 +106,11 @@
 <table width="100%">
     <tr>
         <td width="33%" align="center">1.20.1 - 1.20.6<br>Required</td>
-        <td width="33%" align="center">1.20.1 - 1.20.6<br>Optional</td>
-        <td width="33%" align="center">1.18.3 - 1.19.4<br>Required</td>
+        <td width="33%" align="center">1.18.3 - 1.20.6<br>Required</td>
     </tr>
     <tr>
         <td width="33%" align="center">Architectury API<br>
                 <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
-        </td>
-        <td width="33%" align="center">Cloth Config API<br>
-                <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
         </td>
         <td width="33%" align="center">Cloth Config API<br>
                 <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>

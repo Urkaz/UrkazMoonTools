@@ -31,7 +31,7 @@ import net.minecraft.resources.ResourceLocation;
 public class UrkazMoonToolsFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        FabricModelPredicateProviderRegistry.register(UMTRegistry.ITEM_MOONCLOCK.get(), new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+        FabricModelPredicateProviderRegistry.register(UMTRegistry.ITEM_MOONCLOCK.get(), ResourceLocation.fromNamespaceAndPath(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
         ColorProviderRegistry.ITEM.register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK.get());
     }
 }

@@ -19,6 +19,7 @@
 
 package com.urkaz.moontools.forge;
 
+import com.urkaz.moontools.UMTExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -43,5 +44,10 @@ public class UMTExpectPlatformImpl {
 
     public static boolean isDevelopmentEnvironment() {
         return !FMLLoader.isProduction();
+    }
+
+    public static boolean isClothConfigLoaded() {
+        String CLOTH_CONFIG_ID = "cloth_config";
+        return UMTExpectPlatform.isModLoaded(CLOTH_CONFIG_ID);
     }
 }

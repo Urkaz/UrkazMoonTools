@@ -47,4 +47,10 @@ public class UMTExpectPlatform {
     {
         throw new AssertionError();
     }
+
+    @ExpectPlatform
+    public static boolean isClothConfigLoaded()
+    {
+        throw new AssertionError();
+    }
 }

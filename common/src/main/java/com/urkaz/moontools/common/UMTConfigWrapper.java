@@ -29,10 +29,9 @@ import org.jetbrains.annotations.Nullable;
 public class UMTConfigWrapper {
 
     private static UMTConfig instance;
-    public static final String CLOTH_CONFIG_ID = "cloth-config";
 
     public static @Nullable UMTConfig getConfig() {
-        if (instance == null && UMTExpectPlatform.isModLoaded(CLOTH_CONFIG_ID)) {
+        if (instance == null && UMTExpectPlatform.isClothConfigLoaded()) {
             instance = new UMTConfig();
         }
         return instance;

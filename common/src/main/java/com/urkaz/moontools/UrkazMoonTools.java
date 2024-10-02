@@ -30,7 +30,7 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 public class UrkazMoonTools {
 
     public static void init() {
-        if (UMTExpectPlatform.isModLoaded(UMTConfigWrapper.CLOTH_CONFIG_ID)) {
+        if (UMTExpectPlatform.isClothConfigLoaded()) {
             AutoConfig.register(UMTConfigWrapper.UMTConfig.class, GsonConfigSerializer::new);
             UMTConfigWrapper.setConfig(AutoConfig.getConfigHolder(UMTConfigWrapper.UMTConfig.class).getConfig());
         }

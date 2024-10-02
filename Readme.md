@@ -106,15 +106,11 @@
 <table width="100%">
     <tr>
         <td width="33%" align="center">1.20.1 - 1.20.6<br>Required</td>
-        <td width="33%" align="center">1.20.1 - 1.20.6<br>Optional</td>
-        <td width="33%" align="center">1.18.3 - 1.19.4<br>Required</td>
+        <td width="33%" align="center">1.18.3 - 1.20.6<br>Required</td>
     </tr>
     <tr>
         <td width="33%" align="center">Architectury API<br>
                 <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/architectury.png" width="100" height="100"></a>
-        </td>
-        <td width="33%" align="center">Cloth Config API<br>
-                <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>
         </td>
         <td width="33%" align="center">Cloth Config API<br>
                 <a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/cloth-config.png" width="100" height="100"></a>

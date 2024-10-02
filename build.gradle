@@ -1,7 +1,7 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
     // Uses Architectury plugin https://github.com/architectury/architectury-plugin
-    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false // Uses Architectury Loom
+    id "dev.architectury.loom" version "1.7-SNAPSHOT" apply false // Uses Architectury Loom
     id "me.shedaniel.unified-publishing" version "0.1.+" apply false // Uses Unified Publishing plugin
     id "org.cadixdev.licenser" version "0.6.1" apply false // Uses Licensing plugin
 }

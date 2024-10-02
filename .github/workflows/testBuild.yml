@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     push:
     branches:
-      - '1.20.6'
+      - '1.21.1'
     paths:
       - 'common/**'
       - 'fabric/**'
@@ -15,8 +15,8 @@ on:
 
 
 jobs:
-  build_1_20_6:
-    name: Build 1.20.6
+  build_1_21:
+    name: Build 1.21
     runs-on: ubuntu-latest
     steps:
       - name: Set up JDK 21
@@ -27,6 +27,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: '1.20.6'
+          ref: '1.21.1'
       - name: Build
         run: ./gradlew build --stacktrace

@@ -43,7 +43,7 @@ config="${mod_id}-common.mixins.json"
 
 [[dependencies.${mod_id}]]
     modId="cloth_config"
-    type = "optional"
+    type = "required"
     versionRange="[${cloth_config_version},)"
     ordering="NONE"
     side="BOTH"

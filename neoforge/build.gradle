@@ -51,7 +51,11 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 
     // Cloth Config
-    modImplementation "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    if (test_enable_cloth_config.toBoolean()) {
+        modImplementation "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    } else {
+        modCompileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    }
 }
 
 processResources {
@@ -112,7 +116,7 @@ unifiedPublishing {
                 curseforge = "architectury-api"
                 modrinth = "architectury-api"
             }
-            optional {
+            depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
             }

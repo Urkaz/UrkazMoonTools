@@ -137,7 +137,7 @@ unifiedPublishing {
                 curseforge = "architectury-api"
                 modrinth = "architectury-api"
             }
-            optional {
+            depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
             }

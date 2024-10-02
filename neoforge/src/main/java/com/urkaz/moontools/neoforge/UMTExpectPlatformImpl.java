@@ -19,6 +19,7 @@
 
 package com.urkaz.moontools.neoforge;
 
+import com.urkaz.moontools.UMTExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -47,5 +48,10 @@ public class UMTExpectPlatformImpl {
 
     static public <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
         return BlockEntityType.Builder.of(func::apply, blocks).build(null);
+    }
+
+    public static boolean isClothConfigLoaded() {
+        String CLOTH_CONFIG_ID = "cloth_config";
+        return UMTExpectPlatform.isModLoaded(CLOTH_CONFIG_ID);
     }
 }

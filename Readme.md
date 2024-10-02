@@ -5,8 +5,8 @@
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/Minecraft-1.20.1-00AA00?style=flat-square" alt="Minecraft 1.20.1">
-    <img src="https://img.shields.io/badge/Fabric-0.16.0-yellow?style=flat-square" alt="Fabric 0.16.0">
-    <img src="https://img.shields.io/badge/Forge-47.3.5-de9e59?style=flat-square" alt="Forge 47.3.5">
+    <img src="https://img.shields.io/badge/Fabric-0.16.5-yellow?style=flat-square" alt="Fabric 0.16.5">
+    <img src="https://img.shields.io/badge/Forge-47.3.10-de9e59?style=flat-square" alt="Forge 47.3.10">
     <!img src="https://img.shields.io/badge/NeoForge-21.0.61-d7742f?style=flat-square" alt="NeoForge 1.20.1">
 </p>
 <p>

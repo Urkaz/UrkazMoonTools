@@ -105,8 +105,8 @@
 
 <table width="100%">
     <tr>
-        <td width="33%" align="center">1.20.1 - 1.20.6<br>Required</td>
-        <td width="33%" align="center">1.18.3 - 1.20.6<br>Required</td>
+        <td width="33%" align="center">1.20.1 - 1.21(.1)<br>Required</td>
+        <td width="33%" align="center">1.18.3 - 1.21(.1)<br>Required</td>
     </tr>
     <tr>
         <td width="33%" align="center">Architectury API<br>
@@ -142,7 +142,7 @@
         <td align="center">1.20.2</td>
         <td align="center">1.20.4</td>
         <td align="center">1.20.6</td>
-        <td align="center">1.21.0</td>
+        <td align="center">1.21(.1)</td>
     </tr>
     <tr>
         <td>

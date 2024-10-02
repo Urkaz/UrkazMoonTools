@@ -19,6 +19,7 @@
 
 package com.urkaz.moontools.fabric;
 
+import com.urkaz.moontools.UMTExpectPlatform;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.BlockPos;
@@ -41,5 +42,10 @@ public class UMTExpectPlatformImpl {
 
     public static boolean isDevelopmentEnvironment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+    public static boolean isClothConfigLoaded() {
+        String CLOTH_CONFIG_ID = "cloth-config";
+        return UMTExpectPlatform.isModLoaded(CLOTH_CONFIG_ID);
     }
 }

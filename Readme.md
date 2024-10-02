@@ -4,9 +4,9 @@
     <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Modrinth&color=5da426" alt="Modrinth download count"></a>
 </p>
 <p align="center">
-    <img src="https://img.shields.io/badge/Minecraft-1.20.6-00AA00?style=flat-square" alt="Minecraft 1.20.6">
+    <img src="https://img.shields.io/badge/Minecraft-1.21.1-00AA00?style=flat-square" alt="Minecraft 1.21.1">
     <img src="https://img.shields.io/badge/Fabric-0.16.5-yellow?style=flat-square" alt="Fabric 0.16.5">
-    <img src="https://img.shields.io/badge/NeoForge-20.6.121-d7742f?style=flat-square" alt="NeoForge 20.6.121">
+    <img src="https://img.shields.io/badge/NeoForge-21.0.167-d7742f?style=flat-square" alt="NeoForge 21.0.167">
     <!img src="https://img.shields.io/badge/Forge-49.1.4-de9e59?style=flat-square" alt="Forge 49.1.4">
 </p>
 <p>

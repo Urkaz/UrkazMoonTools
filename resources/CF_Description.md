@@ -62,7 +62,7 @@ In the mod settings, the strength of the Lunar Detector can be set to emmit extr
 
 "Urkaz Moon Tools" requires the following mods to work:
 
-### Minecraft version 1.19 - 1.21.1
+### Minecraft version 1.19 - 1.21(.1)
 
 * [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
 * [Architectury API](https://www.curseforge.com/minecraft/mc-mods/architectury-api)

@@ -1,7 +1,7 @@
 <h1>Urkaz Moon Tools</h1>
 <p align="center">
-    <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://img.shields.io/curseforge/dt/362825?style=flat-square&logo=curseforge&label=CurseForge&color=f16436" alt="CurseForge download count"></a>
-    <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=flat-square&logo=modrinth&label=Modrinth&color=5da426" alt="Modrinth download count"></a>
+    <a href="https://www.curseforge.com/minecraft/mc-mods/urkaz-moon-tools"><img src="https://img.shields.io/curseforge/dt/362825?style=for-the-badge&logo=curseforge&label=Download%20from%20CurseForge&color=f16436" alt="Download from CurseForge"></a>
+    <a href="https://modrinth.com/mod/urkaz-moon-tools"><img src="https://img.shields.io/modrinth/dt/1sxtqgoT?style=for-the-badge&logo=modrinth&label=Download%20from%20Modrinth&color=5da426" alt="Modrinth download count"></a>
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/Minecraft-1.21.1-00AA00?style=flat-square" alt="Minecraft 1.21.1">

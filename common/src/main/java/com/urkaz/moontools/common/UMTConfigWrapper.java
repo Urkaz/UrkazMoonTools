@@ -42,7 +42,6 @@ public class UMTConfigWrapper {
     }
 
     @Config(name = UMTConstants.MOD_ID)
-    @Config.Gui.Background("urkazmoontools:textures/block/moon_sensor_side.png")
     public static class UMTConfig implements ConfigData {
         @ConfigEntry.Category("moonsensor")
         @ConfigEntry.Gui.Tooltip(count = 2)

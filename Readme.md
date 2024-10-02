@@ -122,7 +122,7 @@
 
 <ul>
   <li>❗ = Required to work</li>
-  <li>❔ = Optional</li>
+  <!--li>❔ = Optional</li-->
   <li><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"> = Mod compatibility</li>
   <li><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"> = Legacy compatibility</li>
 </ul>  
@@ -142,6 +142,7 @@
         <td align="center">1.20.2</td>
         <td align="center">1.20.4</td>
         <td align="center">1.20.6</td>
+        <td align="center">1.21.0</td>
     </tr>
     <tr>
         <td>
@@ -155,10 +156,11 @@
         <td align="center">❗</td>
         <td align="center">❗</td>
         <td align="center">❗</td>
-        <td align="center">❔</td>
-        <td align="center">❔</td>
-        <td align="center">❔</td>
-        <td align="center">❔</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
+        <td align="center">❗</td>
     </tr>
     <tr>
         <td>
@@ -172,6 +174,7 @@
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
+        <td align="center">❗</td>
         <td align="center">❗</td>
         <td align="center">❗</td>
         <td align="center">❗</td>
@@ -193,6 +196,7 @@
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
+        <td align="center"></td>
     </tr>
    <tr>
         <td>
@@ -210,6 +214,7 @@
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
+        <td align="center"></td>
     </tr>
     <tr>
         <td>
@@ -220,6 +225,7 @@
         <td align="center"></td>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
+        <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
@@ -244,12 +250,14 @@
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
+        <td align="center"></td>
     </tr>
     <tr>
         <td>
             <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/nyx.png" width="20" height="20"> Nyx
         </td>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_110.png"></td>
+        <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>

@@ -1,10 +1,6 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"pattern": [
-		" x ",
-		"xyx",
-		" x "
-	],
+	"category": "equipment",
 	"key": {
 		"x": {
 			"item": "minecraft:lapis_lazuli"
@@ -13,7 +9,13 @@
 			"item": "minecraft:clock"
 		}
 	},
+	"pattern": [
+		" x ",
+		"xyx",
+		" x "
+	],
 	"result": {
+		"count": 1,
 		"id": "urkazmoontools:moonclock_item"
 	}
 }

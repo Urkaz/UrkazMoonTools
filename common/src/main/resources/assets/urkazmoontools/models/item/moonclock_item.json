@@ -5,6 +5,7 @@
         "layer1": "urkazmoontools:item/moonclock_00"
     },
     "overrides": [
+        { "predicate": { "urkazmoontools:moonphase": 0.0  }, "model": "urkazmoontools:item/moonclock_item" },
         { "predicate": { "urkazmoontools:moonphase": 0.1  }, "model": "urkazmoontools:item/moonclock_01" },
         { "predicate": { "urkazmoontools:moonphase": 0.2  }, "model": "urkazmoontools:item/moonclock_02" },
         { "predicate": { "urkazmoontools:moonphase": 0.3  }, "model": "urkazmoontools:item/moonclock_03" },

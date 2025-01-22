@@ -41,6 +41,8 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
             return false;
 
+        if (world.isDay()) return false;
+
         EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
         if (ecWorldData != null) {
             EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
@@ -60,6 +62,8 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
     public int getLunarEventColor(Level world) {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
             return 0xffffffff;
+
+        if (world.isDay()) return 0xffffffff;
 
         EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
         if (ecWorldData != null) {
@@ -83,6 +87,8 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
     public Component getLunarEventName(Level world) {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
             return null;
+
+        if (world.isDay()) return null;
 
         EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
         if (ecWorldData != null) {

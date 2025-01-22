@@ -19,6 +19,7 @@
 
 package com.urkaz.moontools.common.modcompat.handler;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class ModCompatHandler {
     }
 
     public boolean isLunarEventActive(Level world) {
+        if (world.isDay()) return false;
+
         for (IMoonToolsModCompat iMoonToolsModCompat : ModCompatList) {
             boolean eventActive = iMoonToolsModCompat.isLunarEventActive(world);
             if (eventActive)
@@ -55,11 +58,24 @@ public class ModCompatHandler {
     }
 
     public int getLunarEventColor(Level world) {
+        if (world.isDay()) return 0xffffffff;
+
         for (IMoonToolsModCompat iMoonToolsModCompat : ModCompatList) {
             int color = iMoonToolsModCompat.getLunarEventColor(world);
             if (color != 0xffffffff)
                 return color;
         }
         return 0xffffffff;
+    }
+
+    public Component getLunarEventName(Level world) {
+        if (world.isDay()) return null;
+
+        for (IMoonToolsModCompat iMoonToolsModCompat : ModCompatList) {
+            Component eventName = iMoonToolsModCompat.getLunarEventName(world);
+            if (eventName != null)
+                return eventName;
+        }
+        return null;
     }
 }

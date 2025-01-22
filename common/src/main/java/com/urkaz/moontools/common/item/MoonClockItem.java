@@ -63,15 +63,13 @@ public class MoonClockItem extends Item {
             if (phaseComponent2 != phaseComponent) {
                 itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), phaseComponent2);
             }
-        }
-        else {
+        } else {
             itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, true));
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext
-            tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, tooltipContext, tooltip, tooltipFlag);
 
         MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
@@ -93,8 +91,8 @@ public class MoonClockItem extends Item {
 
     public String getTooltipText(int phase, boolean hasData) {
         if (hasData) {
-            return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
-                    + I18n.get("urkazmoontools.moonclock.phase" + phase);
+            return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " " +
+                    I18n.get("urkazmoontools.moonclock.phase" + phase);
         } else {
             return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
                     + I18n.get("urkazmoontools.moonclock.nodata");

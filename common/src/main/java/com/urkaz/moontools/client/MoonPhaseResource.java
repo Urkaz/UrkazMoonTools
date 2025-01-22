@@ -39,18 +39,28 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
         Entity entity = flag ? entityIn : itemStack.getFrame();
 
         MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
-        if(phaseComponent != null) {
+        if (phaseComponent != null) {
             phaseComponent = phaseComponent.tick(level);
+        }
+        else {
+            ((MoonClockItem) itemStack.getItem()).setColor(0xffffffff);
+            return 0;
         }
 
         Level world = level;
         if (level == null && entity != null) {
             world = entity.level();
         }
-        int moonFactor = (int) getMoonFactor(phaseComponent);
-        int color = ModCompatHandler.getInstance().getLunarEventColor(world);
 
-        ((MoonClockItem) itemStack.getItem()).setColor(color);
+        boolean eventActive = ModCompatHandler.getInstance().isLunarEventActive(world);
+        if (eventActive) {
+            int color = ModCompatHandler.getInstance().getLunarEventColor(world);
+            ((MoonClockItem) itemStack.getItem()).setColor(color);
+        } else {
+            ((MoonClockItem) itemStack.getItem()).setColor(0xffffffff);
+        }
+
+        int moonFactor = (int) getMoonFactor(phaseComponent);
         return moonFactor / 10.f;
     }
 

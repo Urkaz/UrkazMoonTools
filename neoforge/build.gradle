@@ -56,6 +56,14 @@ dependencies {
     } else {
         modCompileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
     }
+
+    // Enhanced Celestials
+    if (test_enable_enhanced_celestials.toBoolean()) {
+        modImplementation "curse.maven:enhanced-celestials-${ec_projectid}:${ec_neoforge_fileids}"
+        modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_neoforge_fileids}"
+    } else {
+        modCompileOnly "curse.maven:enhanced-celestials-${ec_projectid}:${ec_neoforge_fileids}"
+    }
 }
 
 processResources {

@@ -56,10 +56,10 @@ dependencies {
 
     // Enhanced Celestials
     if (test_enable_enhanced_celestials.toBoolean()) {
-        modImplementation "curse.maven:enhanced-celestials-fabric-${ec_fabric_projectid}:${ec_fabric_fileids}"
+        modImplementation "curse.maven:enhanced-celestials-${ec_projectid}:${ec_fabric_fileids}"
         modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_fabric_fileids}"
     } else {
-        modCompileOnly "curse.maven:enhanced-celestials-fabric-${ec_fabric_projectid}:${ec_fabric_fileids}"
+        modCompileOnly "curse.maven:enhanced-celestials-${ec_projectid}:${ec_fabric_fileids}"
     }
 
     // Crimson Moon
@@ -157,7 +157,7 @@ unifiedPublishing {
             }
             if (ec_mod_compat_enabled.toBoolean()) {
                 optional {
-                    curseforge = "enhanced-celestials-fabric"
+                    curseforge = "enhanced-celestials"
                     modrinth = "enhanced-celestials"
                 }
             }

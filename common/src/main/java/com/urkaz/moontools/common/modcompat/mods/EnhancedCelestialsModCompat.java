@@ -21,11 +21,15 @@ package com.urkaz.moontools.common.modcompat.mods;
 
 import com.urkaz.moontools.UMTExpectPlatform;
 import com.urkaz.moontools.common.modcompat.handler.IMoonToolsModCompat;
-import corgitaco.enhancedcelestials.EnhancedCelestialsWorldData;
-import corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
-import corgitaco.enhancedcelestials.core.EnhancedCelestialsContext;
-import corgitaco.enhancedcelestials.lunarevent.LunarForecast;
+import dev.corgitaco.enhancedcelestials.EnhancedCelestialsWorldData;
+import dev.corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
+import dev.corgitaco.enhancedcelestials.core.EnhancedCelestialsContext;
+import dev.corgitaco.enhancedcelestials.lunarevent.LunarForecast;
+import dev.corgitaco.enhancedcelestials.util.CustomTranslationTextComponent;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.level.Level;
 
 public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
@@ -43,7 +47,7 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
             if (lunarContext != null) {
                 LunarForecast forecast = lunarContext.getLunarForecast();
                 if (forecast != null) {
-                    Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent(true);
+                    Holder<LunarEvent> lunarEvent = forecast.currentLunarEvent();
                     return lunarEvent.isBound();
                 }
             }
@@ -63,13 +67,38 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
             if (lunarContext != null) {
                 LunarForecast forecast = lunarContext.getLunarForecast();
                 if (forecast != null) {
-                    Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent(true);
+                    Holder<LunarEvent> lunarEvent = forecast.getLunarEventForDay(forecast.getCurrentDay());
                     if (lunarEvent.isBound()) {
-                        return lunarEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
+                        int color = lunarEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
+                        color |= 0xff000000; // Add opaque alpha channel
+                        return color;
                     }
                 }
             }
         }
         return 0xffffffff;
+    }
+
+    @Override
+    public Component getLunarEventName(Level world) {
+        if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
+            return null;
+
+        EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
+        if (ecWorldData != null) {
+            EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
+            if (lunarContext != null) {
+                LunarForecast forecast = lunarContext.getLunarForecast();
+                if (forecast != null) {
+                    Holder<LunarEvent> lunarEvent = forecast.getLunarEventForDay(forecast.getCurrentDay());
+                    if (lunarEvent.isBound()) {
+                        CustomTranslationTextComponent eventName = lunarEvent.value().getTextComponents().name();
+                        TextColor color = eventName.getStyle().getColor();
+                        return Component.translatable(eventName.getKey()).withStyle(Style.EMPTY.withColor(color));
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

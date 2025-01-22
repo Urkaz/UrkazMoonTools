@@ -19,6 +19,7 @@
 
 package com.urkaz.moontools.common.modcompat.handler;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 
 public interface IMoonToolsModCompat {
@@ -28,5 +29,9 @@ public interface IMoonToolsModCompat {
 
     default int getLunarEventColor(Level world) {
         return 0xffffffff;
+    }
+
+    default Component getLunarEventName(Level world) {
+        return null;
     }
 }

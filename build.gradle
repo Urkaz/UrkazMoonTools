@@ -25,7 +25,7 @@ allprojects {
     }
 
     // Set mod relations
-    ec_mod_compat_enabled = minecraft_version == "1.20.1"
+    ec_mod_compat_enabled = minecraft_version == "1.20.1" || minecraft_version == "1.21" || minecraft_version == "1.21.1"
     lunar_mod_compat_enabled = minecraft_version == "1.20.1"
     cm_mod_compat_enabled = minecraft_version == "1.19" || minecraft_version == "1.19.1"
 }

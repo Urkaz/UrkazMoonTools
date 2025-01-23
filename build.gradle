@@ -105,7 +105,7 @@ subprojects {
 
         ext {
             name = "Urkaz - Fran Sánchez"
-            year = "2024"
+            year = "2025"
             modname = rootProject.mod_name
         }
 

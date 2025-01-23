@@ -1,6 +1,6 @@
 /*
- * This file is part of "AlphaSIN 55".
- * Copyright (C) 2024 Urkaz - Fran Sánchez
+ * This file is part of "Urkaz Moon Tools".
+ * Copyright (C) 2025 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

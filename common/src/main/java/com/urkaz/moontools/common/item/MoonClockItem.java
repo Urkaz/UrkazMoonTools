@@ -40,8 +40,6 @@ import java.util.List;
 
 public class MoonClockItem extends Item {
 
-    private int color;
-
     public MoonClockItem(Properties properties) {
         super(properties);
     }
@@ -64,7 +62,7 @@ public class MoonClockItem extends Item {
                 itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), phaseComponent2);
             }
         } else {
-            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, true));
+            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, true, 0xffffffff));
         }
     }
 
@@ -104,11 +102,8 @@ public class MoonClockItem extends Item {
         return false;
     }
 
-    public void setColor(int color) {
-        this.color = color;
-    }
-
-    public int getColor() {
-        return color;
+    public int getColor(ItemStack itemStack) {
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        return phaseComponent != null ? phaseComponent.color() : 0xffffffff;
     }
 }

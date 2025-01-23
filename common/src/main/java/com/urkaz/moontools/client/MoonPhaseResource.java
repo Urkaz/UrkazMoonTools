@@ -21,8 +21,6 @@ package com.urkaz.moontools.client;
 
 import com.urkaz.moontools.common.component.MoonClockPhaseComponent;
 import com.urkaz.moontools.common.component.UMTDataComponents;
-import com.urkaz.moontools.common.item.MoonClockItem;
-import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.world.entity.Entity;
@@ -40,24 +38,19 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
 
         MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
         if (phaseComponent != null) {
-            phaseComponent = phaseComponent.tick(level);
-        }
-        else {
-            ((MoonClockItem) itemStack.getItem()).setColor(0xffffffff);
+            MoonClockPhaseComponent newPhaseComponent = phaseComponent.tick(level);
+            if (phaseComponent != newPhaseComponent) {
+                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), newPhaseComponent);
+                phaseComponent = newPhaseComponent;
+            }
+
+        } else {
             return 0;
         }
 
         Level world = level;
         if (level == null && entity != null) {
             world = entity.level();
-        }
-
-        boolean eventActive = ModCompatHandler.getInstance().isLunarEventActive(world);
-        if (eventActive) {
-            int color = ModCompatHandler.getInstance().getLunarEventColor(world);
-            ((MoonClockItem) itemStack.getItem()).setColor(color);
-        } else {
-            ((MoonClockItem) itemStack.getItem()).setColor(0xffffffff);
         }
 
         int moonFactor = (int) getMoonFactor(phaseComponent);

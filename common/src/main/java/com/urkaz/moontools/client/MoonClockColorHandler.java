@@ -27,7 +27,7 @@ public class MoonClockColorHandler implements ItemColor {
     @Override
     public int getColor(ItemStack stack, int layer) {
         if (layer == 1) {
-            return ((MoonClockItem) stack.getItem()).getColor();
+            return ((MoonClockItem) stack.getItem()).getColor(stack);
         }
         else
         {

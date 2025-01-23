@@ -49,7 +49,7 @@
     <tr>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/enhanced-celestials.png" width="100" height="100"></td>
         <td width="20%" align="center">
-            <b>Enhanced Celestials</b><br>(1.16.5 - 1.20.1)
+            <b>Enhanced Celestials</b><br>1.16.5 - 1.20.1 - 1.21(.1)
         </td>
         <td width="50%" rowspan="3">
             The moon icon in the Lunar Clock will be tinted of the same color as the Moon.<br><br>In the mod settings, the strength of the Lunar Detector can be set to emit 9 Redstone units during any event.
@@ -58,19 +58,19 @@
     <tr>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/lunar.png" width="100" height="100"></td>
         <td width="20%" align="center">
-            <b>Lunar</b><br>(1.19.2 & 1.20.1)
+            <b>Lunar</b><br>1.19.2 & 1.20.1 - 1.21(.1)
         </td>
     </tr>
     <tr>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/crimson_moon.png" width="100" height="100"></td>
         <td width="20%" align="center">
-            <b>Crimson Moon</b><br>(1.19 - 1.19.1)
+            <b>Crimson Moon</b><br>1.19 - 1.19.1
         </td>
     </tr>
     <tr>
         <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/bloodmoon.png" width="100" height="100"></td>
         <td width="20%" align="center">
-            <b>Bloodmoon</b><br>(1.12.2)
+            <b>Bloodmoon</b><br>1.12.2
         </td>
         <td width="50%" rowspan="2">The moon icon in the Lunar Clock will become red during a Bloodmoon event or blue during the Harvestmoon.
             <ul>
@@ -94,7 +94,7 @@
             <img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/master/resources/thirdparty/nyx.png" width="100" height="100">
         </td>
         <td width="20%" align="center">
-            <b>Nyx</b><br>(1.12.2)
+            <b>Nyx</b><br>1.12.2
         </td>
     </tr>
 </table>
@@ -196,7 +196,7 @@
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
-        <td align="center"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
     </tr>
    <tr>
         <td>
@@ -214,7 +214,7 @@
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"></td>
-        <td align="center"></td>
+        <td align="center"><img src="https://raw.githubusercontent.com/Urkaz/UrkazMoonTools/1.12.2/src/main/resources/assets/urkazmoontools/textures/item/moonclock_10.png"></td>
     </tr>
     <tr>
         <td>

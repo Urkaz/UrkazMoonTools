@@ -53,6 +53,7 @@ subprojects {
         maven { url "https://maven.terraformersmc.com/releases/" }
         maven { url "https://maven.draylar.dev/releases" }
         maven { url "https://api.modrinth.com/maven" }
+        maven { url "https://maven.parchmentmc.org" }
     }
 
     loom {
@@ -61,7 +62,10 @@ subprojects {
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-        mappings loom.officialMojangMappings()
+        mappings loom.layered {
+            officialMojangMappings()
+            parchment("org.parchmentmc.data:parchment-${rootProject.minecraft_version}:${rootProject.parchment}@zip")
+        }
     }
 
 

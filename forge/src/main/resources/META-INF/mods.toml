@@ -31,7 +31,7 @@ description = '''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="enhancedcelestials"
     mandatory=false
-    versionRange="[${enhanced_celestials_version},)"
+    versionRange="[${mc_version}-${enhanced_celestials_version},)"
     ordering="NONE"
     side="BOTH"
 

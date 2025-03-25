@@ -21,12 +21,14 @@ package com.urkaz.moontools.common.modcompat.mods;
 
 import com.urkaz.moontools.UMTExpectPlatform;
 import com.urkaz.moontools.common.modcompat.handler.IMoonToolsModCompat;
-import corgitaco.enhancedcelestials.EnhancedCelestialsWorldData;
-import corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
-import corgitaco.enhancedcelestials.core.EnhancedCelestialsContext;
-import corgitaco.enhancedcelestials.lunarevent.LunarForecast;
+import dev.corgitaco.enhancedcelestials.EnhancedCelestials;
+import dev.corgitaco.enhancedcelestials.api.lunarevent.DefaultLunarEvents;
+import dev.corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
+import dev.corgitaco.enhancedcelestials.lunarevent.EnhancedCelestialsLunarForecastWorldData;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.Level;
+
+import java.util.Optional;
 
 public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
 
@@ -37,15 +39,12 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
             return false;
 
-        EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
-        if (ecWorldData != null) {
-            EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
-            if (lunarContext != null) {
-                LunarForecast forecast = lunarContext.getLunarForecast();
-                if (forecast != null) {
-                    Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent(true);
-                    return lunarEvent.isBound();
-                }
+        Optional<EnhancedCelestialsLunarForecastWorldData> lunarForecastWorldData = EnhancedCelestials.lunarForecastWorldData(world);
+        if (lunarForecastWorldData.isPresent()) {
+            EnhancedCelestialsLunarForecastWorldData data = lunarForecastWorldData.orElseThrow();
+            Holder<LunarEvent> currentEvent = data.currentLunarEventHolder();
+            if (currentEvent.isBound()) {
+                return !currentEvent.is(DefaultLunarEvents.DEFAULT);
             }
         }
 
@@ -57,19 +56,15 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
         if (world == null || !UMTExpectPlatform.isModLoaded(MOD_ENHANCED_CELESTIALS_ID))
             return 0xffffffff;
 
-        EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
-        if (ecWorldData != null) {
-            EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
-            if (lunarContext != null) {
-                LunarForecast forecast = lunarContext.getLunarForecast();
-                if (forecast != null) {
-                    Holder<LunarEvent> lunarEvent = forecast.getCurrentEvent(true);
-                    if (lunarEvent.isBound()) {
-                        return lunarEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
-                    }
-                }
+        Optional<EnhancedCelestialsLunarForecastWorldData> lunarForecastWorldData = EnhancedCelestials.lunarForecastWorldData(world);
+        if (lunarForecastWorldData.isPresent()) {
+            EnhancedCelestialsLunarForecastWorldData data = lunarForecastWorldData.orElseThrow();
+            Holder<LunarEvent> currentEvent = data.currentLunarEventHolder();
+            if (currentEvent.isBound()) {
+                return currentEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
             }
         }
+
         return 0xffffffff;
     }
 }

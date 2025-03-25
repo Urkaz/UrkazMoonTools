@@ -39,18 +39,18 @@ public class UMTExpectPlatform {
     @ExpectPlatform
     public static boolean isModLoaded(String modId)
     {
-        throw new AssertionError();
+        return true;
     }
 
     @ExpectPlatform
     public static boolean isDevelopmentEnvironment()
     {
-        throw new AssertionError();
+        return true;
     }
 
     @ExpectPlatform
     public static boolean isClothConfigLoaded()
     {
-        throw new AssertionError();
+        return true;
     }
 }

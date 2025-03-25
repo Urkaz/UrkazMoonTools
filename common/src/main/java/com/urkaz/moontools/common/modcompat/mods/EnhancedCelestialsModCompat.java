@@ -25,6 +25,7 @@ import dev.corgitaco.enhancedcelestials.EnhancedCelestials;
 import dev.corgitaco.enhancedcelestials.api.lunarevent.DefaultLunarEvents;
 import dev.corgitaco.enhancedcelestials.api.lunarevent.LunarEvent;
 import dev.corgitaco.enhancedcelestials.lunarevent.EnhancedCelestialsLunarForecastWorldData;
+import dev.corgitaco.enhancedcelestials.util.CustomTranslationTextComponent;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -64,7 +65,9 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
             EnhancedCelestialsLunarForecastWorldData data = lunarForecastWorldData.orElseThrow();
             Holder<LunarEvent> currentEvent = data.currentLunarEventHolder();
             if (currentEvent.isBound()) {
-                return currentEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
+                int color = currentEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
+                color |= 0xff000000; // Add opaque alpha channel
+                return color;
             }
         }
 
@@ -78,21 +81,17 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
 
         if (world.isDay()) return null;
 
-        EnhancedCelestialsWorldData ecWorldData = ((EnhancedCelestialsWorldData) world);
-        if (ecWorldData != null) {
-            EnhancedCelestialsContext lunarContext = ecWorldData.getLunarContext();
-            if (lunarContext != null) {
-                LunarForecast forecast = lunarContext.getLunarForecast();
-                if (forecast != null) {
-                    Holder<LunarEvent> lunarEvent = forecast.getLunarEventForDay(forecast.getCurrentDay());
-                    if (lunarEvent.isBound()) {
-                        CustomTranslationTextComponent eventName = lunarEvent.value().getTextComponents().name();
-                        TextColor color = eventName.getStyle().getColor();
-                        return Component.translatable(eventName.getKey()).withStyle(Style.EMPTY.withColor(color));
-                    }
-                }
+        Optional<EnhancedCelestialsLunarForecastWorldData> lunarForecastWorldData = EnhancedCelestials.lunarForecastWorldData(world);
+        if (lunarForecastWorldData.isPresent()) {
+            EnhancedCelestialsLunarForecastWorldData data = lunarForecastWorldData.orElseThrow();
+            Holder<LunarEvent> currentEvent = data.currentLunarEventHolder();
+            if (currentEvent.isBound()) {
+                CustomTranslationTextComponent eventName = currentEvent.value().getTextComponents().name();
+                TextColor color = eventName.getStyle().getColor();
+                return Component.translatable(eventName.getKey()).withStyle(Style.EMPTY.withColor(color));
             }
         }
+
         return null;
     }
 }

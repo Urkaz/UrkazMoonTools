@@ -131,7 +131,7 @@ unifiedPublishing {
         gameLoaders = ["fabric"]
         version = "$project.version"
         releaseType = "release"
-        gameVersions = ["$project.minecraft_version", "1.21.1"]
+        gameVersions = ["$project.minecraft_version"]
 
         mainPublication tasks.remapJar
 

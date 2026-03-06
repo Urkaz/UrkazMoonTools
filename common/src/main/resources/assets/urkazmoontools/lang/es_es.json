@@ -20,6 +20,9 @@
     "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[0]": "No (por defecto): El 'Sensor Lunar' emite la señal de Redstone normal durante un evento.",
     "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[1]": "Sí: El 'Sensor Lunar' emite una señal de 9 unidades de Redstone durante un evento.",
 
+    "text.autoconfig.urkazmoontools.option.disableRightClick": "Desactivar click derecho con el Reloj Lunar",
+    "text.autoconfig.urkazmoontools.option.disableRightClick.@Tooltip[0]": "Permite desactivar el mensaje al hacer click derecho con el Reloj Lunar en la mano.",
+
     "urkazmoontools.moonclock.phaseTooltip": "Fase Lunar:",
 
     "urkazmoontools.moonclock.phase0": "Luna llena",

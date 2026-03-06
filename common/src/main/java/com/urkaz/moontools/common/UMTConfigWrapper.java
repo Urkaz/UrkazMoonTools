@@ -55,5 +55,9 @@ public class UMTConfigWrapper {
         @ConfigEntry.Category("moonsensor")
         @ConfigEntry.Gui.Tooltip(count = 2)
         public boolean emitExtraRedstoneOnLunarEvent = false;
+
+        @ConfigEntry.Category("moonsensor")
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public boolean disableRightClick = false;
     }
 }

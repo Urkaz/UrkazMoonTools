@@ -1,25 +1,21 @@
 package com.urkaz.moontools.common.component;
 
-import com.urkaz.moontools.UMTConstants;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 
-import java.util.function.UnaryOperator;
+import java.util.function.BiConsumer;
+
+import static com.urkaz.moontools.common.UMTRegistry.prefixedModLocation;
 
 public class UMTDataComponents {
 
-    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES = DeferredRegister.create(UMTConstants.MOD_ID, Registries.DATA_COMPONENT_TYPE);
-
-    public static final RegistrySupplier<DataComponentType<MoonClockPhaseComponent>> MOON_CLOCK_PHASE = register("lodestone_tracker",
-            builder -> builder
+    public static final DataComponentType<MoonClockPhaseComponent> MOON_CLOCK_PHASE = DataComponentType.<MoonClockPhaseComponent>builder()
                     .persistent(MoonClockPhaseComponent.CODEC)
                     .networkSynchronized(MoonClockPhaseComponent.STREAM_CODEC)
                     .cacheEncoding()
-    );
+            .build();
 
-    private static <T> RegistrySupplier<DataComponentType<T>> register(final String name, final UnaryOperator<DataComponentType.Builder<T>> builder) {
-        return DATA_COMPONENT_TYPES.register(name, () -> builder.apply(DataComponentType.builder()).build());
+    public static void registerComponents(BiConsumer<DataComponentType<?>, ResourceLocation> consumer) {
+        consumer.accept(MOON_CLOCK_PHASE, prefixedModLocation("clock_phase"));
     }
 }

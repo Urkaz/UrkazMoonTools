@@ -22,6 +22,7 @@ package com.urkaz.moontools.forge;
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
+import com.urkaz.moontools.common.component.UMTDataComponents;
 import com.urkaz.moontools.forge.client.UrkazMoonToolsForgeClient;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
@@ -54,11 +55,10 @@ public class UrkazMoonToolsForge {
     }
 
     private void registryInit() {
-        //final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         bind(Registries.BLOCK, UMTRegistry::registerBlocks);
         bind(Registries.ITEM, UMTRegistry::registerItems);
         bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerBlockEntities);
+        bind(Registries.DATA_COMPONENT_TYPE, UMTDataComponents::registerComponents);
         bind(Registries.CREATIVE_MODE_TAB, (consumer -> {
             consumer.accept(
                     CreativeModeTab.builder()

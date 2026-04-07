@@ -22,6 +22,7 @@ package com.urkaz.moontools.fabric;
 import com.urkaz.moontools.UMTExpectPlatform;
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
+import com.urkaz.moontools.common.component.UMTDataComponents;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import com.urkaz.moontools.fabric.modcompat.mods.CrimsonMoonModCompat;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +30,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -55,6 +57,7 @@ public class UrkazMoonToolsFabric implements ModInitializer {
         UMTRegistry.registerBlocks(bind(BuiltInRegistries.BLOCK));
         UMTRegistry.registerItems(bind(BuiltInRegistries.ITEM));
         UMTRegistry.registerBlockEntities(bind(BuiltInRegistries.BLOCK_ENTITY_TYPE));
+        UMTDataComponents.registerComponents(bind(BuiltInRegistries.DATA_COMPONENT_TYPE));
         Registry.register(
                 BuiltInRegistries.CREATIVE_MODE_TAB,
                 UMTRegistry.UMC_CREATIVE_KEY,

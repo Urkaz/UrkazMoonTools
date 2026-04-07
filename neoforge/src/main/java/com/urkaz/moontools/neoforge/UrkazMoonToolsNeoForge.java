@@ -22,6 +22,7 @@ package com.urkaz.moontools.neoforge;
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
+import com.urkaz.moontools.common.component.UMTDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -52,6 +53,7 @@ public final class UrkazMoonToolsNeoForge {
         bind(Registries.BLOCK, UMTRegistry::registerBlocks);
         bind(Registries.ITEM, UMTRegistry::registerItems);
         bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerBlockEntities);
+        bind(Registries.DATA_COMPONENT_TYPE, UMTDataComponents::registerComponents);
         bind(Registries.CREATIVE_MODE_TAB, (consumer -> {
             consumer.accept(
                     CreativeModeTab.builder()

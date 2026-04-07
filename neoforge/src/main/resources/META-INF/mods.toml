@@ -35,15 +35,15 @@ config="${mod_id}-common.mixins.json"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="cloth_config"
-    mandatory=true
-    versionRange="[${cloth_config_version},)"
-    ordering="NONE"
-    side="BOTH"
+    modId = "cloth_config"
+    type = "required"
+    versionRange = "[${cloth_config_version},)"
+    ordering = "NONE"
+    side = "BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="lunar"
-    mandatory=false
-    versionRange=""
-    ordering="NONE"
-    side="BOTH"
+    modId = "lunar"
+    type = "optional"
+    versionRange = ""
+    ordering = "NONE"
+    side = "BOTH"

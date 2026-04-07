@@ -45,7 +45,7 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:${rootProject.neoforge_version_major}.${rootProject.neoforge_version_minor}.${rootProject.neoforge_version_patch}"
     // Remove the next line if you don't want to depend on the API
-    modImplementation "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
+    //dImplementation "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
@@ -55,6 +55,13 @@ dependencies {
         modImplementation "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
     } else {
         modCompileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    }
+
+    // Lunar
+    if (test_enable_lunar.toBoolean()) {
+        modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
+    } else {
+        modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
     }
 }
 
@@ -72,8 +79,7 @@ processResources {
                 "mc_version": project.minecraft_version,
                 "neoforge_version_major": project.neoforge_version_major,
                 "neoforge_version_minor": project.neoforge_version_minor,
-                "cloth_config_version": project.cloth_config_version,
-                "architectury_version": project.architectury_version
+                "cloth_config_version": project.cloth_config_version
     }
 }
 
@@ -119,6 +125,12 @@ unifiedPublishing {
             depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
+            }
+            if (lunar_mod_compat_enabled.toBoolean()) {
+                optional {
+                    curseforge = "lunar"
+                    modrinth = "lunar"
+                }
             }
         }
 

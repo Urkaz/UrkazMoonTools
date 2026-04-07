@@ -19,8 +19,6 @@
 
 package com.urkaz.moontools.common.item;
 
-import com.urkaz.moontools.common.component.MoonClockPhaseComponent;
-import com.urkaz.moontools.common.component.UMTDataComponents;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -48,7 +46,8 @@ public class MoonClockItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        if (worldIn.isClientSide && handIn == InteractionHand.MAIN_HAND) {
+        UMTConfigWrapper.UMTConfig config = UMTConfigWrapper.getConfig();
+        if (worldIn.isClientSide && handIn == InteractionHand.MAIN_HAND && !config.disableRightClick) {
             playerIn.sendSystemMessage(Component.literal(getTooltipText(worldIn)));
             playerIn.swing(handIn);
         }

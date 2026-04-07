@@ -21,7 +21,21 @@ package com.urkaz.moontools.neoforge;
 
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
+import com.urkaz.moontools.common.UMTRegistry;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.registries.RegisterEvent;
+
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 @Mod(value = UMTConstants.MOD_ID)
 public final class UrkazMoonToolsNeoForge {
@@ -35,6 +49,28 @@ public final class UrkazMoonToolsNeoForge {
     }
 
     private void registryInit() {
-        UrkazMoonTools.registryInit();
+        bind(Registries.BLOCK, UMTRegistry::registerBlocks);
+        bind(Registries.ITEM, UMTRegistry::registerItems);
+        bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerBlockEntities);
+        bind(Registries.CREATIVE_MODE_TAB, (consumer -> {
+            consumer.accept(
+                    CreativeModeTab.builder()
+                            .title(Component.translatable("urkazmoontools.creative_tab").withStyle((style -> style.withColor(ChatFormatting.WHITE))))
+                            .icon(() -> new ItemStack(UMTRegistry.ITEM_MOONCLOCK))
+                            .displayItems((params, output) -> {
+                                UMTRegistry.createDefaultCreativeTab(output);
+                            })
+                            .build(),
+                    UMTRegistry.UMC_CREATIVE_KEY.location()
+            );
+        }));
+    }
+
+    private static <T> void bind(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<T, ResourceLocation>> source) {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener((RegisterEvent event) -> {
+            if (registry.equals(event.getRegistryKey())) {
+                source.accept((t, rl) -> event.register(registry, rl, () -> t));
+            }
+        });
     }
 }

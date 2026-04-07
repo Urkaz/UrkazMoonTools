@@ -9,16 +9,14 @@
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight.@Tooltip[0]": "开启（默认）：“月光传感器”只能在夜晚发出红石信号。",
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight.@Tooltip[1]": "关闭：“月光传感器”在全天都可发出红石信号。",
 
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted": "随着月相增强红石信号1~8",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[0]": "“月光传感器”以月相发出红石信号",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[1]": "开启（默认）：“月光传感器”以顺时针减少红石信号",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[2]": "   满月8 | 盈凸月7 | 上弦月6 | 峨眉月5 | 新月4 | 残月3 | 下弦月2 | 亏凸月1 | 传感锁",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[3]": "关闭：“月光传感器”以逆时针减少红石信号",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[4]": "   亏凸月8 | 下弦月7 | 残月6 | 新月5 | 峨眉月4 | 上弦月3 | 盈凸月2 | 满月1 | 传感锁",
-
-    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent": "月食时红石信号变为9",
-    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[0]": "关闭（默认）：“月光传感器”在月食期间发出正常的红石信号",
-    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[1]": "开启：“月光传感器”在月食期间发射9格红石信号",
+    "text.autoconfig.urkazmoontools.option.fullMoon": "满月",
+    "text.autoconfig.urkazmoontools.option.waningGibbous": "亏凸月",
+    "text.autoconfig.urkazmoontools.option.thirdQuarter": "下弦月",
+    "text.autoconfig.urkazmoontools.option.waningCrescent": "残月",
+    "text.autoconfig.urkazmoontools.option.newMoon": "新月",
+    "text.autoconfig.urkazmoontools.option.waxingCrescent": "峨眉月",
+    "text.autoconfig.urkazmoontools.option.firstQuarter": "上弦月",
+    "text.autoconfig.urkazmoontools.option.waxingGibbous": "盈凸月",
 
     "urkazmoontools.moonclock.phaseTooltip": "月相：",
 

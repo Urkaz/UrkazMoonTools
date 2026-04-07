@@ -112,6 +112,7 @@ unifiedPublishing {
         version = "$project.version"
         releaseType = "release"
         gameVersions = ["$project.minecraft_version"]
+        changelog = rootProject.file("Changelog.md").text
 
         mainPublication tasks.remapJar
 

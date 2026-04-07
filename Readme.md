@@ -5,9 +5,12 @@
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/Minecraft-1.21.1-00AA00?style=flat-square" alt="Minecraft 1.21.1">
-    <img src="https://img.shields.io/badge/Fabric-0.16.5-yellow?style=flat-square" alt="Fabric 0.16.5">
-    <img src="https://img.shields.io/badge/NeoForge-21.0.167-d7742f?style=flat-square" alt="NeoForge 21.0.167">
+    <img src="https://img.shields.io/badge/Fabric-0.16.10-yellow?style=flat-square" alt="Fabric 0.16.10">
+    <img src="https://img.shields.io/badge/NeoForge-21.1.139-d7742f?style=flat-square" alt="NeoForge 21.1.139">
     <!img src="https://img.shields.io/badge/Forge-49.1.4-de9e59?style=flat-square" alt="Forge 49.1.4">
+</p>
+<p align="center">
+    <a href='https://ko-fi.com/N4N2108Q45' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 </p>
 <p>
     This mod adds one item and one block that helps to see and detect the current Moon Phase.

@@ -41,7 +41,6 @@ config="${mod_id}-common.mixins.json"
     ordering="NONE"
     side="BOTH"
 
-
 [[dependencies.${mod_id}]]
     modId="lunar"
     mandatory=true

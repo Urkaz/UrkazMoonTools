@@ -79,8 +79,7 @@ processResources {
                 "mc_version": project.minecraft_version,
                 "neoforge_version_major": project.neoforge_version_major,
                 "neoforge_version_minor": project.neoforge_version_minor,
-                "cloth_config_version": project.cloth_config_version,
-                "architectury_version": project.architectury_version
+                "cloth_config_version": project.cloth_config_version
     }
 }
 

@@ -1,27 +1,36 @@
 ﻿{
-    "item.urkazmoontools.moonclock": "Reloj Lunar",
+    "item.urkazmoontools.moonclock_item": "Reloj Lunar",
 
-    "block.urkazmoontools.moonsensor": "Detector Lunar",
+    "block.urkazmoontools.moonsensor_block": "Detector Lunar",
 
     "text.autoconfig.urkazmoontools.title": "Urkaz Moon Tools Config",
+
+    "text.autoconfig.urkazmoontools.category.moonsensor": "Ajustes Detector",
+    "text.autoconfig.urkazmoontools.category.moonsensor.redstone": "Redstone Detector",
+    "text.autoconfig.urkazmoontools.category.moonclock": "Ajustes Reloj",
 
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight": "Emitir señal de Redstone solo por la noche",
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight.@Tooltip[0]": "Sí (por defecto): El 'Sensor Lunar' solo emite señal de Redstone por la noche.",
     "text.autoconfig.urkazmoontools.option.sensorOnlyNight.@Tooltip[1]": "No: El 'Sensor Lunar' emite señal de Redstone todo el día.",
 
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted": "Luna Llena emite 8 Redstone en vez de 1.",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[0]": "The 'Lunar Sensor' emits Redstone in the following way:",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[1]": "Sí (por defecto):",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[2]": "   Luna Llena 8 | Gibosa creciente 7 | Cuarto creciente 6 | Luna creciente 5 | Luna nueva 4 | Luna menguante 3 | Cuarto menguante 2 | Gibosa menguante 1 | SensorBlock",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[3]": "No:",
-    "text.autoconfig.urkazmoontools.option.sensorPhasesShifted.@Tooltip[4]": "   Gibosa creciente 8 | Cuarto creciente 7 | Luna creciente 6 | Luna nueva 5 | Luna menguante 4 | Cuarto menguante 3 | Gibosa menguante 2 | Luna Llena 1 | SensorBlock",
-
-    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent": "Se emiten 9 de Redstone durante un evento lunar",
+    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent": "Se emite Redstone extra durante un evento lunar",
     "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[0]": "No (por defecto): El 'Sensor Lunar' emite la señal de Redstone normal durante un evento.",
-    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[1]": "Sí: El 'Sensor Lunar' emite una señal de 9 unidades de Redstone durante un evento.",
+    "text.autoconfig.urkazmoontools.option.emitExtraRedstoneOnLunarEvent.@Tooltip[1]": "Sí: El 'Sensor Lunar' emite una señal de Redstone quivalente al valor de \"duringEvents\" durante un evento.",
 
-    "text.autoconfig.urkazmoontools.option.disableRightClick": "Desactivar click derecho con el Reloj Lunar",
-    "text.autoconfig.urkazmoontools.option.disableRightClick.@Tooltip[0]": "Permite desactivar el mensaje al hacer click derecho con el Reloj Lunar en la mano.",
+    "text.autoconfig.urkazmoontools.option.disableRightClick": "Disable Lunar Clock right click",
+    "text.autoconfig.urkazmoontools.option.disableRightClick.@Tooltip[0]": "No (por defecto): hacer click derecho con el Reloj Lunar en la mano muestra un mensaje en el chat con la fase actual.",
+    "text.autoconfig.urkazmoontools.option.disableRightClick.@Tooltip[1]": "Yes: hacer click derecho con el Reloj Lunar en la mano no hace nada.",
+
+    "text.autoconfig.urkazmoontools.option.fullMoon": "Luna llena",
+    "text.autoconfig.urkazmoontools.option.waningGibbous": "Luna gibosa menguante",
+    "text.autoconfig.urkazmoontools.option.thirdQuarter": "Cuarto menguante",
+    "text.autoconfig.urkazmoontools.option.waningCrescent": "Luna menguante",
+    "text.autoconfig.urkazmoontools.option.newMoon": "Luna nueva",
+    "text.autoconfig.urkazmoontools.option.waxingCrescent": "Luna creciente",
+    "text.autoconfig.urkazmoontools.option.firstQuarter": "Cuarto creciente",
+    "text.autoconfig.urkazmoontools.option.waxingGibbous": "Luna gibosa creciente",
+    "text.autoconfig.urkazmoontools.option.duringEvents": "Fuerza durante eventos",
+    "text.autoconfig.urkazmoontools.option.duringEvents.@Tooltip": "Solo se usa si \"emitExtraRedstoneOnLunarEvent\" está activado.",
 
     "urkazmoontools.moonclock.phaseTooltip": "Fase Lunar:",
 

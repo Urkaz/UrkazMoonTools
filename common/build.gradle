@@ -26,11 +26,15 @@ dependencies {
 
     // Enhanced Celestials. We use the fabric version, but do NOT use classes from fabric loader
     if (test_enable_enhanced_celestials.toBoolean()) {
-        modImplementation "curse.maven:enhanced-celestials-fabric-${ec_projectid}:${ec_fabric_fileids}"
+        modImplementation("curse.maven:enhanced-celestials-fabric-${ec_projectid}:${ec_fabric_fileids}") {
+            transitive = false
+        }
         modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_fabric_fileids}"
         modCompileOnly "curse.maven:data-anchor-1203668:${dataanchor_fabric_fileids}"
     } else {
-        modCompileOnly "curse.maven:enhanced-celestials-fabric-${ec_projectid}:${ec_fabric_fileids}"
+        compileOnly("curse.maven:enhanced-celestials-fabric-${ec_projectid}:${ec_fabric_fileids}") {
+            transitive = false
+        }
         modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_fabric_fileids}"
         modCompileOnly "curse.maven:data-anchor-1203668:${dataanchor_fabric_fileids}"
     }

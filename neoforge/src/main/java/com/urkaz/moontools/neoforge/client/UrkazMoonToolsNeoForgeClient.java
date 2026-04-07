@@ -38,9 +38,10 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
+import static com.urkaz.moontools.common.lib.ResourceLocationHelper.prefixedModLocation;
 
 @Mod(value = UMTConstants.MOD_ID, dist = Dist.CLIENT)
-@EventBusSubscriber(value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD, modid = UMTConstants.MOD_ID)
+@EventBusSubscriber(value = Dist.CLIENT, modid = UMTConstants.MOD_ID)
 public class UrkazMoonToolsNeoForgeClient {
 
     public UrkazMoonToolsNeoForgeClient(IEventBus modBus) {
@@ -49,7 +50,7 @@ public class UrkazMoonToolsNeoForgeClient {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK, new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK, prefixedModLocation("moonphase"), new MoonPhaseResource());
         });
 
         if (UMTExpectPlatform.isClothConfigLoaded()) {

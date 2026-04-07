@@ -31,8 +31,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.BiConsumer;
@@ -40,21 +42,22 @@ import java.util.function.Consumer;
 
 @Mod(value = UMTConstants.MOD_ID)
 public final class UrkazMoonToolsNeoForge {
-    public UrkazMoonToolsNeoForge() {
+    public UrkazMoonToolsNeoForge(IEventBus modBus, ModContainer modContainer) {
+        modBus.register(this);
         coreInit();
-        registryInit();
     }
 
     private void coreInit() {
         UrkazMoonTools.init();
     }
 
-    private void registryInit() {
-        bind(Registries.BLOCK, UMTRegistry::registerBlocks);
-        bind(Registries.ITEM, UMTRegistry::registerItems);
-        bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerBlockEntities);
-        bind(Registries.DATA_COMPONENT_TYPE, UMTDataComponents::registerComponents);
-        bind(Registries.CREATIVE_MODE_TAB, (consumer -> {
+    @SubscribeEvent
+    private void registryInit(RegisterEvent event) {
+        bind(event, Registries.BLOCK, UMTRegistry::registerBlocks);
+        bind(event, Registries.ITEM, UMTRegistry::registerItems);
+        bind(event, Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerBlockEntities);
+        bind(event, Registries.DATA_COMPONENT_TYPE, UMTDataComponents::registerComponents);
+        bind(event, Registries.CREATIVE_MODE_TAB, (consumer -> {
             consumer.accept(
                     CreativeModeTab.builder()
                             .title(Component.translatable("urkazmoontools.creative_tab").withStyle((style -> style.withColor(ChatFormatting.WHITE))))
@@ -68,11 +71,10 @@ public final class UrkazMoonToolsNeoForge {
         }));
     }
 
-    private static <T> void bind(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<T, ResourceLocation>> source) {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener((RegisterEvent event) -> {
-            if (registry.equals(event.getRegistryKey())) {
-                source.accept((t, rl) -> event.register(registry, rl, () -> t));
-            }
-        });
+    private static <T> void bind(RegisterEvent event, ResourceKey<Registry<T>> registryKey, Consumer<BiConsumer<T, ResourceLocation>> source) {
+        Registry<T> registry = event.getRegistry(registryKey);
+        if (registry != null) {
+            source.accept((t, rl) -> Registry.register(registry, rl, t));
+        }
     }
 }

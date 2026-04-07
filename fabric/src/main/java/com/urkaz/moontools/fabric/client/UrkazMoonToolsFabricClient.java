@@ -28,10 +28,12 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.resources.ResourceLocation;
 
+import static com.urkaz.moontools.common.lib.ResourceLocationHelper.prefixedModLocation;
+
 public class UrkazMoonToolsFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        FabricModelPredicateProviderRegistry.register(UMTRegistry.ITEM_MOONCLOCK, new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+        FabricModelPredicateProviderRegistry.register(UMTRegistry.ITEM_MOONCLOCK, prefixedModLocation("moonphase"), new MoonPhaseResource());
         ColorProviderRegistry.ITEM.register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK);
     }
 }

@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,7 +19,6 @@
 
 package com.urkaz.moontools.common.modcompat.handler;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 
 public interface IMoonToolsModCompat {
@@ -29,9 +28,5 @@ public interface IMoonToolsModCompat {
 
     default int getLunarEventColor(Level world) {
         return 0xffffffff;
-    }
-
-    default Component getLunarEventName(Level world) {
-        return null;
     }
 }

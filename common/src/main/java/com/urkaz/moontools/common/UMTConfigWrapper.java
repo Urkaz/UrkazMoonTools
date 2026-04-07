@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -42,6 +42,7 @@ public class UMTConfigWrapper {
     }
 
     @Config(name = UMTConstants.MOD_ID)
+    @Config.Gui.Background("urkazmoontools:textures/block/moon_sensor_side.png")
     public static class UMTConfig implements ConfigData {
         @ConfigEntry.Category("moonsensor")
         @ConfigEntry.Gui.Tooltip(count = 2)

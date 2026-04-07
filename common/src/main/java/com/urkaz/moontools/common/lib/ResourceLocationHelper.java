@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,6 +24,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ResourceLocationHelper {
     public static ResourceLocation prefix(String path) {
-        return ResourceLocation.fromNamespaceAndPath(UMTConstants.MOD_ID, path);
+        return new ResourceLocation(UMTConstants.MOD_ID, path);
     }
 }

@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,6 +21,8 @@ package com.urkaz.moontools.client;
 
 import com.urkaz.moontools.common.component.MoonClockPhaseComponent;
 import com.urkaz.moontools.common.component.UMTDataComponents;
+import com.urkaz.moontools.common.item.MoonClockItem;
+import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.world.entity.Entity;
@@ -37,23 +39,18 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
         Entity entity = flag ? entityIn : itemStack.getFrame();
 
         MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE);
-        if (phaseComponent != null) {
-            MoonClockPhaseComponent newPhaseComponent = phaseComponent.tick(level);
-            if (phaseComponent != newPhaseComponent) {
-                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, newPhaseComponent);
-                phaseComponent = newPhaseComponent;
-            }
-
-        } else {
-            return 0;
+        if(phaseComponent != null) {
+            phaseComponent = phaseComponent.tick(level);
         }
 
         Level world = level;
         if (level == null && entity != null) {
             world = entity.level();
         }
-
         int moonFactor = (int) getMoonFactor(phaseComponent);
+        int color = ModCompatHandler.getInstance().getLunarEventColor(world);
+
+        ((MoonClockItem) itemStack.getItem()).setColor(color);
         return moonFactor / 10.f;
     }
 

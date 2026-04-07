@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -42,6 +42,8 @@ import java.util.List;
 
 public class MoonClockItem extends Item {
 
+    private int color;
+
     public MoonClockItem(Properties properties) {
         super(properties);
     }
@@ -64,13 +66,15 @@ public class MoonClockItem extends Item {
             if (phaseComponent2 != phaseComponent) {
                 itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, phaseComponent2);
             }
-        } else {
-            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, new MoonClockPhaseComponent(0, true, 0xffffffff));
+        }
+        else {
+            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, new MoonClockPhaseComponent(0, true));
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, TooltipContext
+            tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, tooltipContext, tooltip, tooltipFlag);
 
         MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE);
@@ -92,8 +96,8 @@ public class MoonClockItem extends Item {
 
     public String getTooltipText(int phase, boolean hasData) {
         if (hasData) {
-            return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " " +
-                    I18n.get("urkazmoontools.moonclock.phase" + phase);
+            return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
+                    + I18n.get("urkazmoontools.moonclock.phase" + phase);
         } else {
             return I18n.get("urkazmoontools.moonclock.phaseTooltip") + " "
                     + I18n.get("urkazmoontools.moonclock.nodata");
@@ -105,8 +109,11 @@ public class MoonClockItem extends Item {
         return false;
     }
 
-    public int getColor(ItemStack itemStack) {
-        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
-        return phaseComponent != null ? phaseComponent.color() : 0xffffffff;
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getColor() {
+        return color;
     }
 }

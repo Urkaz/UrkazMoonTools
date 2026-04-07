@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -49,7 +49,7 @@ public class UrkazMoonToolsNeoForgeClient {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK, ResourceLocation.fromNamespaceAndPath(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK, new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
         });
 
         if (UMTExpectPlatform.isClothConfigLoaded()) {

@@ -1,6 +1,6 @@
 /*
  * This file is part of "Urkaz Moon Tools".
- * Copyright (C) 2025 Urkaz - Fran Sánchez
+ * Copyright (C) 2026 Urkaz - Fran Sánchez
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -31,7 +31,7 @@ import net.minecraft.resources.ResourceLocation;
 public class UrkazMoonToolsFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        FabricModelPredicateProviderRegistry.register(UMTRegistry.ITEM_MOONCLOCK, ResourceLocation.fromNamespaceAndPath(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+        FabricModelPredicateProviderRegistry.register(UMTRegistry.ITEM_MOONCLOCK, new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
         ColorProviderRegistry.ITEM.register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK);
     }
 }

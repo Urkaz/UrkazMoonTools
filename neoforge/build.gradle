@@ -120,6 +120,12 @@ unifiedPublishing {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
             }
+            if (lunar_mod_compat_enabled.toBoolean()) {
+                optional {
+                    curseforge = "lunar"
+                    modrinth = "lunar"
+                }
+            }
         }
 
         if (project.hasProperty("cuseforge_api_key") || System.getenv("cuseforge_api_key") != null) {

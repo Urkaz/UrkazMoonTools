@@ -137,12 +137,6 @@ unifiedPublishing {
                     curseforge = "crimson-moon"
                 }
             }
-            if (lunar_mod_compat_enabled.toBoolean()) {
-                optional {
-                    curseforge = "lunar"
-                    modrinth = "lunar"
-                }
-            }
             if (ec_mod_compat_enabled.toBoolean()) {
                 optional {
                     curseforge = "enhanced-celestials"

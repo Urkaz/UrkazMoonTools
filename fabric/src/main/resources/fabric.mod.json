@@ -38,5 +38,9 @@
     "fabric-api": "*",
     "minecraft": ">=${mc_version}",
     "cloth-config": ">=${cloth_config_version}"
+  },
+  "suggests" : {
+    "enhancedcelestials": "*",
+    "lunar": "*"
   }
 }

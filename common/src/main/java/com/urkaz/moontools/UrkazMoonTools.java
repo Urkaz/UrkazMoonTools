@@ -20,7 +20,6 @@
 package com.urkaz.moontools;
 
 import com.urkaz.moontools.common.UMTConfigWrapper;
-import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.common.modcompat.handler.ModCompatHandler;
 import com.urkaz.moontools.common.modcompat.mods.EnhancedCelestialsModCompat;
 import com.urkaz.moontools.common.modcompat.mods.LunarModCompat;
@@ -41,12 +40,5 @@ public class UrkazMoonTools {
         if (UMTExpectPlatform.isModLoaded(LunarModCompat.MOD_LUNAR_ID)) {
             ModCompatHandler.getInstance().registerModCompat(new LunarModCompat());
         }
-    }
-
-    public static void registryInit() {
-        UMTRegistry.BLOCKS.register();
-        UMTRegistry.ITEMS.register();
-        UMTRegistry.BLOCK_ENTITIES.register();
-        UMTRegistry.CREATIVE_MODE_TABS.register();
     }
 }

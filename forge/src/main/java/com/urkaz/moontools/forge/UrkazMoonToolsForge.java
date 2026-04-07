@@ -23,11 +23,14 @@ import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.UMTRegistry;
 import com.urkaz.moontools.forge.client.UrkazMoonToolsForgeClient;
-import dev.architectury.platform.forge.EventBuses;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -51,10 +54,23 @@ public class UrkazMoonToolsForge {
     }
 
     private void registryInit() {
-        final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        EventBuses.registerModEventBus(UMTConstants.MOD_ID, eventBus);
+        //final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        UrkazMoonTools.registryInit();
+        bind(Registries.BLOCK, UMTRegistry::registerBlocks);
+        bind(Registries.ITEM, UMTRegistry::registerItems);
+        bind(Registries.BLOCK_ENTITY_TYPE, UMTRegistry::registerBlockEntities);
+        bind(Registries.CREATIVE_MODE_TAB, (consumer -> {
+            consumer.accept(
+                    CreativeModeTab.builder()
+                            .title(Component.translatable("urkazmoontools.creative_tab").withStyle((style -> style.withColor(ChatFormatting.WHITE))))
+                            .icon(() -> new ItemStack(UMTRegistry.ITEM_MOONCLOCK))
+                            .displayItems((params, output) -> {
+                                UMTRegistry.createDefaultCreativeTab(output);
+                            })
+                            .build(),
+                    UMTRegistry.UMC_CREATIVE_KEY.location()
+            );
+        }));
     }
 
     private void clientInit() {

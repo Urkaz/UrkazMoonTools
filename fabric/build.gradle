@@ -96,7 +96,9 @@ processResources {
                 "mod_icon": rootProject.mod_icon,
                 "mod_author": rootProject.mod_author,
                 "mc_version": project.minecraft_version,
-                "cloth_config_version": project.cloth_config_version
+                "cloth_config_version": project.cloth_config_version,
+                "enhanced_celestials_version": project.enhanced_celestials_version,
+                "lunar_version": project.lunar_version
     }
 }
 
@@ -136,10 +138,6 @@ unifiedPublishing {
 
         relations {
             depends {
-                curseforge = "architectury-api"
-                modrinth = "architectury-api"
-            }
-            depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
             }
@@ -159,7 +157,7 @@ unifiedPublishing {
             }
             if (ec_mod_compat_enabled.toBoolean()) {
                 optional {
-                    curseforge = "enhanced-celestials-fabric"
+                    curseforge = "enhanced-celestials"
                     modrinth = "enhanced-celestials"
                 }
             }

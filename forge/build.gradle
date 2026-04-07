@@ -85,6 +85,7 @@ processResources {
                 "forge_version_major": project.forge_version_major,
                 "forge_version_minor": project.forge_version_minor,
                 "cloth_config_version": project.cloth_config_version,
+                "lunar_version": project.lunar_version,
                 "enhanced_celestials_version": project.enhanced_celestials_version
     }
 }
@@ -124,10 +125,6 @@ unifiedPublishing {
         mainPublication tasks.remapJar
 
         relations {
-            depends {
-                curseforge = "architectury-api"
-                modrinth = "architectury-api"
-            }
             depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"

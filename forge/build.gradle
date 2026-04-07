@@ -53,15 +53,11 @@ dependencies {
 
     // Enhanced Celestials
     if (test_enable_enhanced_celestials.toBoolean()) {
-        modImplementation("curse.maven:enhanced-celestials-forge-${ec_projectid}:${ec_forge_fileids}") {
-            transitive = false
-        }
+        modImplementation "curse.maven:enhanced-celestials-forge-${ec_projectid}:${ec_forge_fileids}"
         modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
         modRuntimeOnly "curse.maven:data-anchor-1203668:${dataanchor_forge_fileids}"
     } else {
-        compileOnly("curse.maven:enhanced-celestials-forge-${ec_projectid}:${ec_forge_fileids}") {
-            transitive = false
-        }
+        modCompileOnly "curse.maven:enhanced-celestials-forge-${ec_projectid}:${ec_forge_fileids}"
         modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
         modRuntimeOnly "curse.maven:data-anchor-1203668:${dataanchor_forge_fileids}"
     }

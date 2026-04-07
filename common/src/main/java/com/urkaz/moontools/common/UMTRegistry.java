@@ -21,7 +21,6 @@ package com.urkaz.moontools.common;
 
 import com.urkaz.moontools.UMTConstants;
 import com.urkaz.moontools.UMTExpectPlatform;
-import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.block.MoonSensorBlock;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
 import com.urkaz.moontools.common.item.MoonClockItem;
@@ -43,6 +42,8 @@ import net.minecraft.world.level.material.PushReaction;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
+import static com.urkaz.moontools.common.lib.ResourceLocationHelper.prefixedModLocation;
+
 public class UMTRegistry {
 
     public static final Block BLOCK_MOONSENSOR = new MoonSensorBlock(BlockBehaviour.Properties.of().strength(0.2F).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY));
@@ -50,7 +51,7 @@ public class UMTRegistry {
     public static final Item ITEM_BLOCK_MOONSENSOR = new BlockItem(BLOCK_MOONSENSOR, new Item.Properties());
 
     public static final ResourceKey<CreativeModeTab> UMC_CREATIVE_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
-            new ResourceLocation(UMTConstants.MOD_ID, "urkazmoontools"));
+            ResourceLocation.fromNamespaceAndPath(UMTConstants.MOD_ID, "urkazmoontools"));
 
     public static final BlockEntityType<MoonSensorBlockEntity> BLOCKENTITY_MOONSENSOR = createBEType(
             MoonSensorBlockEntity::new, UMTRegistry.BLOCK_MOONSENSOR);
@@ -75,9 +76,5 @@ public class UMTRegistry {
 
     public static void registerBlockEntities(BiConsumer<BlockEntityType<?>, ResourceLocation> r) {
         r.accept(BLOCKENTITY_MOONSENSOR, prefixedModLocation("moonsensor_entity"));
-    }
-
-    public static ResourceLocation prefixedModLocation(String path) {
-        return new ResourceLocation(UMTConstants.MOD_ID, path);
     }
 }

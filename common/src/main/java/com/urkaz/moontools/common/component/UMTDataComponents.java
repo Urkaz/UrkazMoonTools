@@ -24,7 +24,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.BiConsumer;
 
-import static com.urkaz.moontools.common.UMTRegistry.prefixedModLocation;
+import static com.urkaz.moontools.common.lib.ResourceLocationHelper.prefixedModLocation;
 
 public class UMTDataComponents {
 

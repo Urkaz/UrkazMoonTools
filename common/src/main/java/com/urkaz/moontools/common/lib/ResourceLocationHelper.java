@@ -23,7 +23,7 @@ import com.urkaz.moontools.UMTConstants;
 import net.minecraft.resources.ResourceLocation;
 
 public class ResourceLocationHelper {
-    public static ResourceLocation prefix(String path) {
-        return new ResourceLocation(UMTConstants.MOD_ID, path);
+    public static ResourceLocation prefixedModLocation(String path) {
+        return ResourceLocation.fromNamespaceAndPath(UMTConstants.MOD_ID, path);
     }
 }

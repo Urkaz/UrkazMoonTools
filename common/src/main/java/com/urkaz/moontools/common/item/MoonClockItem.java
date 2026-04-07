@@ -19,6 +19,7 @@
 
 package com.urkaz.moontools.common.item;
 
+import com.urkaz.moontools.common.UMTConfigWrapper;
 import com.urkaz.moontools.common.component.MoonClockPhaseComponent;
 import com.urkaz.moontools.common.component.UMTDataComponents;
 import net.minecraft.client.resources.language.I18n;
@@ -34,6 +35,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -45,8 +47,9 @@ public class MoonClockItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
-        if (worldIn.isClientSide && handIn == InteractionHand.MAIN_HAND) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+        UMTConfigWrapper.UMTConfig config = UMTConfigWrapper.getConfig();
+        if (config != null && worldIn.isClientSide && handIn == InteractionHand.MAIN_HAND && !config.disableRightClick) {
             playerIn.sendSystemMessage(Component.literal(getTooltipText(worldIn)));
             playerIn.swing(handIn);
         }
@@ -55,14 +58,14 @@ public class MoonClockItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean bl) {
-        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE);
         if (phaseComponent != null) {
             MoonClockPhaseComponent phaseComponent2 = phaseComponent.tick(level);
             if (phaseComponent2 != phaseComponent) {
-                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), phaseComponent2);
+                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, phaseComponent2);
             }
         } else {
-            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), new MoonClockPhaseComponent(0, true, 0xffffffff));
+            itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, new MoonClockPhaseComponent(0, true, 0xffffffff));
         }
     }
 
@@ -70,7 +73,7 @@ public class MoonClockItem extends Item {
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, tooltipContext, tooltip, tooltipFlag);
 
-        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE);
         tooltip.add(Component.literal(getTooltipText(phaseComponent)));
     }
 

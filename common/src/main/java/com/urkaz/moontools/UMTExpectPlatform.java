@@ -53,4 +53,9 @@ public class UMTExpectPlatform {
     {
         return true;
     }
+
+    @ExpectPlatform
+    public static <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
+        return null;
+    }
 }

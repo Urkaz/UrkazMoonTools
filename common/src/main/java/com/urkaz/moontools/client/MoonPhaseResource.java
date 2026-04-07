@@ -36,11 +36,11 @@ public class MoonPhaseResource implements ClampedItemPropertyFunction {
         boolean flag = entityIn != null;
         Entity entity = flag ? entityIn : itemStack.getFrame();
 
-        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE.get());
+        MoonClockPhaseComponent phaseComponent = itemStack.get(UMTDataComponents.MOON_CLOCK_PHASE);
         if (phaseComponent != null) {
             MoonClockPhaseComponent newPhaseComponent = phaseComponent.tick(level);
             if (phaseComponent != newPhaseComponent) {
-                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE.get(), newPhaseComponent);
+                itemStack.set(UMTDataComponents.MOON_CLOCK_PHASE, newPhaseComponent);
                 phaseComponent = newPhaseComponent;
             }
 

@@ -48,4 +48,8 @@ public class UMTExpectPlatformImpl {
         String CLOTH_CONFIG_ID = "cloth-config";
         return UMTExpectPlatform.isModLoaded(CLOTH_CONFIG_ID);
     }
+
+    public static <T extends BlockEntity> BlockEntityType<T> createBlockEntityType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
+        return FabricBlockEntityTypeBuilder.create(func::apply, blocks).build();
+    }
 }

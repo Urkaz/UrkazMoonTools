@@ -20,73 +20,61 @@
 package com.urkaz.moontools.common;
 
 import com.urkaz.moontools.UMTConstants;
+import com.urkaz.moontools.UMTExpectPlatform;
+import com.urkaz.moontools.UrkazMoonTools;
 import com.urkaz.moontools.common.block.MoonSensorBlock;
 import com.urkaz.moontools.common.block.entity.MoonSensorBlockEntity;
 import com.urkaz.moontools.common.item.MoonClockItem;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
 public class UMTRegistry {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(UMTConstants.MOD_ID, Registries.BLOCK);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(UMTConstants.MOD_ID, Registries.ITEM);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(UMTConstants.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
-    public static DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(UMTConstants.MOD_ID, Registries.CREATIVE_MODE_TAB);
+    public static final Block BLOCK_MOONSENSOR = new MoonSensorBlock(BlockBehaviour.Properties.of().strength(0.2F).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY));
+    public static final Item ITEM_MOONCLOCK = new MoonClockItem(new Item.Properties().stacksTo(1));
+    public static final Item ITEM_BLOCK_MOONSENSOR = new BlockItem(BLOCK_MOONSENSOR, new Item.Properties());
 
-    public static final RegistrySupplier<Block> BLOCK_MOONSENSOR = registerBlock("moonsensor_block", () -> new MoonSensorBlock(BlockBehaviour.Properties.of().strength(0.2F).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)));
+    public static final ResourceKey<CreativeModeTab> UMC_CREATIVE_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB,
+            new ResourceLocation(UMTConstants.MOD_ID, "urkazmoontools"));
 
-    public static final RegistrySupplier<Item> ITEM_MOONCLOCK = registerItem("moonclock_item", p -> new MoonClockItem(p.stacksTo(1)));
-
-    public static final RegistrySupplier<BlockEntityType<MoonSensorBlockEntity>> BLOCKENTITY_MOONSENSOR = BLOCK_ENTITIES.register("moonsensor_entity", () ->
-            BlockEntityType.Builder.of(MoonSensorBlockEntity::new, UMTRegistry.BLOCK_MOONSENSOR.get()).build(null));
-
-    public static final RegistrySupplier<CreativeModeTab> ALPHA_SIN_55_CREATIVE_TAB = registerCreativeTab("urkazmoontools.creative_tab", UMTRegistry.ITEM_MOONCLOCK, UMTRegistry::createDefaultCreativeTab);
+    public static final BlockEntityType<MoonSensorBlockEntity> BLOCKENTITY_MOONSENSOR = createBEType(
+            MoonSensorBlockEntity::new, UMTRegistry.BLOCK_MOONSENSOR);
 
     public static void createDefaultCreativeTab(CreativeModeTab.Output output) {
-        output.accept(UMTRegistry.ITEM_MOONCLOCK.get());
-        output.accept(UMTRegistry.BLOCK_MOONSENSOR.get());
+        output.accept(UMTRegistry.ITEM_MOONCLOCK);
+        output.accept(UMTRegistry.BLOCK_MOONSENSOR);
     }
 
-    private static RegistrySupplier<Block> registerBlock(String name, Supplier<Block> block) {
-        return registerBlockWithItem(name, block, name + "item", it -> new BlockItem(it, new Item.Properties()));
+    public static void registerBlocks(BiConsumer<Block, ResourceLocation> r) {
+        r.accept(BLOCK_MOONSENSOR, prefixedModLocation("moonsensor_block"));
     }
 
-    private static <B extends Block> RegistrySupplier<Block> registerBlockWithItem(String blockName, Supplier<B> block, String itemName, Function<Block, Item> blockItem) {
-        RegistrySupplier<Block> blockSupplier = BLOCKS.register(blockName, block);
-        ITEMS.register(itemName, () -> blockItem.apply(blockSupplier.get()));
-        return blockSupplier;
+    public static void registerItems(BiConsumer<Item, ResourceLocation> r) {
+        r.accept(ITEM_MOONCLOCK, prefixedModLocation("moonclock_item"));
+        r.accept(ITEM_BLOCK_MOONSENSOR, prefixedModLocation("moonsensor_blockitem"));
     }
 
-    private static RegistrySupplier<Item> registerItem(String name, Function<Item.Properties, Item> item) {
-        return ITEMS.register(name, () -> item.apply(new Item.Properties()));
+    public static <T extends BlockEntity> BlockEntityType<T> createBEType(BiFunction<BlockPos, BlockState, T> func, Block... blocks) {
+        return UMTExpectPlatform.createBlockEntityType(func, blocks);
     }
 
-    private static RegistrySupplier<CreativeModeTab> registerCreativeTab(String name, RegistrySupplier<Item> iconSupplier, Consumer<CreativeModeTab.Output> consumer) {
-        return CREATIVE_MODE_TABS.register(name, () -> CreativeModeTab.builder(null, -1)
-                .title(Component.translatable(name))
-                .icon(() -> new ItemStack(iconSupplier.get()))
-                .displayItems((params, output) -> {
-                    consumer.accept(output);
-
-                })
-                .build()
-        );
+    public static void registerBlockEntities(BiConsumer<BlockEntityType<?>, ResourceLocation> r) {
+        r.accept(BLOCKENTITY_MOONSENSOR, prefixedModLocation("moonsensor_entity"));
     }
 
     public static ResourceLocation prefixedModLocation(String path) {

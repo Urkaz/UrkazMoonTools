@@ -30,7 +30,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class MoonSensorBlockEntity extends BlockEntity {
 
     public MoonSensorBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(UMTRegistry.BLOCKENTITY_MOONSENSOR.get(), blockPos, blockState);
+        super(UMTRegistry.BLOCKENTITY_MOONSENSOR, blockPos, blockState);
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, MoonSensorBlockEntity thisEntity) {

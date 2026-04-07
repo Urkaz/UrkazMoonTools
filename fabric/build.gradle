@@ -96,9 +96,7 @@ processResources {
                 "mod_icon": rootProject.mod_icon,
                 "mod_author": rootProject.mod_author,
                 "mc_version": project.minecraft_version,
-                "cloth_config_version": project.cloth_config_version,
-                "enhanced_celestials_version": project.enhanced_celestials_version,
-                "lunar_version": project.lunar_version
+                "cloth_config_version": project.cloth_config_version
     }
 }
 

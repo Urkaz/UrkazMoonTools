@@ -91,44 +91,46 @@ public class MoonSensorBlock extends Block implements EntityBlock {
         boolean isNight = true;
 
         UMTConfigWrapper.UMTConfig config = UMTConfigWrapper.getConfig();
-        if (config == null || (config != null && config.sensorOnlyNight)) {
+        if (config != null && config.sensorOnlyNight) {
             isNight = worldTime % 24000L >= 12000L;
         }
 
-        //If the EmitExtraRedstoneOnLunarEvent setting is enabled, return 9 directly
+        // If the EmitExtraRedstoneOnLunarEvent setting is enabled
         if (config != null && config.emitExtraRedstoneOnLunarEvent) {
             if (isNight && worldIn.canSeeSky(pos) && ModCompatHandler.getInstance().isLunarEventActive(worldIn)) {
-                return 9;
+                return config.duringEvents;
             }
         }
 
         //Get current Phase
         int moonPhase = getMoonFactor(worldIn);
 
-        //Shift one back if the setting is enabled
-        if (config == null || (config != null && config.sensorPhasesShifted)) {
-            moonPhase = moonPhase + 8 - 1;
-            moonPhase %= 8;
+        int restoneOutput = 0;
+        if (config != null && isNight && worldIn.canSeeSky(pos)) {
+            if (moonPhase == 0) restoneOutput = config.fullMoon;
+            else if (moonPhase == 1) restoneOutput = config.waningGibbous;
+            else if (moonPhase == 2) restoneOutput = config.thirdQuarter;
+            else if (moonPhase == 3) restoneOutput = config.waningCrescent;
+            else if (moonPhase == 4) restoneOutput = config.newMoon;
+            else if (moonPhase == 5) restoneOutput = config.waxingCrescent;
+            else if (moonPhase == 6) restoneOutput = config.firstQuarter;
+            else if (moonPhase == 7) restoneOutput = config.waxingGibbous;
         }
 
         //Get final value
-        if (worldIn.canSeeSky(pos) && isNight) {
-            return moonPhase + 1;
-        } else {
-            return 0;
-        }
+        return restoneOutput;
     }
 
     /**
      * @param worldIn
-     * @return  Waxing Gibbous 7
-     *          First Quarter 6
-     *          Waxing Crescent 5
-     *          New Moon 4
-     *          Waning Crescent 3
-     *          Third Quarter 2
-     *          Waning Gibbous 1
-     *          Full Moon 0
+     * @return Waxing Gibbous 7
+     * First Quarter 6
+     * Waxing Crescent 5
+     * New Moon 4
+     * Waning Crescent 3
+     * Third Quarter 2
+     * Waning Gibbous 1
+     * Full Moon 0
      */
     protected int getMoonFactor(@Nullable Level worldIn) {
         if (worldIn == null) {
@@ -167,7 +169,7 @@ public class MoonSensorBlock extends Block implements EntityBlock {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide() ? null : createTicker(type, UMTRegistry.BLOCKENTITY_MOONSENSOR.get(), MoonSensorBlockEntity::serverTick);
+        return level.isClientSide() ? null : createTicker(type, UMTRegistry.BLOCKENTITY_MOONSENSOR, MoonSensorBlockEntity::serverTick);
     }
 
     @Nullable

@@ -49,11 +49,48 @@ public class UMTConfigWrapper {
         public boolean sensorOnlyNight = true;
 
         @ConfigEntry.Category("moonsensor")
-        @ConfigEntry.Gui.Tooltip(count = 5)
-        public boolean sensorPhasesShifted = true;
-
-        @ConfigEntry.Category("moonsensor")
         @ConfigEntry.Gui.Tooltip(count = 2)
         public boolean emitExtraRedstoneOnLunarEvent = false;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int waningGibbous = 1;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int thirdQuarter = 2;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int waningCrescent = 3;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int newMoon = 4;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int waxingCrescent = 5;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int firstQuarter = 6;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int waxingGibbous = 7;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        public int fullMoon = 8;
+
+        @ConfigEntry.Category("moonsensor.redstone")
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 15)
+        @ConfigEntry.Gui.Tooltip()
+        public int duringEvents = 9;
+
+        @ConfigEntry.Category("moonclock")
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public boolean disableRightClick = false;
     }
 }

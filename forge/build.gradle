@@ -39,7 +39,7 @@ configurations {
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version_major}.${rootProject.forge_version_minor}.${rootProject.forge_version_patch}"
     // Remove the next line if you don't want to depend on the API
-    modImplementation "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    //modImplementation "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
@@ -61,13 +61,6 @@ dependencies {
         modRuntimeOnly "curse.maven:corgilib-693313:${corgilib_forge_fileids}"
         modRuntimeOnly "curse.maven:data-anchor-1203668:${dataanchor_forge_fileids}"
     }
-
-    // Lunar
-    if (test_enable_lunar.toBoolean()) {
-        modImplementation "maven.modrinth:lunar:${lunar_forge_projectid}"
-    } else {
-        modCompileOnly "maven.modrinth:lunar:${lunar_forge_projectid}"
-    }
 }
 
 processResources {
@@ -84,9 +77,7 @@ processResources {
                 "mc_version": project.minecraft_version,
                 "forge_version_major": project.forge_version_major,
                 "forge_version_minor": project.forge_version_minor,
-                "cloth_config_version": project.cloth_config_version,
-                "architectury_version": project.architectury_version,
-                "enhanced_celestials_version": project.enhanced_celestials_version
+                "cloth_config_version": project.cloth_config_version
     }
 }
 
@@ -126,22 +117,12 @@ unifiedPublishing {
 
         relations {
             depends {
-                curseforge = "architectury-api"
-                modrinth = "architectury-api"
-            }
-            depends {
                 curseforge = "cloth-config"
                 modrinth = "cloth-config"
             }
             if (cm_mod_compat_enabled.toBoolean()) {
                 optional {
                     curseforge = "crimson-moon"
-                }
-            }
-            if (lunar_mod_compat_enabled.toBoolean()) {
-                optional {
-                    curseforge = "lunar"
-                    modrinth = "lunar"
                 }
             }
             if (ec_mod_compat_enabled.toBoolean()) {

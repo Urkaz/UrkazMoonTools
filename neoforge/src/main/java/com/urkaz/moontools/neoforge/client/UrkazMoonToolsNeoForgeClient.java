@@ -48,7 +48,7 @@ public class UrkazMoonToolsNeoForgeClient {
     public static void clientSetup(final FMLClientSetupEvent event) {
         //NeoForge.EVENT_BUS.addListener(UrkazMoonToolsNeoForgeClient::onHandleColors);
         event.enqueueWork(() -> {
-            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK.get(), new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
+            ItemProperties.register(UMTRegistry.ITEM_MOONCLOCK, new ResourceLocation(UMTConstants.MOD_ID, "moonphase"), new MoonPhaseResource());
         });
 
         if (UMTExpectPlatform.isClothConfigLoaded()) {
@@ -59,6 +59,6 @@ public class UrkazMoonToolsNeoForgeClient {
 
     @SubscribeEvent
     private static void onHandleColors(final RegisterColorHandlersEvent.Item event) {
-        event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK.get());
+        event.getItemColors().register(new MoonClockColorHandler(), UMTRegistry.ITEM_MOONCLOCK);
     }
 }

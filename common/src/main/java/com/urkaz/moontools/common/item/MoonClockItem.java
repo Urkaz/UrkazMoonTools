@@ -42,7 +42,7 @@ import java.util.List;
 
 public class MoonClockItem extends Item {
 
-    private int color;
+    private int color = 0xffffffff;
 
     public MoonClockItem(Properties properties) {
         super(properties);

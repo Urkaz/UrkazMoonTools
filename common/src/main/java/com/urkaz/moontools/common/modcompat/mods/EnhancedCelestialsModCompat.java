@@ -61,7 +61,7 @@ public class EnhancedCelestialsModCompat implements IMoonToolsModCompat {
             EnhancedCelestialsLunarForecastWorldData data = lunarForecastWorldData.orElseThrow();
             Holder<LunarEvent> currentEvent = data.currentLunarEventHolder();
             if (currentEvent.isBound()) {
-                return currentEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
+                return 0xff000000 | currentEvent.value().getClientSettings().colorSettings().getMoonTextureColor();
             }
         }
 
